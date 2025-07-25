@@ -41,9 +41,8 @@ class JobListController extends Controller
                 'location' => 'required|string|max:255',
                 'type' => 'required|string|max:255',
                 'salary' => 'required|string|max:255',
-                'description' => 'required|string',
-                'job_desc' => 'required|string',
                 'requirements' => 'required|string',
+                'benefit' => 'required|string',
             ]);
 
             $joblist = JobList::create([
@@ -53,9 +52,8 @@ class JobListController extends Controller
                 'location' => $request->location,
                 'type' => $request->type,
                 'salary' => $request->salary,
-                'description' => $request->description,
-                'job_desc' => $request->job_desc,
                 'requirements' => $request->requirements,
+                'benefit' => $request->benefit,
             ]);
 
             return response()->json([
@@ -99,9 +97,8 @@ class JobListController extends Controller
                 'location' => 'required|string|max:255',
                 'type' => 'required|string|max:255',
                 'salary' => 'required|string|max:255',
-                'description' => 'required|string',
-                'job_desc' => 'required|string',
                 'requirements' => 'required|string',
+                'benefit' => 'required|string',
             ]);
 
             $joblist = JobList::findOrFail($id);
@@ -112,9 +109,8 @@ class JobListController extends Controller
                 'location' => $request->location,
                 'type' => $request->type,
                 'salary' => $request->salary,
-                'description' => $request->description,
-                'job_desc' => $request->job_desc,
                 'requirements' => $request->requirements,
+                'benefit' => $request->benefit,
             ]);
 
             return response()->json([

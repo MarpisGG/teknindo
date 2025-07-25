@@ -20,8 +20,8 @@ return new class extends Migration
             $table->enum('type', ['Full-Time', 'Part-Time', 'Contract', 'Internship']);
             $table->string('salary')->nullable();
             $table->text('description');
-            $table->text('job_desc');
             $table->text('requirements');
+            $table->text('benefit');
             $table->timestamps();
         });
     }

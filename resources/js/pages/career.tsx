@@ -8,7 +8,7 @@ function career() {
             <div className="mb-16">
                 <Navbar />
             </div>
-            <div>career</div>
+            <div>career jawa jawa jawa</div>
             <FloatingQuickActions />
             <Footer7 />
         </>

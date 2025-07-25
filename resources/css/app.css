@@ -176,8 +176,7 @@ container {
 
 .jobs li {
     list-style-type: disc;
-    padding-left: 1.25rem;
-    margin-left: 1rem;
+    margin-left: 2rem;
 }
 
 .blog li {

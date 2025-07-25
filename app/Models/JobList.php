@@ -18,9 +18,8 @@ class JobList extends Model
         'location',
         'type',
         'salary',
-        'description',
-        'job_desc',
         'requirements',
+        'benefit',
     ];
 
     public function applicants()
