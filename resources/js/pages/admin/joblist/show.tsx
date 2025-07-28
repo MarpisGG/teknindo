@@ -26,6 +26,7 @@ interface Jobs {
     location?: string;
     type?: string;
     salary?: string;
+    job_desc?: string;
     requirements?: string;
     benefit?: string;
     created_at?: string;
@@ -114,7 +115,7 @@ const Show: React.FC = () => {
     if (loading) {
         return (
             <div className="flex min-h-screen items-center justify-center bg-gray-50">
-                <div className="animate-pulse text-xl text-gray-600">Loading job...</div>
+                <div className="animate-pulse text-xl">Loading job...</div>
             </div>
         );
     }
@@ -137,7 +138,7 @@ const Show: React.FC = () => {
 
     return (
         <div className="jobs container mx-auto px-4 py-10">
-            <div className="mx-auto max-w-4xl">
+            <div className="mx-auto max-w-6xl">
                 <Link href="/admin/jobs" className="mb-6 inline-flex items-center text-sm text-blue-600 hover:underline">
                     <ArrowLeft size={16} className="mr-1" />
                     Back to Jobs
@@ -147,7 +148,7 @@ const Show: React.FC = () => {
                     <div className="p-8">
                         <div className="mb-6">
                             <h1 className="mb-2 text-4xl font-extrabold text-gray-900">{jobs.title}</h1>
-                            <div className="mb-4 flex flex-wrap gap-2 text-sm text-gray-600">
+                            <div className="mb-4 flex flex-wrap gap-2 text-sm">
                                 <span className="rounded-full bg-blue-100 px-3 py-1 text-blue-800">
                                     <Briefcase size={16} className="mr-1 inline" />
                                     {jobs.division}
@@ -168,6 +169,13 @@ const Show: React.FC = () => {
                         </div>
 
                         <div className="space-y-6">
+                            <div>
+                                <h2 className="mb-3 text-2xl font-bold text-gray-900">Job Description</h2>
+                                <div
+                                    className="prose prose-ul:list-disc prose-ol:list-decimal max-w-none leading-relaxed text-gray-700"
+                                    dangerouslySetInnerHTML={{ __html: jobs.job_desc || '' }}
+                                />
+                            </div>
                             <div>
                                 <h2 className="mb-3 text-2xl font-bold text-gray-900">Requirements</h2>
                                 <div
@@ -191,129 +199,99 @@ const Show: React.FC = () => {
                             <div className="mt-10">
                                 <h2 className="mb-4 text-2xl font-bold text-gray-900">Applicants</h2>
                                 {jobs.applicants.length > 0 ? (
-                                    <div className="overflow-x-auto">
-                                        <table className="min-w-full border border-gray-200 bg-white">
-                                            <thead className="bg-gray-100">
-                                                <tr>
-                                                    <th className="border-b px-4 py-2 text-left">Name</th>
-                                                    <th className="border-b px-4 py-2 text-left">Email</th>
-                                                    <th className="border-b px-4 py-2 text-left">Phone</th>
-                                                    <th className="border-b px-4 py-2 text-left">Education</th>
-                                                    <th className="border-b px-4 py-2 text-left">Expected Salary</th>
-                                                    <th className="border-b px-4 py-2 text-left">Start Date</th>
-                                                    <th className="border-b px-4 py-2 text-left">Status</th>
-                                                    <th className="border-b px-4 py-2 text-left">Address</th>
-                                                    <th className="border-b px-4 py-2 text-left">Resume</th>
-                                                    <th className="border-b px-4 py-2 text-center">Actions</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {jobs.applicants.map((applicant) => (
-                                                    <tr key={applicant.id}>
-                                                        <td className="border-b px-4 py-2">{applicant.name}</td>
-                                                        <td className="border-b px-4 py-2">{applicant.email}</td>
-                                                        <td className="border-b px-4 py-2">{applicant.phone}</td>
-                                                        <td className="border-b px-4 py-2">{applicant.education}</td>
-                                                        <td className="border-b px-4 py-2">
-                                                            {applicant.expected_salary ? (
-                                                                `Rp ${Number(applicant.expected_salary).toLocaleString('id-ID')}`
-                                                            ) : (
-                                                                <span className="text-gray-400 italic">Not specified</span>
-                                                            )}
-                                                        </td>
-                                                        <td className="border-b px-4 py-2">
-                                                            {applicant.start_date
-                                                                ? new Date(applicant.start_date).toLocaleDateString('id-ID', {
-                                                                      year: 'numeric',
-                                                                      month: 'long',
-                                                                      day: 'numeric',
-                                                                  })
-                                                                : '-'}
-                                                        </td>
-                                                        <td className="border-b px-4 py-2">
-                                                            {/* existing status select here */}
-                                                            <td className="border-b px-4 py-2">
-                                                                <div className="relative">
-                                                                    <select
-                                                                        value={applicant.status}
-                                                                        onChange={async (e) => {
-                                                                            const newStatus = e.target.value;
-                                                                            try {
-                                                                                await axios.patch(`/applicants/${applicant.id}/status`, {
-                                                                                    status: newStatus,
-                                                                                });
-                                                                                // Swal.fire("Success", "Status updated successfully", "success");
-                                                                                fetchJobs(); // Refresh job + applicants
-                                                                            } catch (error) {
-                                                                                console.error('Failed to update status:', error);
-                                                                                Swal.fire('Error', 'Failed to update status', 'error');
-                                                                            }
-                                                                        }}
-                                                                        className={`cursor-pointer appearance-none rounded-full border px-3 py-1.5 pr-8 text-sm font-medium transition-colors focus:ring-2 focus:ring-blue-500 focus:outline-none ${applicant.status === 'Applied' ? 'border-green-200 bg-green-100 text-green-800' : ''} ${applicant.status === 'Under Review' ? 'border-yellow-200 bg-yellow-100 text-yellow-800' : ''} ${applicant.status === 'Interview Scheduled' ? 'border-blue-200 bg-blue-100 text-blue-800' : ''} ${applicant.status === 'Hired' ? 'border-emerald-200 bg-emerald-100 text-emerald-800' : ''} ${applicant.status === 'Rejected' ? 'border-red-200 bg-red-100 text-red-800' : ''} `}
-                                                                    >
-                                                                        <option value="Applied" className="bg-green-100 text-green-800">
-                                                                            Applied
-                                                                        </option>
-                                                                        <option value="Under Review" className="bg-yellow-100 text-yellow-800">
-                                                                            Under Review
-                                                                        </option>
-                                                                        <option value="Interview Scheduled" className="bg-blue-100 text-blue-800">
-                                                                            Interview Scheduled
-                                                                        </option>
-                                                                        <option value="Hired" className="bg-emerald-100 text-emerald-800">
-                                                                            Hired
-                                                                        </option>
-                                                                        <option value="Rejected" className="bg-red-100 text-red-800">
-                                                                            Rejected
-                                                                        </option>
-                                                                    </select>
-                                                                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-                                                                        <svg
-                                                                            className="h-4 w-4 text-gray-500"
-                                                                            xmlns="http://www.w3.org/2000/svg"
-                                                                            viewBox="0 0 20 20"
-                                                                            fill="currentColor"
-                                                                        >
-                                                                            <path
-                                                                                fillRule="evenodd"
-                                                                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                                                                clipRule="evenodd"
-                                                                            />
-                                                                        </svg>
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-                                                        </td>
-                                                        <td className="border-b px-4 py-2">{applicant.address}</td>
-                                                        <td className="border-b px-4 py-2">
-                                                            {applicant.resume ? (
-                                                                <a
-                                                                    href={`/storage/app/public/resumes/${applicant.resume}`}
-                                                                    target="_blank"
-                                                                    rel="noopener noreferrer"
-                                                                    className="text-blue-600 hover:underline"
-                                                                >
-                                                                    View CV
-                                                                </a>
-                                                            ) : (
-                                                                <span className="text-gray-400 italic">No file</span>
-                                                            )}
-                                                        </td>
-                                                        <td className="border-b px-4 py-2 text-center">
-                                                            <button
-                                                                onClick={() => deleteApplicant(applicant.id)}
-                                                                className="rounded bg-red-500 px-3 py-1 text-white hover:bg-red-600"
-                                                            >
-                                                                Delete
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                                ))}
-                                            </tbody>
-                                        </table>
+                                    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                                        {jobs.applicants.map((applicant) => (
+                                            <div
+                                                key={applicant.id}
+                                                className="rounded border border-gray-200 bg-white p-4 shadow-sm transition hover:shadow-md"
+                                            >
+                                                <h3 className="mb-2 text-lg font-semibold text-gray-800">{applicant.name}</h3>
+                                                <p className="text-md">
+                                                    <span className="font-bold">Email :</span> {applicant.email}
+                                                </p>
+                                                <p className="text-md">
+                                                    <span className="font-bold">Phone :</span> {applicant.phone}
+                                                </p>
+                                                <p className="text-md">
+                                                    <span className="font-bold">Education :</span> {applicant.education}
+                                                </p>
+                                                <p className="text-md">
+                                                    <span className="font-bold">Address :</span> {applicant.address}
+                                                </p>
+                                                <p className="text-md">
+                                                    Expected Salary :{' '}
+                                                    {applicant.expected_salary
+                                                        ? `Rp ${Number(applicant.expected_salary).toLocaleString('id-ID')}`
+                                                        : 'Not specified'}
+                                                </p>
+                                                <p className="text-md">
+                                                    Start Date :{' '}
+                                                    {applicant.start_date ? new Date(applicant.start_date).toLocaleDateString('id-ID') : '-'}
+                                                </p>
+                                                <div className="text-md mt-2">
+                                                    Resume :{' '}
+                                                    {applicant.resume ? (
+                                                        <a
+                                                            href={`/storage/${applicant.resume}`}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            className="text-blue-600 hover:underline"
+                                                        >
+                                                            View CV
+                                                        </a>
+                                                    ) : (
+                                                        <span className="text-gray-400 italic">No file</span>
+                                                    )}
+                                                </div>
+
+                                                <div className="mt-4 flex items-center justify-between gap-2">
+                                                    {/* Status Dropdown */}
+                                                    <select
+                                                        value={applicant.status}
+                                                        onChange={async (e) => {
+                                                            const newStatus = e.target.value;
+                                                            try {
+                                                                await axios.patch(`/applicants/${applicant.id}/status`, {
+                                                                    status: newStatus,
+                                                                });
+                                                                fetchJobs();
+                                                            } catch (error) {
+                                                                console.error('Failed to update status:', error);
+                                                                Swal.fire('Error', 'Failed to update status', 'error');
+                                                            }
+                                                        }}
+                                                        className={`w-full rounded border px-3 py-1.5 text-sm focus:ring-2 focus:ring-[#FCC200] focus:outline-none ${
+                                                            applicant.status === 'Applied'
+                                                                ? 'border-green-200 bg-green-100 text-green-800'
+                                                                : applicant.status === 'Under Review'
+                                                                  ? 'border-yellow-200 bg-yellow-100 text-yellow-800'
+                                                                  : applicant.status === 'Interview Scheduled'
+                                                                    ? 'border-blue-200 bg-blue-100 text-blue-800'
+                                                                    : applicant.status === 'Hired'
+                                                                      ? 'border-emerald-200 bg-emerald-100 text-emerald-800'
+                                                                      : 'border-red-200 bg-red-100 text-red-800'
+                                                        }`}
+                                                    >
+                                                        <option value="Applied">Applied</option>
+                                                        <option value="Under Review">Under Review</option>
+                                                        <option value="Interview Scheduled">Interview Scheduled</option>
+                                                        <option value="Hired">Hired</option>
+                                                        <option value="Rejected">Rejected</option>
+                                                    </select>
+
+                                                    {/* Delete Button */}
+                                                    <button
+                                                        onClick={() => deleteApplicant(applicant.id)}
+                                                        className="ml-2 rounded bg-red-500 px-3 py-1.5 text-sm text-white hover:bg-red-600"
+                                                    >
+                                                        Delete
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        ))}
                                     </div>
                                 ) : (
-                                    <p className="text-gray-600">No applicants have applied for this job yet.</p>
+                                    <p className="">No applicants have applied for this job yet.</p>
                                 )}
                             </div>
                         )}

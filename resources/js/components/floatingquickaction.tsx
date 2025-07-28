@@ -1,4 +1,5 @@
-import { MapPin, PencilLine, Phone } from 'lucide-react';
+import { usePage } from '@inertiajs/react';
+import { Briefcase, MapPin, PencilLine, Phone } from 'lucide-react';
 import React from 'react';
 import { FaWhatsapp } from 'react-icons/fa';
 
@@ -29,6 +30,8 @@ const actions = [
 ];
 
 const FloatingQuickActions: React.FC = () => {
+    const { url } = usePage();
+
     return (
         <div
             className={`fixed right-0 bottom-0 z-50 m-0 flex w-full flex-row items-center justify-between p-0 shadow-[0_-2px_10px_rgba(0,0,0,0.1)] md:top-1/3 md:right-0 md:bottom-auto md:w-auto md:translate-y-0 md:flex-col md:items-end md:justify-normal md:space-y-0 md:shadow-none`}
@@ -38,18 +41,18 @@ const FloatingQuickActions: React.FC = () => {
                     key={index}
                     href={action.link || '#'}
                     className={`group relative overflow-hidden ${action.bg} flex-1 text-white transition-all duration-300 ease-in-out md:flex-auto ${
-                        index === 0 ? 'rounded-tl-lg md:rounded-tl-lg' : ''
-                    } ${index === actions.length - 1 ? 'rounded-bl-lg md:rounded-bl-lg' : ''}`}
+                        index === 0 ? 'md:rounded-tl-lg' : ''
+                    } ${index === actions.length - 1 ? 'md:rounded-bl-lg' : ''}`}
                 >
                     <div
                         className={`group relative overflow-hidden ${action.bg} flex-1 text-black transition-all duration-300 ease-in-out group-hover:rounded-l-lg ${
-                            index === 0 ? 'rounded-tl-lg md:rounded-tl-lg' : ''
-                        } ${index === actions.length - 1 ? 'rounded-bl-lg md:rounded-bl-lg' : ''}`}
+                            index === 0 ? 'md:rounded-tl-lg' : ''
+                        } ${index === actions.length - 1 ? 'md:rounded-bl-lg' : ''}`}
                     >
                         <button
                             className={`flex w-full items-center justify-center rounded-none px-2 py-3 transition-all duration-300 ease-in-out group-hover:rounded-l-lg md:w-auto md:justify-start md:px-4 ${
-                                index === 0 ? 'rounded-tl-lg md:rounded-tl-lg' : ''
-                            } ${index === actions.length - 1 ? 'rounded-bl-lg md:rounded-bl-lg' : ''}`}
+                                index === 0 ? 'md:rounded-tl-lg' : ''
+                            } ${index === actions.length - 1 ? 'md:rounded-bl-lg' : ''}`}
                         >
                             {action.icon}
                             <span
@@ -61,6 +64,19 @@ const FloatingQuickActions: React.FC = () => {
                     </div>
                 </a>
             ))}
+            {url === '/career' && (
+                <a
+                    href="/career/jobs"
+                    className={`group relative flex-1 overflow-hidden bg-yellow-500 text-white transition-all duration-300 ease-in-out md:mt-12 md:flex-auto md:rounded-l-lg`}
+                >
+                    <div className="group relative flex-1 overflow-hidden bg-yellow-500 text-black transition-all duration-300 ease-in-out group-hover:rounded-l-lg">
+                        <div className="flex w-full items-center justify-center rounded-none px-2 py-3 transition-all duration-300 ease-in-out md:w-auto md:justify-start md:px-4">
+                            <Briefcase size={20} />
+                            <span className="ml-2 hidden text-sm font-medium whitespace-nowrap md:inline">View Job List</span>
+                        </div>
+                    </div>
+                </a>
+            )}
         </div>
     );
 };

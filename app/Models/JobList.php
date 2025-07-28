@@ -18,6 +18,7 @@ class JobList extends Model
         'location',
         'type',
         'salary',
+        'job_desc',
         'requirements',
         'benefit',
     ];

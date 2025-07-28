@@ -41,6 +41,7 @@ class JobListController extends Controller
                 'location' => 'required|string|max:255',
                 'type' => 'required|string|max:255',
                 'salary' => 'required|string|max:255',
+                'job_desc' => 'required|string',
                 'requirements' => 'required|string',
                 'benefit' => 'required|string',
             ]);
@@ -52,6 +53,7 @@ class JobListController extends Controller
                 'location' => $request->location,
                 'type' => $request->type,
                 'salary' => $request->salary,
+                'job_desc' => $request->job_desc,
                 'requirements' => $request->requirements,
                 'benefit' => $request->benefit,
             ]);
@@ -97,6 +99,7 @@ class JobListController extends Controller
                 'location' => 'required|string|max:255',
                 'type' => 'required|string|max:255',
                 'salary' => 'required|string|max:255',
+                'job_desc' => 'required|string',
                 'requirements' => 'required|string',
                 'benefit' => 'required|string',
             ]);
@@ -109,6 +112,7 @@ class JobListController extends Controller
                 'location' => $request->location,
                 'type' => $request->type,
                 'salary' => $request->salary,
+                'job_desc' => $request->job_desc,
                 'requirements' => $request->requirements,
                 'benefit' => $request->benefit,
             ]);
@@ -194,6 +198,5 @@ class JobListController extends Controller
             return response()->json(['message' => 'Job not found'], 404);
         }
     }
-
 
 }

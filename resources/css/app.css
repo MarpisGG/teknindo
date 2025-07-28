@@ -189,10 +189,6 @@ container {
     margin-left: 1rem;
 }
 
-.contact h1 {
-    @apply text-5xl font-bold;
-}
-
 h1 {
     @apply text-5xl font-bold;
 }
@@ -202,7 +198,7 @@ h2 {
 }
 
 h3 {
-    @apply text-2xl font-semibold;
+    @apply text-xl font-semibold;
 }
 
 .map {

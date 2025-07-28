@@ -23,6 +23,7 @@ const Navbar: React.FC = () => {
     const [scrolled, setScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [hover, setHover] = useState(false);
+    const [navhover, setNavHover] = useState(false);
 
     const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -62,19 +63,19 @@ const Navbar: React.FC = () => {
 
     const BusinessDropdownContent = ({ isMobile = false }: { isMobile?: boolean }) => (
         <div className={`${isMobile ? 'space-y-1 pl-4' : 'absolute z-20 mt-5 w-64 bg-white'}`}>
-            <div className={isMobile ? '' : 'group relative'}>
+            <div className={isMobile ? '' : 'group relative'} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
                 <div className="flex w-full items-center justify-between px-4 py-3 text-sm text-gray-900 hover:bg-yellow-50 hover:text-yellow-700">
                     <div className="flex items-center">
                         <Link href="/business/heavy-equipment" className="flex items-center">
                             <span className="mr-2">🔧</span> Heavy Equipment & Parts
                         </Link>
                         <div className="hidden md:flex">
-                            <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:rotate-180" />
+                            <ChevronRight className="ml-2 h-4 w-4 transition-transform" />
                         </div>
                     </div>
                 </div>
-                {!isMobile && (
-                    <div className="invisible absolute top-0 left-full w-48 rounded-r-md bg-white opacity-0 transition-all duration-300 group-hover:visible group-hover:opacity-100">
+                {!isMobile && hover && (
+                    <div className="absolute top-0 left-full w-48 rounded-r-md bg-white opacity-100 transition-all duration-300">
                         {types.map((type) => (
                             <Link
                                 key={type.id}
@@ -118,25 +119,29 @@ const Navbar: React.FC = () => {
 
     return (
         <div
-            onMouseEnter={() => setHover(true)}
-            onMouseLeave={() => setHover(false)}
             className="group fixed top-0 z-50 w-full transition-all duration-300"
+            onMouseEnter={() => setNavHover(true)}
+            onMouseLeave={() => setNavHover(false)}
         >
-            <nav className={`transition-all duration-300 ${scrolled ? 'bg-[#181818]' : 'bg-transparent'} group-hover:bg-black`}>
+            <nav className={`transition-all duration-300 ${scrolled || navhover ? 'bg-[#181818]' : 'bg-transparent'} group-hover:bg-black`}>
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div className="flex h-16 items-center justify-between">
                         <Link
                             href="/"
                             className={`flex items-center ${typeof window !== 'undefined' && window.innerWidth < 768 ? '' : 'hover:bg-black'}`}
                         >
-                            <img src={scrolled || hover ? Teknindo : Teknindo1} alt="Logo" className="mr-2 h-8 w-auto transition-all duration-300" />
+                            <img
+                                src={scrolled || navhover ? Teknindo : Teknindo1}
+                                alt="Logo"
+                                className="mr-2 h-8 w-auto transition-all duration-300"
+                            />
                         </Link>
 
                         <div className="hidden items-center space-x-6 md:flex">
                             <div className="relative inline-block text-left" ref={dropdownRef}>
                                 <button
                                     onClick={() => setBusinessDropdownOpen(!businessDropdownOpen)}
-                                    className={`relative flex items-center after:absolute after:bottom-[-3px] after:left-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full ${navTextClass}`}
+                                    className={`relative flex items-center after:absolute after:bottom-[-3px] after:left-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full ${navhover ? 'text-white hover:text-gray-200' : navTextClass}`}
                                 >
                                     Business
                                     <ChevronDown
@@ -150,7 +155,7 @@ const Navbar: React.FC = () => {
                                 <Link
                                     key={item.href}
                                     href={item.href}
-                                    className={`relative after:absolute after:bottom-[-3px] after:left-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full ${navTextClass}`}
+                                    className={`relative after:absolute after:bottom-[-3px] after:left-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full ${navhover ? 'text-white hover:text-gray-200' : navTextClass}`}
                                 >
                                     {item.text}
                                 </Link>
@@ -159,7 +164,10 @@ const Navbar: React.FC = () => {
 
                         <div className="flex items-center md:space-x-4">
                             <div className="relative hidden md:block">
-                                <button onClick={() => setSearchOpen(!searchOpen)} className={`${navTextClass} mx-2`}>
+                                <button
+                                    onClick={() => setSearchOpen(!searchOpen)}
+                                    className={`${navhover ? 'text-white hover:text-gray-200' : navTextClass} mx-2`}
+                                >
                                     <Search />
                                 </button>
                                 <div
@@ -184,7 +192,7 @@ const Navbar: React.FC = () => {
                             <div className="relative mb-[6px] hidden md:block">
                                 <button
                                     onClick={() => setLanguageDropdownOpen(!languageDropdownOpen)}
-                                    className={`${navTextClass} flex items-center`}
+                                    className={`${navhover ? 'text-white hover:text-gray-200' : navTextClass} flex items-center`}
                                 >
                                     <Globe className="h-5 w-5" />
                                     <span className="ml-1 text-sm">{i18n.language?.toUpperCase()}</span>
@@ -214,7 +222,7 @@ const Navbar: React.FC = () => {
                             </div>
 
                             <button
-                                className={`ml-4 md:hidden ${scrolled || hover ? 'text-white' : 'text-gray-900'}`}
+                                className={`ml-4 md:hidden ${scrolled || navhover || mobileMenuOpen ? 'text-white' : 'text-gray-900'}`}
                                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                             >
                                 {mobileMenuOpen ? <X /> : <Menu />}

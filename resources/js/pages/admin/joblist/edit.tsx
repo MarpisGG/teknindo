@@ -12,6 +12,7 @@ interface Job {
     location: string;
     type: string;
     salary: string;
+    job_desc?: string;
     requirements: string;
     benefit: string;
     [key: string]: any;
@@ -38,6 +39,7 @@ const Edit: React.FC = () => {
         location: jobs?.location || '',
         type: jobs?.type || '',
         salary: jobs?.salary || '',
+        job_desc: jobs?.job_desc || '',
         requirements: jobs?.requirements || '',
         benefit: jobs?.benefit || '',
     });
@@ -156,6 +158,27 @@ const Edit: React.FC = () => {
                             required
                         />
                         {errors.salary && <p className="mt-1 text-sm text-red-600">{errors.salary}</p>}
+                    </div>
+
+                    <div>
+                        <label className="mb-2 block text-sm font-medium text-gray-700">Job Description *</label>
+                        <ReactQuill
+                            theme="snow"
+                            value={data.job_desc}
+                            onChange={(content) => setData({ ...data, job_desc: content })}
+                            className="rounded-lg bg-white"
+                            placeholder="Enter job description"
+                            modules={{
+                                toolbar: [
+                                    [{ header: [1, 2, false] }],
+                                    ['bold', 'italic', 'underline', 'strike'],
+                                    [{ list: 'ordered' }, { list: 'bullet' }],
+                                    ['link', 'clean'],
+                                ],
+                            }}
+                            style={{ height: '200px', marginBottom: '48px' }}
+                        />
+                        {errors.job_desc && <p className="mt-1 text-sm text-red-600">{errors.job_desc}</p>}
                     </div>
 
                     <div>

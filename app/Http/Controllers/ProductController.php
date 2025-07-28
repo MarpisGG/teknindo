@@ -269,4 +269,15 @@ class ProductController extends Controller
     {
         return Inertia::render('products/SparepartLanding');
     }
+
+    public function landingCarousel()
+    {
+        $products = Product::with('type')
+            ->select('id', 'name', 'slug', 'image')
+            ->orderBy('order')
+            ->limit(10)
+            ->get();
+
+        return response()->json($products);
+    }
 }

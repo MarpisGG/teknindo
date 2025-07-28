@@ -77,18 +77,18 @@ export default function Welcome() {
                     className="relative z-20 flex min-h-screen flex-col items-center justify-center px-4 text-center"
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, ease: 'easeOut' }}
+                    transition={{ duration: 1, ease: 'easeOut' }}
                 >
-                    <motion.h2
-                        className="mx-auto max-w-xl text-4xl font-bold text-white"
+                    <motion.h1
+                        className="mx-auto max-w-xl text-2xl font-bold text-white sm:text-3xl md:text-4xl lg:text-5xl"
                         initial={{ opacity: 1 }}
                         animate={{ opacity: 0 }}
-                        transition={{ delay: 2, duration: 0.5 }}
+                        transition={{ delay: 2.5, duration: 0.5 }}
                     >
                         Your Best Partner Of
                         <br />
-                        Heavy Equipment and Spare Parts
-                    </motion.h2>
+                        <h1 className="block text-lg font-semibold sm:text-xl md:text-2xl lg:text-3xl">Heavy Equipment and Spare Parts</h1>
+                    </motion.h1>
                 </motion.div>
             </div>
             <div className="relative z-30 flex w-full items-center justify-center bg-[#d9d9d9]">

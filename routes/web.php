@@ -85,10 +85,16 @@ Route::prefix('business')->group(function () {
     Route::get('/mining-services', function () {
         return Inertia::render('mining-services');
     })->name('business.mining-services');
-    
+});
 
+Route::get('/career/jobs', function () {
+    return Inertia::render('career/jobs');
+});
 
-
+Route::get('/career/jobs/{slug}', function ($slug) {
+    return inertia('career/show', [
+        'slug' => $slug,
+    ]);
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -239,6 +245,9 @@ Route::patch('/admin/products/{product}/move', [ProductController::class, 'moveO
 
 
 Route::get('/api/products', [ProductController::class, 'apiIndex'])->name('api.products.index');
+Route::get('/api/landing-products', [ProductController::class, 'landingCarousel']);
+
+Route::post('/applicants', [ApplicantController::class, 'store']);
 
 
 

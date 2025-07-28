@@ -28,11 +28,12 @@ const defaultSections = [
         title: 'Navigation',
         links: [
             { name: 'Home', href: '/' },
-            { name: 'Business', href: '#' },
-            { name: 'Contact Us', href: '#' },
-            { name: 'Services', href: '#' },
-            { name: 'Career', href: '#' },
-            { name: 'Blogs', href: '#' },
+            { name: 'Contact Us', href: '/contact' },
+            { name: 'Services', href: '/services' },
+            { name: 'About Us', href: '/about' },
+            { name: 'Career', href: '/career' },
+            { name: 'Blogs', href: '/blogs' },
+            { name: 'Products', href: '/products' },
         ],
     },
     {

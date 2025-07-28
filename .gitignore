@@ -2,8 +2,6 @@
 /bootstrap/ssr
 /node_modules
 /vendor
-/storage/*.key
-/storage/pail
 .env
 .env.backup
 .env.production

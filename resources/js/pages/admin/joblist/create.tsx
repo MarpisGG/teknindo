@@ -12,6 +12,7 @@ interface Job {
     location: string;
     type: string;
     salary: string;
+    job_desc?: string;
     benefit: string;
     requirements: string;
 }
@@ -35,6 +36,7 @@ const Create: React.FC = () => {
         location: '',
         type: '',
         salary: '',
+        job_desc: '',
         benefit: '',
         requirements: '',
     });
@@ -66,6 +68,7 @@ const Create: React.FC = () => {
                     location: '',
                     type: '',
                     salary: '',
+                    job_desc: '',
                     benefit: '',
                     requirements: '',
                 });
@@ -162,6 +165,20 @@ const Create: React.FC = () => {
                             className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:ring focus:ring-blue-200"
                         />
                         {errors.salary && <p className="text-sm text-red-500">{errors.salary}</p>}
+                    </div>
+                    <div className="mb-4">
+                        <label className="mb-2 block text-sm font-medium">Job Description</label>
+                        <ReactQuill
+                            theme="snow"
+                            value={data.job_desc}
+                            onChange={(content) => setData({ ...data, job_desc: content })}
+                            modules={{
+                                toolbar: [['bold', 'italic', 'underline'], [{ list: 'ordered' }, { list: 'bullet' }], ['clean']],
+                            }}
+                            style={{ height: '200px', marginBottom: '48px' }}
+                            className="w-full rounded-lg focus:ring focus:ring-blue-200"
+                        />
+                        {errors.job_desc && <p className="text-sm text-red-500">{errors.job_desc}</p>}
                     </div>
 
                     <div className="mb-4">
