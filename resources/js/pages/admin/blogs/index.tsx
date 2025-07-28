@@ -27,7 +27,7 @@ const BlogIndex: React.FC = () => {
 
     const fetchBlogs = async (page = 1) => {
         try {
-            const response = await axios.get('/api/blogs');
+            const response = await axios.get(`/api/blogs?page=${page}`);
             setBlogs(response.data.data);
             setCurrentPage(response.data.current_page);
             setLastPage(response.data.last_page);

@@ -134,7 +134,7 @@ const Show: React.FC = () => {
 
     return (
         <div className="blog container mx-auto px-4 py-10">
-            <div className="mx-auto max-w-4xl">
+            <div className="mx-auto max-w-6xl">
                 <Link href="/admin/blogs" className="mb-6 inline-flex items-center text-sm text-blue-600 hover:underline">
                     ← Back to Blogs
                 </Link>

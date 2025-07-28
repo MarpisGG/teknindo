@@ -13,6 +13,24 @@ class CommentController extends Controller
         $this->middleware('permission:blog-delete', ['only' => ['destroy']]);
     }
 
+    public function store(Request $request, $blogId)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'nullable|email|max:255',
+            'comment' => 'required|string',
+        ]);
+
+        $comment = new Comment();
+        $comment->blog_id = $blogId;
+        $comment->name = $request->name;
+        $comment->email = $request->email;
+        $comment->comment = $request->comment;
+        $comment->save();
+
+        return response()->json(['message' => 'Comment added successfully'], 201);
+    }
+
     public function getCommentsBySlug($slug)
     {
         $blog = Blog::where('slug', $slug)->first();

@@ -97,6 +97,16 @@ Route::get('/career/jobs/{slug}', function ($slug) {
     ]);
 });
 
+Route::get('/blogs/{slug}', function ($slug) {
+    return Inertia::render('blogs/show', [
+        'slug' => $slug,
+    ]);
+})->name('blogs.show');
+
+Route::get('/blogs', function () {
+    return Inertia::render('blogs');
+})->name('blogs');
+
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('admin/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
@@ -167,7 +177,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/blogs', [BlogController::class, 'store'])->name('blogs.store');
     Route::put('/blogs/{id}', [BlogController::class, 'update'])->name('blogs.update');
     Route::delete('/blogs/{id}', [BlogController::class, 'destroy'])->name('blogs.destroy');
-    Route::post('/upload/image', [BlogController::class, 'uploadImage']);
+    Route::delete('/comments/{blogId}', [CommentController::class, 'destroy'])->name('comments.destroy');
     //jobs
     Route::post('/jobs', [JobListController::class, 'store'])->name('jobs.store');
     Route::put('/jobs/{id}', [JobListController::class, 'update'])->name('jobs.update');
@@ -248,6 +258,9 @@ Route::get('/api/products', [ProductController::class, 'apiIndex'])->name('api.p
 Route::get('/api/landing-products', [ProductController::class, 'landingCarousel']);
 
 Route::post('/applicants', [ApplicantController::class, 'store']);
+Route::post('/api/blogs/{id}/comments', [CommentController::class, 'store']);
+Route::post('/api/blogs/{id}/like', [BlogController::class, 'like']);
+Route::post('/api/blogs/{id}/unlike', [BlogController::class, 'unlike']);
 
 
 

@@ -8,6 +8,7 @@ use App\Models\Blog;
 use Illuminate\Support\Str;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller;
+use Illuminate\Http\UploadedFile;
 use App\Models\VisitorLog;
 use Carbon\Carbon;
 
@@ -73,19 +74,22 @@ public function store(Request $request)
         'user_id' => auth()->id(),
     ]);
 
-    foreach ($request->contents as $order => $item) {
-        $imagePath = null;
-        if (isset($item['image']) && $item['image']) {
-            $imagePath = $item['image']->store('blog', 'public');
-        }
+foreach ($request->contents as $item) {
+    $imagePath = null;
 
-        $blog->content()->create([
-            'type' => $item['type'],
-            'content' => $item['type'] === 'text' ? $item['content'] : null,
-            'image' => $imagePath,
-            'order' => $order,
-        ]);
+    if (isset($item['image']) && $item['image'] instanceof UploadedFile) {
+        $imagePath = $item['image']->store('blog', 'public');
+    } elseif (isset($item['existing_image'])) {
+        $imagePath = str_replace(asset('storage/'), '', $item['existing_image']);
     }
+
+    $blog->content()->create([
+        'type' => $item['type'],
+        'content' => $item['type'] === 'text' ? $item['content'] : null,
+        'image' => $imagePath,
+        'order' => $item['order'],
+    ]);
+}
 
     return redirect()->route('blogs.index')->with('success', 'Blog created successfully.');
 }
@@ -238,23 +242,32 @@ try {
         return response()->json(['message' => 'Blog deleted successfully.']);
     }
 
-    public function like($id)
-    {
-        $blog = Blog::findOrFail($id);
-        $blog->increment('likes');
+public function like($id)
+{
+    $blog = Blog::findOrFail($id);
+    $blog->increment('likes');
 
-        return redirect()->back()->with('success', 'Blog liked successfully.');
+    return response()->json([
+        'success' => true,
+        'message' => 'Blog liked successfully.',
+        'likes' => $blog->likes,
+    ]);
+}
+
+public function unlike($id)
+{
+    $blog = Blog::findOrFail($id);
+    if ($blog->likes > 0) {
+        $blog->decrement('likes');
     }
 
-    public function unlike($id)
-    {
-        $blog = Blog::findOrFail($id);
-        if ($blog->likes > 0) {
-            $blog->decrement('likes');
-        }
+    return response()->json([
+        'success' => true,
+        'message' => 'Blog unliked successfully.',
+        'likes' => $blog->likes,
+    ]);
+}
 
-        return redirect()->back()->with('success', 'Blog unliked successfully.');
-    }
 
     public function apiBlogs()
     {
