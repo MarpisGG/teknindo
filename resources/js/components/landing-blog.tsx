@@ -86,19 +86,7 @@ const LandingBlog: React.FC = () => {
                                 </div>
 
                                 <div className="flex flex-1 flex-col p-4 sm:p-6">
-                                    <h2 className="mb-2 text-center text-lg font-semibold">{blog.title}</h2>
-                                    <div className="mb-3 text-sm text-gray-600 sm:mb-4 sm:text-base">
-                                        {(() => {
-                                            const parser = new DOMParser();
-                                            const doc = parser.parseFromString(blog.content, 'text/html');
-                                            const paragraphs = Array.from(doc.querySelectorAll('p'));
-                                            return paragraphs.length > 0 ? (
-                                                paragraphs.slice(0, 2).map((p, i) => <p key={i} dangerouslySetInnerHTML={{ __html: p.innerHTML }} />)
-                                            ) : (
-                                                <span>No content</span>
-                                            );
-                                        })()}
-                                    </div>
+                                    <p className="mb-2 text-center text-lg font-semibold">{blog.title}</p>
                                     <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-gray-500 sm:text-sm">
                                         <div className="flex items-center gap-1">
                                             <User className="h-4 w-4" /> {blog.user?.name || 'Unknown'}

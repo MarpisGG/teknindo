@@ -1,6 +1,7 @@
 import FloatingQuickActions from '@/components/floatingquickaction';
 import { Footer7 } from '@/components/footer';
 import Navbar from '@/components/navbar';
+import { Head } from '@inertiajs/react';
 import { motion } from 'framer-motion';
 import Sparepart from '../../../assets/image/sparepart.png';
 
@@ -12,6 +13,7 @@ const fadeInUp = {
 export default function SparepartLanding() {
     return (
         <>
+            <Head title="Spare Parts" />
             <div className="mb-16">
                 <Navbar />
             </div>

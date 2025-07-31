@@ -177,48 +177,31 @@ const Navbar: React.FC = () => {
                                         onSubmit={(e) => {
                                             e.preventDefault();
                                             const formData = new FormData(e.currentTarget);
-                                            router.get('/search', { query: formData.get('query') });
+                                            const searchQuery = formData.get('query') as string;
+
+                                            if (searchQuery && searchQuery.trim().length >= 2) {
+                                                router.get('/search', { query: searchQuery.trim() });
+                                            }
                                         }}
-                                        className="flex items-center overflow-hidden rounded-md bg-white shadow-md"
+                                        className="flex items-center gap-2 rounded-lg border border-gray-200 bg-white px-2 py-1 shadow-lg"
                                     >
-                                        <input name="query" placeholder="Search..." className="px-4 py-2 focus:outline-none" />
-                                        <button type="submit" className="bg-gray-100 p-2 hover:bg-gray-200">
-                                            <Search />
+                                        <input
+                                            name="query"
+                                            placeholder="Search blogs, products, jobs..."
+                                            className="flex-1 rounded-md border border-gray-300 px-3 py-2 text-sm transition focus:border-yellow-500 focus:ring-2 focus:ring-yellow-200 focus:outline-none"
+                                            minLength={2}
+                                            maxLength={100}
+                                            required
+                                        />
+                                        <button
+                                            type="submit"
+                                            className="rounded-md bg-yellow-500 p-2 text-white transition-colors hover:bg-yellow-600 focus:ring-2 focus:ring-yellow-300 focus:outline-none"
+                                            aria-label="Search"
+                                        >
+                                            <Search className="h-5 w-5" />
                                         </button>
                                     </form>
                                 </div>
-                            </div>
-
-                            <div className="relative mb-[6px] hidden md:block">
-                                <button
-                                    onClick={() => setLanguageDropdownOpen(!languageDropdownOpen)}
-                                    className={`${navhover ? 'text-white hover:text-gray-200' : navTextClass} flex items-center`}
-                                >
-                                    <Globe className="h-5 w-5" />
-                                    <span className="ml-1 text-sm">{i18n.language?.toUpperCase()}</span>
-                                </button>
-                                {languageDropdownOpen && (
-                                    <div className="absolute right-0 z-10 mt-2 rounded-md bg-white py-1 shadow-lg">
-                                        <button
-                                            onClick={() => {
-                                                i18n.changeLanguage('en');
-                                                setLanguageDropdownOpen(false);
-                                            }}
-                                            className={`block w-full px-4 py-2 text-left text-sm ${i18n.language === 'en' ? 'bg-gray-100' : 'hover:bg-gray-50'}`}
-                                        >
-                                            English
-                                        </button>
-                                        <button
-                                            onClick={() => {
-                                                i18n.changeLanguage('id');
-                                                setLanguageDropdownOpen(false);
-                                            }}
-                                            className={`block w-full px-4 py-2 text-left text-sm ${i18n.language === 'id' ? 'bg-gray-100' : 'hover:bg-gray-50'}`}
-                                        >
-                                            Indonesia
-                                        </button>
-                                    </div>
-                                )}
                             </div>
 
                             <button

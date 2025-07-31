@@ -30,7 +30,14 @@ type Job = {
 };
 
 const JobCard = ({ job, index }: { job: Job; index: number }) => (
-    <motion.div custom={index} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="w-full max-w-sm">
+    <motion.div
+        custom={index}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={fadeInUp}
+        className="w-full max-w-3xl sm:w-[48%]"
+    >
         <Link href={`/career/jobs/${job.slug}`} className="block h-full">
             <div className="grid h-full transform grid-cols-2 gap-2 rounded-xl border p-6 shadow transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-lg">
                 <div className="col-span-2">
@@ -92,7 +99,7 @@ export default function JobsPage() {
             <div className="mb-16">
                 <Navbar />
             </div>
-            <div className="mx-auto min-h-screen max-w-7xl px-4 py-8">
+            <div className="mx-auto min-h-screen max-w-6xl px-4 py-8">
                 <motion.div className="mx-auto mb-4 w-full max-w-6xl" initial="hidden" animate="visible" variants={fadeInUp}>
                     <nav className="flex items-center text-sm" aria-label="Breadcrumb">
                         <ol className="inline-flex items-center space-x-1">
@@ -137,7 +144,7 @@ export default function JobsPage() {
                 <div className="flex flex-wrap justify-center gap-8">
                     {loading ? (
                         <div className="flex w-full flex-wrap justify-center gap-8">
-                            {[...Array(3)].map((_, i) => (
+                            {[...Array(4)].map((_, i) => (
                                 <div key={i} className="w-full max-w-sm animate-pulse rounded-xl border p-6 shadow">
                                     <div className="mb-4 h-8 w-2/3 rounded bg-gray-200" />
                                     <div className="mb-2 flex items-center">

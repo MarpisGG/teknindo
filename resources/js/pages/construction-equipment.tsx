@@ -1,10 +1,11 @@
 import FloatingQuickActions from '@/components/floatingquickaction';
 import { Footer7 } from '@/components/footer';
 import Navbar from '@/components/navbar';
-
+import { Head } from '@inertiajs/react';
 function ConstructionEquipment() {
     return (
         <div>
+            <Head title="Construction Equipment" />
             <Navbar />
             <div className="flex min-h-screen flex-col items-center justify-center px-4 py-8">
                 <h1>Construction Equipment</h1>

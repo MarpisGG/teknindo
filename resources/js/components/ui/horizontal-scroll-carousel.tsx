@@ -28,7 +28,7 @@ const HorizontalScrollCarousel: React.FC<HorizontalScrollCarouselProps> = ({ ima
             <p className="text-lg sm:text-xl md:text-2xl p-4 text-justify">
               Explore our full collection of top-quality products and discover even more options tailored just for you.
             </p>
-            <a href="/products" className="mt-4 inline-flex items-center text-sm text-white font-semibold py-1.5 px-3 rounded-lg">
+            <a href="/products" className="mt-4 inline-flex items-center text-lg text-white font-semibold py-1.5 px-3 rounded-lg hover:underline transition-all duration-300">
               View All Products
               <MoveRight className="inline ml-2 h-4 w-4 transition-transform hover:translate-x-1" />
             </a>

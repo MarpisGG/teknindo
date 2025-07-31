@@ -1,7 +1,7 @@
 import FloatingQuickActions from '@/components/floatingquickaction';
 import { Footer7 } from '@/components/footer';
 import Navbar from '@/components/navbar';
-import { Link } from '@inertiajs/react';
+import { Head, Link } from '@inertiajs/react';
 import axios from 'axios';
 import { motion } from 'framer-motion';
 import { Calendar, Eye, Heart, Search, User } from 'lucide-react';
@@ -73,6 +73,7 @@ const Blogs: React.FC = () => {
 
     return (
         <>
+            <Head title="Blogs" />
             <div className="mb-16">
                 <Navbar />
             </div>
@@ -165,7 +166,7 @@ const Blogs: React.FC = () => {
                                                 </div>
 
                                                 <div className="flex flex-1 flex-col p-4 sm:p-6">
-                                                    <h2 className="mb-2 text-center text-lg font-semibold">{blog.title}</h2>
+                                                    <p className="mb-2 text-center text-lg font-semibold">{blog.title}</p>
                                                     <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-gray-500 sm:text-sm">
                                                         <div className="flex items-center gap-1">
                                                             <User className="h-4 w-4" /> {blog.user?.name || 'Unknown'}

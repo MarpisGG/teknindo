@@ -15,7 +15,6 @@ class JobListController extends Controller
 
     public function __construct()
     {
-        $this->middleware('permission:job-list', ['only' => ['index', 'show']]);
         $this->middleware('permission:job-create', ['only' => ['create', 'store']]);
         $this->middleware('permission:job-edit', ['only' => ['edit', 'update']]);
         $this->middleware('permission:job-delete', ['only' => ['destroy']]);

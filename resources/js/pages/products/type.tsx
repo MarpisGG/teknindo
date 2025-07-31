@@ -1,7 +1,7 @@
 import FloatingQuickActions from '@/components/floatingquickaction';
 import { Footer7 } from '@/components/footer';
 import Navbar from '@/components/navbar';
-import { Link } from '@inertiajs/react';
+import { Head, Link } from '@inertiajs/react';
 import { motion } from 'framer-motion';
 
 interface TypePageProps {
@@ -35,6 +35,7 @@ const fadeInUp = {
 export default function Type({ type, products }: TypePageProps) {
     return (
         <>
+            <Head title={`Products - ${type.name}`} />
             <div className="mb-12">
                 <Navbar />
             </div>

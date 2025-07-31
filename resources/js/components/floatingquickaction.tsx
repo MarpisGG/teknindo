@@ -23,7 +23,7 @@ const actions = [
     },
     {
         icon: <FaWhatsapp size={20} />,
-        label: 'Contact Our WhatsApp',
+        label: 'Contact by WhatsApp',
         bg: 'bg-gray-300',
         link: 'https://wa.me/62895330475188',
     },
@@ -72,7 +72,7 @@ const FloatingQuickActions: React.FC = () => {
                     <div className="group relative flex-1 overflow-hidden bg-yellow-500 text-black transition-all duration-300 ease-in-out group-hover:rounded-l-lg">
                         <div className="flex w-full items-center justify-center rounded-none px-2 py-3 transition-all duration-300 ease-in-out md:w-auto md:justify-start md:px-4">
                             <Briefcase size={20} />
-                            <span className="ml-2 hidden text-sm font-medium whitespace-nowrap md:inline">View Job List</span>
+                            <span className="ml-2 hidden text-sm font-medium whitespace-nowrap md:inline">Explore Our Open Position</span>
                         </div>
                     </div>
                 </a>

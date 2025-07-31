@@ -18,6 +18,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VisitorLogController;
 use App\Http\Controllers\TranslateController;
 use App\Http\Controllers\QuotationController;
+use App\Http\Controllers\SearchController;
 
 use Inertia\Inertia;
 
@@ -225,17 +226,15 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/permissions', [RoleController::class, 'apiPermissions'])->name('api.permissions');
         
         Route::get('/blogs/{id}/edit', [BlogController::class, 'editApi'])->name('api.blogs.edit');
-        Route::get('/blogs/{slug}/comments', [CommentController::class, 'getCommentsBySlug']);
         Route::delete('/comments/{id}', [CommentController::class, 'destroy']);
         
-        Route::get('/jobs', [JobListController::class, 'apiJobs'])->name('api.jobs');
-        Route::get('/jobs/{slug}', [JobListController::class, 'showApi'])->name('api.jobs.show');
         Route::get('/jobs/{id}/edit', [JobListController::class, 'editApi'])->name('api.jobs.edit');
         
         Route::get('/visitors/daily', [VisitorLogController::class, 'dailyVisitors'])->name('api.visitors.daily');
     });
 });
 
+Route::get('/blogs/{slug}/comments', [CommentController::class, 'getCommentsBySlug']);
 Route::post('/subscriptions', [SubscriptionController::class, 'store'])->name('subscriptions.store');
 Route::post('/messages', [MessageController::class, 'store'])->name('messages.store');
 
@@ -257,10 +256,15 @@ Route::patch('/admin/products/{product}/move', [ProductController::class, 'moveO
 Route::get('/api/products', [ProductController::class, 'apiIndex'])->name('api.products.index');
 Route::get('/api/landing-products', [ProductController::class, 'landingCarousel']);
 
+Route::get('/api/jobs', [JobListController::class, 'apiJobs'])->name('api.jobs');
+Route::get('/api/jobs/{slug}', [JobListController::class, 'showApi'])->name('api.jobs.show');
 Route::post('/applicants', [ApplicantController::class, 'store']);
 Route::post('/api/blogs/{id}/comments', [CommentController::class, 'store']);
 Route::post('/api/blogs/{id}/like', [BlogController::class, 'like']);
 Route::post('/api/blogs/{id}/unlike', [BlogController::class, 'unlike']);
+Route::get('/api/blogs/{id}/related-random', [BlogController::class, 'relatedRandom']);
+
+Route::get('/search', [SearchController::class, 'search'])->name('search');
 
 
 

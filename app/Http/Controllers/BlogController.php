@@ -19,6 +19,7 @@ class BlogController extends Controller
 
     public function __construct()
     {
+        $this->middleware('permission:blog-list', ['only' => ['index', 'show']]);
         $this->middleware('permission:blog-create', ['only' => ['create', 'store']]);
         $this->middleware('permission:blog-edit', ['only' => ['edit', 'update']]);
         $this->middleware('permission:blog-delete', ['only' => ['destroy']]);
@@ -271,7 +272,7 @@ public function unlike($id)
 
     public function apiBlogs()
     {
-        $blogs = Blog::with('user')->latest()->paginate(10);
+        $blogs = Blog::with('user')->latest()->paginate(12);
 
         $blogs->getCollection()->transform(function ($blog) {
             if ($blog->image) {
@@ -346,6 +347,28 @@ public function unlike($id)
             'created_at' => $blog->created_at,
             'content' => $blog->content,
         ]);
+    }
+
+    public function relatedRandom($id)
+    {
+        $relatedBlogs = Blog::where('id', '!=', $id)
+            ->inRandomOrder()
+            ->take(3)
+            ->get()
+            ->map(function ($blog) {
+                return [
+                    'id' => $blog->id,
+                    'title' => $blog->title,
+                    'slug' => $blog->slug,
+                    'thumbnail' => $blog->thumbnail ? asset('storage/' . $blog->thumbnail) : null,
+                    'created_at' => $blog->created_at,
+                    'user' => [
+                        'name' => $blog->user->name ?? 'Anonymous',
+                    ],
+                ];
+            });
+
+        return response()->json($relatedBlogs);
     }
 
 }

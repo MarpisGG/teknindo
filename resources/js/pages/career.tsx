@@ -5,7 +5,7 @@ import Navbar from '@/components/navbar';
 import SliderImage from '@/components/slider-image';
 import { InteractiveHoverButton } from '@/components/ui/interactive-hover-button';
 import { TestimonialCareer } from '@/components/ui/testimonial-career';
-import { Link } from '@inertiajs/react';
+import { Head, Link } from '@inertiajs/react';
 import { motion } from 'framer-motion';
 import bg from '../../assets/image/career.png';
 
@@ -39,6 +39,7 @@ const bounceIn = {
 function Career() {
     return (
         <>
+            <Head title="Career" />
             <div className="pb-16">
                 <Navbar />
             </div>
@@ -106,8 +107,8 @@ function Career() {
                     </motion.div>
 
                     <motion.div className="px-6 md:px-6" variants={fadeInUp}>
-                        <h2 className="mb-4 text-3xl font-bold text-gray-900">Why Join Us?</h2>
-                        <p className="text-lg text-gray-600 dark:text-gray-400">
+                        <h2 className="-900 mb-4 text-3xl font-bold">Why Join Us?</h2>
+                        <p className="-600 dark:-400 text-lg">
                             At Teknindo Group, we believe that our people are the driving force behind our success. We offer not just a job, but a
                             place where your ideas matter, your growth is prioritized, and your achievements are recognized. If you’re looking for a
                             place to learn, lead, and grow—this is it.
@@ -141,15 +142,21 @@ function Career() {
                 variants={fadeInUp}
             >
                 <motion.div className="mx-auto w-[80%] max-w-7xl" variants={fadeInUp}>
-                    <h1 className="mb-4 pt-8 text-center text-3xl font-bold text-gray-900 dark:text-white">Join Our Team</h1>
-                    <p className="mx-auto max-w-5xl pb-8 text-justify text-lg text-gray-600 md:text-center dark:text-gray-400">
+                    <h1 className="-900 mb-4 pt-8 text-center text-3xl font-bold dark:text-white">Join Our Team</h1>
+                    <p className="-600 mx-auto max-w-5xl pb-8 text-justify text-lg md:text-center dark:text-gray-400">
                         Are you passionate, driven, and ready to grow?
                         <br />
-                        <Link href="/career/jobs" className="mx-1 text-xl font-bold text-gray-800 hover:underline dark:text-white">
-                            Explore our open positions
-                        </Link>
+                        Become part of a dynamic team where your ideas matter and your contributions make an impact.
                         <br />
-                        and become part of a dynamic team where your ideas matter and your contributions make an impact.
+                        <div className="mt-4">
+                            <Link href="/career/jobs">
+                                <InteractiveHoverButton
+                                    text="Explore our open positions"
+                                    className="mx-1 w-full md:w-112"
+                                    style={{ color: '#222', fontWeight: 'bold', fontSize: '1.125rem', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)' }}
+                                />
+                            </Link>
+                        </div>
                     </p>
                 </motion.div>
             </motion.div>

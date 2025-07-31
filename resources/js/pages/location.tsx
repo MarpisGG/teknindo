@@ -2,10 +2,12 @@ import FloatingQuickActions from '@/components/floatingquickaction';
 import { Footer7 } from '@/components/footer';
 import LocationMap from '@/components/location-map';
 import Navbar from '@/components/navbar';
+import { Head } from '@inertiajs/react';
 
 function Location() {
     return (
         <div>
+            <Head title="Location" />
             <Navbar />
             <div className="pt-16">
                 <div className="text-center">

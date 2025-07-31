@@ -1,6 +1,7 @@
 import FloatingQuickActions from '@/components/floatingquickaction';
 import { Footer7 } from '@/components/footer';
 import Navbar from '@/components/navbar';
+import { Head } from '@inertiajs/react';
 import { motion } from 'framer-motion';
 import bg from '../../assets/image/heavy-bg.jpeg';
 
@@ -12,6 +13,7 @@ const fadeInUp = {
 function HeavyEquipment() {
     return (
         <div className="flex min-h-screen flex-col bg-gray-50 dark:bg-[#0a0a0a]">
+            <Head title="Heavy Equipment" />
             <Navbar />
             <div
                 className="relative flex h-[50vh] w-full items-center justify-center px-4 py-8"

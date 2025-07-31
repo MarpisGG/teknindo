@@ -41,7 +41,9 @@ class CommentController extends Controller
 
         $comments = Comment::where('blog_id', $blog->id)->orderBy('created_at', 'desc')->get();
 
-        return response()->json($comments);
+        return response()->json([
+            'comments' => $comments->values(),
+        ]);
     }
 
     public function destroy($id)

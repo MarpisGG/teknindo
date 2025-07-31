@@ -101,7 +101,7 @@ export default function Welcome() {
                         </div>
                     </div>
                     <div className="px-6 md:px-6">
-                        <p className="text-lg dark:text-gray-400">
+                        <p className="dark:-400 text-lg">
                             {' '}
                             Teknindo Group is a trusted distributor of heavy equipment, trucks, and material handling solutions in Indonesia. We are
                             the official dealer for leading Chinese brands such as Lonking, Tysim, Zhenzhong, Sinotruk, CHL, and Zhongtong.
@@ -153,8 +153,8 @@ export default function Welcome() {
                                         className="h-64 w-full object-contain transition-transform duration-300 hover:scale-105"
                                     />
                                     <div className="mx-auto flex max-w-md flex-col gap-4 p-6">
-                                        <h2 className="text-2xl font-bold text-gray-900 dark:text-white">{type.name}</h2>
-                                        <p className="text-base text-gray-700 dark:text-gray-300">{type.description}</p>
+                                        <h2 className="-900 text-2xl font-bold dark:text-white">{type.name}</h2>
+                                        <p className="-700 dark:-300 text-base">{type.description}</p>
                                         <div className="flex justify-center">
                                             <Link href={`/products/${type.slug ?? type.id}`}>
                                                 <InteractiveHoverButton className={`w-48 py-2 text-base font-medium ${isGray ? '' : 'bg-[#d9d9d9]'}`}>
@@ -190,10 +190,10 @@ export default function Welcome() {
                     </motion.div>
                 </div>
             </motion.section>
-            <motion.section className="py-10 dark:bg-gray-900" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
+            <motion.section className="py-8 dark:bg-gray-900" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
                 <motion.div className="mx-auto max-w-6xl px-4" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
-                    <h1 className="mb-6 text-center text-3xl font-bold text-gray-900 dark:text-white">What Our Clients Say</h1>
-                    <p className="mx-auto mb-4 max-w-2xl text-center text-lg text-gray-600 dark:text-gray-400">
+                    <h1 className="-900 mb-4 text-center text-3xl font-bold dark:text-white">What Our Clients Say</h1>
+                    <p className="-600 dark:-400 mx-auto mb-4 max-w-2xl text-center text-lg">
                         Hear from our satisfied clients about their experiences with our services and how we have helped them achieve their project
                         goals.
                     </p>
@@ -203,7 +203,7 @@ export default function Welcome() {
             <div className="flex flex-col items-center bg-black text-white lg:justify-center lg:p-8 dark:bg-[#0a0a0a]">
                 <div className="mt-8 flex flex-col items-center justify-center">
                     <h1 className="text-center text-4xl font-bold text-white dark:text-white">Branch Locations & Service Points</h1>
-                    <p className="my-4 max-w-2xl text-center text-lg text-white dark:text-gray-400">
+                    <p className="dark:-400 my-4 max-w-2xl text-center text-lg text-white">
                         With multiple branches and service centers, we ensure faster response times, seamless support, and better accessibility
                         wherever you are.
                     </p>
@@ -223,10 +223,10 @@ export default function Welcome() {
                     viewport={{ once: true }}
                     variants={fadeInUp}
                 >
-                    <h1 className="mb-4 pt-8 text-center text-3xl font-bold text-gray-900 dark:text-white">Let’s Work Together</h1>
-                    <p className="mx-auto max-w-xl pb-8 text-justify text-lg text-gray-600 md:text-center dark:text-gray-400">
+                    <h1 className="-900 mb-4 pt-8 text-center text-3xl font-bold dark:text-white">Let’s Work Together</h1>
+                    <p className="-600 dark:-400 mx-auto max-w-xl pb-8 text-justify text-lg md:text-center">
                         Interested in partnering with us?
-                        <Link href="/contact" className="mx-1 font-bold text-gray-800 hover:text-[#FCC200] hover:underline dark:text-white">
+                        <Link href="/contact" className="-800 mx-1 font-bold hover:text-[#FCC200] hover:underline dark:text-white">
                             Contact Us
                         </Link>
                         to start a conversation about collaboration or procurement.

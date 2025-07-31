@@ -331,6 +331,7 @@ export default function JobDetailPage() {
                                 <input
                                     type="number"
                                     name="expected_salary"
+                                    placeholder="Ex : 5000000"
                                     value={form.expected_salary}
                                     onChange={handleChange}
                                     className="w-full rounded-md border border-gray-300 px-3 py-2 focus:ring-[#FCC200] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"

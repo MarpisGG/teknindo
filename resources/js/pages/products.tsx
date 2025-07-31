@@ -3,7 +3,7 @@ import { Footer7 } from '@/components/footer';
 import Navbar from '@/components/navbar';
 import SliderImageProduct from '@/components/slider-image-product';
 import { InteractiveHoverButton } from '@/components/ui/interactive-hover-button';
-import { Link } from '@inertiajs/react';
+import { Head, Link } from '@inertiajs/react';
 import axios from 'axios';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
@@ -32,6 +32,7 @@ function products() {
 
     return (
         <>
+            <Head title="Products" />
             <div className="mb-16 md:mb-0">
                 <Navbar />
             </div>

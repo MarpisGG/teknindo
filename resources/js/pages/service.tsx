@@ -66,17 +66,17 @@ const Service = () => {
                 variants={fadeInUp}
             >
                 <div className="mx-auto hidden max-w-6xl md:block">
-                    <nav className="text-sm text-gray-600" aria-label="Breadcrumb">
+                    <nav className="-600 text-sm" aria-label="Breadcrumb">
                         <ol className="list-reset flex">
                             <li>
-                                <Link href="/" className="text-gray-700 hover:underline">
+                                <Link href="/" className="-700 hover:underline">
                                     Home
                                 </Link>
                             </li>
                             <li>
                                 <span className="mx-2"> &gt; </span>
                             </li>
-                            <li className="font-semibold text-gray-900">Service</li>
+                            <li className="-900 font-semibold">Service</li>
                         </ol>
                     </nav>
                 </div>
@@ -89,9 +89,7 @@ const Service = () => {
                         Services
                     </span>
                 </h1>
-                <p className="mb-6 text-lg text-gray-600 dark:text-gray-400">
-                    We are committed to delivering the best heavy equipment solutions for your projects.
-                </p>
+                <p className="-600 dark:-400 mb-6 text-lg">We are committed to delivering the best heavy equipment solutions for your projects.</p>
             </motion.div>
 
             <ServiceIntroSection />
@@ -105,8 +103,8 @@ const Service = () => {
             >
                 <div className="mx-auto max-w-6xl text-center">
                     <motion.div className="py-8" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
-                        <h1 className="mb-4 text-4xl font-bold text-gray-900 dark:text-white">Why Choose Us?</h1>
-                        <p className="mx-auto mb-4 max-w-2xl text-lg text-gray-600 dark:text-gray-400">
+                        <h1 className="-900 mb-4 text-4xl font-bold dark:text-white">Why Choose Us?</h1>
+                        <p className="-600 dark:-400 mx-auto mb-4 max-w-2xl text-lg">
                             We provide a comprehensive range of services to meet all your heavy equipment needs, from procurement to support.
                         </p>
                     </motion.div>
@@ -127,8 +125,8 @@ const Service = () => {
                 variants={fadeInUp}
             >
                 <motion.div className="mx-auto max-w-6xl px-4" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
-                    <h1 className="mb-6 text-center text-3xl font-bold text-gray-900 dark:text-white">Service Testimonials</h1>
-                    <p className="mx-auto mb-4 max-w-2xl text-center text-lg text-gray-600 dark:text-gray-400">
+                    <h1 className="-900 mb-6 text-center text-3xl font-bold dark:text-white">Service Testimonials</h1>
+                    <p className="-600 dark:-400 mx-auto mb-4 max-w-2xl text-center text-lg">
                         Discover what our clients say about the quality and impact of our specialized services. Their feedback highlights our
                         commitment to excellence in every project we undertake.
                     </p>
@@ -144,10 +142,10 @@ const Service = () => {
                     viewport={{ once: true }}
                     variants={fadeInUp}
                 >
-                    <h1 className="mb-4 pt-8 text-center text-3xl font-bold text-gray-900 dark:text-white">Let’s Work Together</h1>
-                    <p className="mx-auto max-w-xl pb-8 text-justify text-lg text-gray-600 md:text-center dark:text-gray-400">
+                    <h1 className="-900 mb-4 pt-8 text-center text-3xl font-bold dark:text-white">Let’s Work Together</h1>
+                    <p className="-600 dark:-400 mx-auto max-w-xl pb-8 text-justify text-lg md:text-center">
                         Interested in partnering with us?
-                        <Link href="/contact" className="mx-1 font-bold text-gray-800 hover:text-[#FCC200] hover:underline dark:text-white">
+                        <Link href="/contact" className="-800 mx-1 font-bold hover:text-[#FCC200] hover:underline dark:text-white">
                             Contact Us
                         </Link>
                         to start a conversation about collaboration or procurement.

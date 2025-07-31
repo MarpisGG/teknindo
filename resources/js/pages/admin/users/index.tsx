@@ -6,7 +6,8 @@ import NavbarAdmin from '../navbar-admin';
 interface User {
     id: number;
     name: string;
-    email: string;
+    email: string; // Assuming roles is a string, adjust if it's an array or object
+    roles: string[];
 }
 
 interface PageProps {
@@ -118,7 +119,7 @@ const Index: React.FC = () => {
                                 <tr key={user.id} className={idx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
                                     <td className="border-b px-4 py-2">{user.name}</td>
                                     <td className="border-b px-4 py-2">{user.email}</td>
-                                    <td className="border-b px-4 py-2">Role</td>
+                                    <td className="border-b px-4 py-2">{user.roles.join(', ')}</td>
                                     <td className="space-x-2 border-b px-4 py-2 whitespace-nowrap">
                                         <Link
                                             href={`/admin/users/${user.id}/edit`}

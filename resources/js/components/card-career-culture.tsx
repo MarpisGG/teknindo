@@ -139,8 +139,10 @@ export default function CardCareerCulture() {
                         >
                             {getVisibleItems().map((item, i) => (
                                 <div key={i} className="rounded-xl border border-gray-200 bg-white p-6 shadow-md md:min-h-[56vh]">
-                                    <div className="mb-3 flex justify-center">
-                                        <item.logo className="h-8 w-8 text-yellow-500" />
+                                    <div className="mb-4 flex justify-center">
+                                        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-tr from-yellow-300 via-yellow-200 to-yellow-400 shadow-lg">
+                                            <item.logo className="h-10 w-10 text-yellow-700" />
+                                        </div>
                                     </div>
                                     <p className="mb-4 text-center text-xl font-semibold">{item.title}</p>
                                     <ul className="list-inside list-disc space-y-1 text-sm text-gray-700">
@@ -154,7 +156,7 @@ export default function CardCareerCulture() {
                     </AnimatePresence>
                 </div>
 
-                <button onClick={handleNext} className="h-10 w-10 rounded-full border bg-white shadow hover:bg-gray-100">
+                <button onClick={handleNext} className="z-100 h-10 w-10 rounded-full border bg-white shadow hover:bg-gray-100">
                     →
                 </button>
             </div>

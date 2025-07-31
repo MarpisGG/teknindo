@@ -22,7 +22,7 @@ const About = () => {
             </div>
             <div className="flex w-full flex-col items-center justify-center bg-[#FCC200] p-8 text-center shadow-sm">
                 <div className="mx-auto mb-6 w-[80%] max-w-6xl">
-                    <nav className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
+                    <nav className="flex items-center space-x-2 text-sm dark:text-gray-400">
                         <Link href="/" className="text-gray-800 hover:underline dark:text-white">
                             Home
                         </Link>

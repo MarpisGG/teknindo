@@ -1,10 +1,11 @@
 import FloatingQuickActions from '@/components/floatingquickaction';
 import { Footer7 } from '@/components/footer';
 import Navbar from '@/components/navbar';
-import { usePage } from '@inertiajs/react';
+import { Head, usePage } from '@inertiajs/react';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { FaFacebook, FaInstagram, FaWhatsapp } from 'react-icons/fa';
+import Related from './related';
 
 interface Blog {
     id: number;
@@ -50,7 +51,8 @@ const Show: React.FC = () => {
             const response = await axios.get(`/api/blogs/${slug}`);
             const commentsResponse = await axios.get(`/api/blogs/${slug}/comments`);
             setBlog(response.data);
-            setComments(commentsResponse.data);
+            setComments(Array.isArray(commentsResponse.data) ? commentsResponse.data : (commentsResponse.data.comments ?? []));
+            console.log('Comments response:', commentsResponse.data);
         } catch (error) {
             console.error('Failed to load blog:', error);
             setError('Failed to load blog details');
@@ -107,6 +109,7 @@ const Show: React.FC = () => {
 
     return (
         <>
+            <Head title={blog.title} />
             <div className="mb-16">
                 <Navbar />
             </div>
@@ -136,7 +139,7 @@ const Show: React.FC = () => {
                 </nav>
             </div>
             <div className="blog container mx-auto px-4 py-4">
-                <div className="mx-auto max-w-6xl">
+                <div className="mx-auto max-w-5xl">
                     {blog.thumbnail && (
                         <img src={blog.thumbnail} alt={blog.title} className="mb-4 max-h-[72vh] w-full rounded-xl bg-gray-100 object-fill" />
                     )}
@@ -145,7 +148,7 @@ const Show: React.FC = () => {
                             <h1 className="my-8 text-center text-4xl font-extrabold">{blog.title}</h1>
 
                             <div className="text-md mb-8 border-b pb-6">
-                                <div className="flex flex-col gap-y-4 md:flex-row md:flex-wrap md:items-center md:justify-between md:gap-x-6">
+                                <div className="flex flex-col gap-y-2 md:flex-row md:flex-wrap md:items-center md:justify-between md:gap-x-6 md:gap-y-4">
                                     {/* Author & Date */}
                                     <div className="flex flex-col gap-y-2 md:flex-row md:items-center md:gap-x-6">
                                         <div className="flex items-center">
@@ -250,7 +253,7 @@ const Show: React.FC = () => {
                                                     <img
                                                         src={block.image}
                                                         alt={`Image Block ${index + 1}`}
-                                                        className="max-h-48 rounded-lg object-contain"
+                                                        className="center mx-auto rounded-lg object-contain"
                                                         style={{ maxWidth: '50%' }}
                                                     />
                                                 </div>
@@ -361,6 +364,7 @@ const Show: React.FC = () => {
                             </ul>
                         )}
                     </div>
+                    <Related blog={blog} />
                 </div>
             </div>
             <FloatingQuickActions />

@@ -1,10 +1,30 @@
 // components/navbar-admin.tsx
-import { Link } from '@inertiajs/react';
+import { Link, usePage } from '@inertiajs/react';
 import { useEffect } from 'react';
 
-const menuItems = ['users', 'roles', 'blogs', 'jobs', 'products', 'categories', 'types', 'messages', 'subscriptions', 'quotations'];
+const menuItems = [
+    { title: 'Users', href: '/admin/users', permission: 'user-create' },
+    { title: 'Roles', href: '/admin/roles', permission: 'role-create' },
+    { title: 'Blogs', href: '/admin/blogs', permission: 'blog-create' },
+    { title: 'Jobs', href: '/admin/jobs', permission: 'job-create' },
+    { title: 'Products', href: '/admin/products', permission: 'product-create' },
+    { title: 'Category Products', href: '/admin/categories', permission: 'product-create' },
+    { title: 'Product Types', href: '/admin/types', permission: 'product-create' },
+    { title: 'Message', href: '/admin/messages', permission: 'message-list' },
+    { title: 'Subscriptions', href: '/admin/subscriptions', permission: 'subscription-list' },
+    { title: 'Quotation', href: '/admin/quotations', permission: 'product-list' },
+];
+
+interface PageProps {
+    auth?: {
+        permissions?: string[];
+    };
+    [key: string]: any;
+}
 
 const NavbarAdmin = () => {
+    const { props } = usePage<PageProps>();
+    const userPermissions = props.auth?.permissions ?? [];
     useEffect(() => {
         // Optional: Untuk menutup menu saat ukuran layar berubah
         const handleResize = () => {
@@ -45,15 +65,15 @@ const NavbarAdmin = () => {
                     <div className="flex items-center gap-3">
                         {menuItems.map((item) => (
                             <Link
-                                key={item}
-                                href={`/admin/${item}`}
+                                key={item.href}
+                                href={item.href}
                                 className={`rounded-md px-3 py-2 text-sm font-medium transition-colors ${
-                                    window.location.pathname === `/admin/${item}`
+                                    window.location.pathname === item.href
                                         ? 'bg-blue-50 text-blue-700'
                                         : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
                                 }`}
                             >
-                                {item.charAt(0).toUpperCase() + item.slice(1)}
+                                {item.title}
                             </Link>
                         ))}
                     </div>
@@ -64,11 +84,11 @@ const NavbarAdmin = () => {
             <div id="mobile-menu" className="mt-4 hidden space-y-2 md:hidden">
                 {menuItems.map((item) => (
                     <Link
-                        key={item}
-                        href={`/admin/${item}`}
+                        key={item.href}
+                        href={item.href}
                         className="block rounded px-3 py-2 text-gray-700 capitalize hover:bg-blue-50 hover:text-blue-700"
                     >
-                        {item}
+                        {item.title}
                     </Link>
                 ))}
             </div>

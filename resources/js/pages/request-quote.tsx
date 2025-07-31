@@ -1,6 +1,7 @@
 import FloatingQuickActions from '@/components/floatingquickaction';
 import { Footer7 } from '@/components/footer';
 import Navbar from '@/components/navbar';
+import { Head } from '@inertiajs/react';
 import axios from 'axios';
 import { motion } from 'framer-motion';
 import React, { useState } from 'react';
@@ -77,6 +78,7 @@ function RequestQuote() {
 
     return (
         <>
+            <Head title="Request Quotation" />
             <Navbar />
             <motion.div className="mx-auto mt-16 max-w-6xl px-4" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
                 <motion.div className="rounded-2xl bg-white p-8 shadow-lg ring-1 ring-gray-100" variants={container} initial="hidden" animate="show">

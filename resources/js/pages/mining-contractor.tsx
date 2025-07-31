@@ -1,10 +1,12 @@
 import FloatingQuickActions from '@/components/floatingquickaction';
 import { Footer7 } from '@/components/footer';
 import Navbar from '@/components/navbar';
+import { Head } from '@inertiajs/react';
 
 function MiningContractor() {
     return (
         <div className="flex min-h-screen flex-col bg-gray-50 dark:bg-[#0a0a0a]">
+            <Head title="Mining Contractor" />
             <Navbar />
             <div className="flex min-h-screen flex-col items-center justify-center px-4 py-8">
                 <h1 className="mb-8 text-center text-3xl font-bold text-gray-900 dark:text-white">Mining Contractor </h1>

@@ -35,9 +35,19 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::latest()->paginate(10);
+        $users = User::with('roles')->get(); // Ambil data dengan relasi roles
+
         return Inertia::render('admin/users/index', [
-            'users' => $user,
+            'users' => [
+                'data' => $users->map(function ($user) {
+                    return [
+                        'id' => $user->id,
+                        'name' => $user->name,
+                        'email' => $user->email,
+                        'roles' => $user->roles->pluck('name'), // hanya ambil nama role
+                    ];
+                }),
+            ],
         ]);
     }
 

@@ -1,10 +1,11 @@
 import FloatingQuickActions from '@/components/floatingquickaction';
 import { Footer7 } from '@/components/footer';
 import Navbar from '@/components/navbar';
+import { Head } from '@inertiajs/react';
 import axios from 'axios';
-import { ChevronRight } from 'lucide-react';
+import { ChevronRight, Mail } from 'lucide-react';
 import { useState } from 'react';
-import { FaFacebook, FaInstagram, FaMailBulk, FaWhatsapp } from 'react-icons/fa';
+import { FaFacebook, FaInstagram, FaWhatsapp } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 
 interface ProductDetailProps {
@@ -63,9 +64,9 @@ const shareLinks = [
         link: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`,
     },
     {
-        name: 'Email',
-        logo: FaMailBulk,
-        link: `mailto:?subject=${encodeURIComponent(document.title)}&body=${encodeURIComponent(window.location.href)}`,
+        name: 'Gmail',
+        logo: Mail,
+        link: `https://mail.google.com/mail/?view=cm&fs=1&to=&su=${encodeURIComponent(document.title)}&body=${encodeURIComponent(window.location.href)}`,
     },
 ];
 
@@ -99,6 +100,7 @@ export default function Show({ product, type }: ProductDetailProps) {
 
     return (
         <>
+            <Head title={product.name} />
             <div className="mb-16">
                 <Navbar />
             </div>
