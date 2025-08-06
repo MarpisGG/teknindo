@@ -21,7 +21,7 @@ const About = () => {
                 <Navbar />
             </div>
             <div className="flex w-full flex-col items-center justify-center bg-[#FCC200] p-8 text-center shadow-sm">
-                <div className="mx-auto mb-6 w-[80%] max-w-6xl">
+                <div className="mx-auto mb-6 hidden w-[80%] max-w-6xl md:block">
                     <nav className="flex items-center space-x-2 text-sm dark:text-gray-400">
                         <Link href="/" className="text-gray-800 hover:underline dark:text-white">
                             Home
@@ -54,7 +54,7 @@ const About = () => {
                 >
                     <div className="mb-8">
                         <img src={Teknindo} alt="Teknindo Logo" className="mx-auto mb-4 h-auto w-[50%]" />
-                        <p className="mx-auto max-w-6xl text-lg dark:text-gray-400">
+                        <p className="mx-auto max-w-6xl text-lg md:text-start dark:text-gray-400">
                             Teknindo Group is a trusted distributor and authorized dealer of heavy equipment, trucks, and material handling solutions
                             in Indonesia. We represent several world-class Chinese brands that have successfully entered global markets.
                             <br />
@@ -96,7 +96,7 @@ const About = () => {
                             </h1>
                         </div>
                         <div className="SliderImage">
-                            <p className="text-lg text-gray-600 dark:text-gray-400">
+                            <p className="text-lg text-gray-600 md:text-start dark:text-gray-400">
                                 We are a team of experienced professionals specializing in heavy equipment sales and services. Since 2018, we have
                                 supported businesses across Indonesia with reliable machinery solutions, expert maintenance, and personalized customer
                                 support to help them achieve operational excellence.
@@ -139,7 +139,14 @@ const About = () => {
                                         'Our mining services encompass everything from exploration and development to production and reclamation.',
                                 },
                             ].map((item, i) => (
-                                <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
+                                <motion.div
+                                    key={i}
+                                    initial="hidden"
+                                    whileInView="visible"
+                                    viewport={{ once: true }}
+                                    variants={fadeInUp}
+                                    className="md:text-start"
+                                >
                                     <h2 className="my-2 text-xl font-semibold text-gray-800 dark:text-white">{item.title}</h2>
                                     <p className="text-lg text-gray-600 dark:text-gray-400">{item.content}</p>
                                 </motion.div>
@@ -159,19 +166,19 @@ const About = () => {
                 >
                     <div className="mb-8">
                         <h1 className="pt-8 pb-4 text-center">Our Vision & Mission</h1>
-                        <p className="SliderImage mx-auto max-w-xl px-8 text-lg text-gray-600 md:text-center dark:text-gray-400">
+                        <p className="SliderImage ext-lg mx-auto max-w-xl text-gray-600 md:text-center dark:text-gray-400">
                             Our vision and mission guide us in delivering exceptional service and value to our customers.
                         </p>
                     </div>
                     <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-2">
                         <div className="">
                             <h2 className="mb-4 text-center">Vision</h2>
-                            <p className="SliderImage text-lg text-black dark:text-gray-400">
+                            <p className="SliderImage text-lg text-black md:text-start dark:text-gray-400">
                                 To become a provider of heavy equipment with international standards by prioritizing product quality and after-sales
                                 service, while contributing to the advancement of Indonesia's economic development and infrastructure.
                             </p>
                         </div>
-                        <div className="pl-8 md:border-l">
+                        <div className="md:border-l md:pl-8">
                             <h2 className="mb-4 text-center">Mission</h2>
                             <ul className="SliderImage list-disc space-y-4 pl-6 text-black dark:text-gray-400">
                                 <li>
@@ -232,7 +239,7 @@ const About = () => {
                     variants={fadeInUp}
                 >
                     <h1 className="mb-4 pt-8 text-center text-3xl font-bold text-gray-900 dark:text-white">Let’s Work Together</h1>
-                    <p className="SliderImage mx-auto max-w-xl pb-8 text-lg text-gray-600 md:text-center dark:text-gray-400">
+                    <p className="SliderImage mx-auto max-w-xl pb-8 text-center text-lg text-gray-600 dark:text-gray-400">
                         Interested in partnering with us?
                         <Link href="/contact" className="mx-1 font-bold text-gray-800 hover:underline dark:text-white dark:hover:text-[#FCC200]">
                             Contact Us

@@ -5,7 +5,7 @@ import Navbar from '@/components/navbar';
 import SliderImage from '@/components/slider-image';
 import { InteractiveHoverButton } from '@/components/ui/interactive-hover-button';
 import { TestimonialCareer } from '@/components/ui/testimonial-career';
-import { Head, Link } from '@inertiajs/react';
+import { Head } from '@inertiajs/react';
 import { motion } from 'framer-motion';
 import bg from '../../assets/image/career.png';
 
@@ -149,13 +149,13 @@ function Career() {
                         Become part of a dynamic team where your ideas matter and your contributions make an impact.
                         <br />
                         <div className="mt-4">
-                            <Link href="/career/jobs">
-                                <InteractiveHoverButton
-                                    text="Explore our open positions"
-                                    className="mx-1 w-full md:w-112"
-                                    style={{ color: '#222', fontWeight: 'bold', fontSize: '1.125rem', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)' }}
-                                />
-                            </Link>
+                            <button
+                                onClick={() => (window.location.href = '/career/jobs')}
+                                className="mx-1 w-full rounded-lg bg-white px-6 py-3 text-base font-bold text-[#222] shadow-md transition hover:bg-gray-100 md:w-96"
+                                style={{ fontSize: '1.125rem' }}
+                            >
+                                Explore our open positions
+                            </button>
                         </div>
                     </p>
                 </motion.div>

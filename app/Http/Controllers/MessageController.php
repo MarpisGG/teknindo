@@ -39,6 +39,7 @@ class MessageController extends Controller
             'country' => 'nullable|string|max:55',
             'company' => 'nullable|string|max:55',
             'message' => 'required|string',
+            'category' => 'required|in:heavyequipment,sparepart,other', // Validasi kategori
         ]);
 
         Message::create([
@@ -49,6 +50,7 @@ class MessageController extends Controller
             'country' => $request->country,
             'company' => $request->company,
             'message' => $request->message,
+            'category' => $request->category, // Simpan kategori
         ]);
 
         return redirect()->back()->with('success', 'Message sent successfully!');

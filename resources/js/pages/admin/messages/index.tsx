@@ -15,6 +15,7 @@ interface Message {
     message: string;
     followed_up: boolean;
     created_at: string;
+    category: string;
 }
 
 interface PageProps {
@@ -73,7 +74,13 @@ const Index: React.FC = () => {
 
     const debouncedSearchTerm = useDebounce(searchTerm, 300);
 
-    const filteredMessages = messages.data.filter((message) => message.message.toLowerCase().includes(debouncedSearchTerm));
+    const [selectedCategory, setSelectedCategory] = React.useState('all');
+
+    const filteredMessages = messages.data.filter((message) => {
+        const matchesSearch = message.message.toLowerCase().includes(debouncedSearchTerm);
+        const matchesCategory = selectedCategory === 'all' || message.category === selectedCategory;
+        return matchesSearch && matchesCategory;
+    });
 
     const toggleFollowUp = async (id: number) => {
         try {
@@ -90,74 +97,73 @@ const Index: React.FC = () => {
             <div className="mb-6 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
                 <h2 className="text-2xl font-bold text-gray-800 md:text-3xl">Messages</h2>
                 <div className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row sm:items-center">
-                    <input
-                        type="text"
-                        onChange={handleSearch}
-                        placeholder="Search messages..."
-                        className="w-full rounded-lg border border-black px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none sm:w-auto"
-                    />
-                    <Link
-                        href="/admin/dashboard"
-                        className="rounded-lg border border-blue-600 px-4 py-2 text-center text-sm text-blue-600 hover:text-blue-800 sm:text-base"
-                    >
-                        ← Back to Dashboard
-                    </Link>
+                    <div className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row sm:items-center">
+                        <input
+                            type="text"
+                            onChange={handleSearch}
+                            placeholder="Search messages..."
+                            className="w-full rounded-lg border border-black px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none sm:w-auto"
+                        />
+                        <select
+                            value={selectedCategory}
+                            onChange={(e) => setSelectedCategory(e.target.value)}
+                            className="rounded-lg border border-black px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                        >
+                            <option value="all">All Categories</option>
+                            <option value="heavyequipment">Heavy Equipment</option>
+                            <option value="sparepart">Spare Part</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <Link
+                            href="/admin/dashboard"
+                            className="rounded-lg border border-blue-600 px-4 py-2 text-center text-sm text-blue-600 hover:text-blue-800 sm:text-base"
+                        >
+                            ← Back to Dashboard
+                        </Link>
+                    </div>
                 </div>
             </div>
 
-            <div className="overflow-x-auto rounded-lg border bg-white shadow">
-                <table className="min-w-full text-sm text-gray-700">
-                    <thead className="bg-gray-50 text-left">
-                        <tr>
-                            <th className="border-b px-4 py-2">Name</th>
-                            <th className="border-b px-4 py-2">Email</th>
-                            <th className="border-b px-4 py-2">Phone</th>
-                            <th className="border-b px-4 py-2">Company</th>
-                            <th className="border-b px-4 py-2">Country</th>
-                            <th className="border-b px-4 py-2">Message</th>
-                            <th className="border-b px-4 py-2 text-center">Followed Up</th>
-                            <th className="border-b px-4 py-2 text-center">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {filteredMessages.length > 0 ? (
-                            filteredMessages.map((message, index) => (
-                                <tr key={message.id} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-                                    <td className="border-b px-4 py-2">
-                                        {message.first_name} {message.last_name}
-                                    </td>
-                                    <td className="border-b px-4 py-2">{message.email}</td>
-                                    <td className="border-b px-4 py-2">{message.phone}</td>
-                                    <td className="border-b px-4 py-2">{message.company}</td>
-                                    <td className="border-b px-4 py-2">{message.country}</td>
-                                    <td className="border-b px-4 py-2">{message.message}</td>
-                                    <td className="border-b px-4 py-2 text-center">
-                                        <button
-                                            onClick={() => toggleFollowUp(message.id)}
-                                            className={`rounded px-3 py-1 text-white ${message.followed_up ? 'bg-green-600' : 'bg-gray-400'}`}
-                                        >
-                                            {message.followed_up ? 'Done' : 'Mark as Done'}
-                                        </button>
-                                    </td>
-                                    <td className="border-b px-4 py-2 text-center">
-                                        <button
-                                            onClick={() => handleDelete(message.id)}
-                                            className="rounded bg-red-500 px-3 py-1 text-white hover:bg-red-600"
-                                        >
-                                            Delete
-                                        </button>
-                                    </td>
-                                </tr>
-                            ))
-                        ) : (
-                            <tr>
-                                <td colSpan={8} className="px-4 py-6 text-center text-gray-500">
-                                    No messages found.
-                                </td>
-                            </tr>
-                        )}
-                    </tbody>
-                </table>
+            <div className="overflow-x-auto">
+                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                    {filteredMessages.length > 0 ? (
+                        filteredMessages.map((message) => (
+                            <div key={message.id} className="rounded-lg border bg-white p-4 shadow-sm">
+                                <h3 className="text-lg font-semibold">
+                                    {message.first_name} {message.last_name}
+                                </h3>
+                                <p className="text-sm text-gray-600">
+                                    {message.email} | {message.phone}
+                                </p>
+                                <p className="mt-2 text-sm">
+                                    <span className="font-semibold">Company:</span> {message.company}
+                                </p>
+                                <p className="text-sm">
+                                    <span className="font-semibold">Country:</span> {message.country}
+                                </p>
+                                <p className="mt-2 text-sm text-gray-700">{message.message}</p>
+                                <p className="mt-1 text-xs text-gray-400 italic">Category: {message.category}</p>
+
+                                <div className="mt-4 flex items-center justify-between">
+                                    <button
+                                        onClick={() => toggleFollowUp(message.id)}
+                                        className={`rounded px-3 py-1 text-sm text-white ${message.followed_up ? 'bg-green-600' : 'bg-gray-400'}`}
+                                    >
+                                        {message.followed_up ? 'Done' : 'Mark as Done'}
+                                    </button>
+                                    <button
+                                        onClick={() => handleDelete(message.id)}
+                                        className="rounded bg-red-500 px-3 py-1 text-sm text-white hover:bg-red-600"
+                                    >
+                                        Delete
+                                    </button>
+                                </div>
+                            </div>
+                        ))
+                    ) : (
+                        <p className="col-span-full py-6 text-center text-gray-500">No messages found.</p>
+                    )}
+                </div>
             </div>
 
             {/* Pagination */}

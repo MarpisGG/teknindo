@@ -22,7 +22,7 @@ class DashboardController extends Controller
     private function logFirstVisitOfDay()
     {
         // For testing purposes - use a real IP if needed
-        if (app()->environment('local') && env('TEST_IP_ADDRESS')) {
+        if (app()->environment('production') && env('TEST_IP_ADDRESS')) {
             $ip = env('TEST_IP_ADDRESS');
         } else {
             $ip = request()->ip();
@@ -67,14 +67,18 @@ class DashboardController extends Controller
     private function countYesterdayVisitors()
     {
         $yesterday = now()->subDay();
-        return VisitorLog::whereDate('visited_at', $yesterday)->count();
+        return VisitorLog::whereDate('visited_at', $yesterday)
+            ->whereNotNull('city')
+        ->count();
     }
 
     //function to count today's visitors
     private function countTodayVisitors()
     {
         $today = now();
-        return VisitorLog::whereDate('visited_at', $today)->count();
+        return VisitorLog::whereDate('visited_at', $today)
+            ->whereNotNull('city')
+            ->count();
     }
 
     //function to count the growth percentage of visitors

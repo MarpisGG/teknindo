@@ -70,7 +70,7 @@ const services: Service[] = [
     {
         title: 'Financing Support',
         description: 'We collaborate with leading heavy equipment leasing companies to offer financing solutions for our valued customers.',
-        icon: '👨‍🔧',
+        icon: '💰',
     },
 ];
 

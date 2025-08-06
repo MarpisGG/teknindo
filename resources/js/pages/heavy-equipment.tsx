@@ -90,7 +90,7 @@ function HeavyEquipment() {
                     <p className="mx-auto pb-8 text-justify text-lg text-gray-600 md:text-center dark:text-gray-400">
                         Browse our complete catalog to find the right solutions for your needs.
                         <br />
-                        <a href="/products/heavyweight" className="mx-1 font-bold text-gray-800 hover:underline dark:text-white">
+                        <a href="/products/heavyweight-equipment" className="mx-1 font-bold text-gray-800 hover:underline dark:text-white">
                             View our heavy equipment products
                         </a>
                     </p>

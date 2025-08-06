@@ -49,7 +49,7 @@ const Show: React.FC = () => {
             const response = await axios.get(`/api/blogs/${slug}`);
             const commentsResponse = await axios.get(`/api/blogs/${slug}/comments`);
             setBlog(response.data);
-            setComments(commentsResponse.data);
+            setComments(Array.isArray(commentsResponse.data) ? commentsResponse.data : (commentsResponse.data.data ?? []));
         } catch (error) {
             console.error('Failed to load blog:', error);
             setError('Failed to load blog details');

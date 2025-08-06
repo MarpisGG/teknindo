@@ -50,13 +50,13 @@ const defaultSections = [
         title: 'Our Contact',
         links: [
             {
-                name: '+628123456789',
+                name: ' 021 38769054',
                 href: '#',
                 icon: <FaPhone className="mr-2 inline" />,
             },
             {
-                name: '+628123456789',
-                href: '#',
+                name: '+62 813-5561-6263',
+                href: 'https://wa.me/6281355616263',
                 icon: <FaWhatsapp className="mr-2 inline" />,
             },
             {
@@ -82,7 +82,7 @@ export const Footer7 = ({
         alt: 'logo',
     },
     sections = defaultSections,
-    description = 'Teknindo Group is a trusted distributor of heavy equipment, trucks, and material handling solutions in Indonesia Established 2018, serving major corporations and projects nationwide with reliable solutions and strong after-sales service.',
+    description = 'Teknindo Group is a truste\d distributor of heavy equipment, trucks, and material handling solutions in Indonesia Established 2018, serving major corporations and projects nationwide with reliable solutions and strong after-sales service.',
     socialLinks = defaultSocialLinks,
 }: Footer7Props) => {
     const [email, setEmail] = useState('');
@@ -101,7 +101,7 @@ export const Footer7 = ({
     };
 
     return (
-        <section className="pb-20\\ bg-[#181818] pt-8 text-white">
+        <section className="bg-[#181818] px-4 pt-8 pb-20 text-white md:px-0">
             <div className="container mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
                 <div className="flex w-full flex-col gap-10 lg:flex-row lg:items-start">
                     {/* Logo & description */}

@@ -145,7 +145,7 @@ const Show: React.FC = () => {
                     )}
                     <article className="overflow-hidden">
                         <div className="">
-                            <h1 className="my-8 text-center text-4xl font-extrabold">{blog.title}</h1>
+                            <p className="my-8 text-center text-4xl font-bold">{blog.title}</p>
 
                             <div className="text-md mb-8 border-b pb-6">
                                 <div className="flex flex-col gap-y-2 md:flex-row md:flex-wrap md:items-center md:justify-between md:gap-x-6 md:gap-y-4">

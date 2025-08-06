@@ -204,6 +204,12 @@ const Navbar: React.FC = () => {
                                 </div>
                             </div>
 
+                            {/* <div className="relative hidden md:block">
+                                <div id="google_translate_element"></div>
+                            </div>
+
+                            <GoogleTranslateLoader /> */}
+
                             <button
                                 className={`ml-4 md:hidden ${scrolled || navhover || mobileMenuOpen ? 'text-white' : 'text-gray-900'}`}
                                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}

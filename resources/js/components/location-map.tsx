@@ -12,7 +12,7 @@ L.Icon.Default.mergeOptions({
 
 export default function LocationMap() {
     return (
-        <div className="relative z-0 flex h-[60vh] w-full flex-col items-center justify-center bg-black">
+        <div className="relative z-0 flex h-[75vh] w-full flex-col items-center justify-center bg-black">
             <div className="mx-auto flex h-full w-full max-w-6xl flex-col items-center justify-center">
                 <MapContainer
                     center={[0, 118]}
@@ -59,6 +59,12 @@ export default function LocationMap() {
                             link: 'https://maps.app.goo.gl/rBQXgFDrTd3Qcuqg9',
                             name: 'PT. MITRA TEKNINDO SEJATI (Surabaya Branch)',
                             address: 'Jl. Raya Gilang 8, Gilang, Kec. Taman, Sidoarjo, Jawa Timur.',
+                        },
+                        {
+                            position: [-4.7274475866691805, 119.68996582684022],
+                            link: 'https://maps.app.goo.gl/Fed3z69hbaVyuoHz6',
+                            name: 'PT. MITRA TEKNINDO SEJATI (Makassar Branch)',
+                            address: 'Kawasan Ruko Insignia Residence No A12B, Jl. Perintis Kemerdekaan KM16, Makassar - Sulawesi',
                         },
                     ].map((loc, idx) => (
                         <Marker key={idx} position={loc.position as [number, number]}>

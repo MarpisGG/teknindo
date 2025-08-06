@@ -204,3 +204,20 @@ h3 {
 .map {
     touch-action: pan-x pan-y;
 }
+
+.goog-logo-link,
+.goog-te-gadget span {
+    display: none !important;
+}
+
+#google_translate_element {
+    font-size: 1rem;
+    color: white;
+}
+
+.goog-te-gadget {
+    font-family: inherit !important;
+    padding: 4px 8px;
+    background-color: #2e2e2e;
+    border-radius: 6px;
+}

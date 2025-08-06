@@ -16,6 +16,7 @@ interface FormData {
     country?: string;
     company?: string;
     message: string;
+    category?: string;
 }
 
 interface SubmitStatus {
@@ -39,13 +40,14 @@ export default function ContactPage() {
         country: '',
         company: '',
         message: '',
+        category: 'other', // Default category
     });
 
     const [errors, setErrors] = React.useState<{ [key: string]: string }>({});
     const [isSubmitting, setIsSubmitting] = React.useState(false);
     const [submitStatus, setSubmitStatus] = React.useState<SubmitStatus | null>(null);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         setFormData((prev) => ({ ...prev, [name]: value }));
     };
@@ -69,6 +71,7 @@ export default function ContactPage() {
                 country: '',
                 company: '',
                 message: '',
+                category: 'other', // Reset to default category
             });
         } catch (error) {
             console.error(error);
@@ -87,7 +90,7 @@ export default function ContactPage() {
             <Navbar />
 
             <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8">
-                <nav className="mx-auto my-6 flex w-full max-w-6xl text-sm text-gray-500" aria-label="Breadcrumb">
+                <nav className="mx-auto my-6 flex hidden w-full max-w-6xl text-sm text-gray-500 md:block" aria-label="Breadcrumb">
                     <ol className="inline-flex items-center space-x-1 md:space-x-2">
                         <li>
                             <a href="/" className="font-medium text-gray-600 hover:underline">
@@ -133,11 +136,11 @@ export default function ContactPage() {
                         <div className="space-y-4">
                             <div className="flex items-center">
                                 <Phone className="mr-2 h-5 w-5" />
-                                <span className="font-medium">+628123456789</span>
+                                <span className="font-medium"> 021 38769054</span>
                             </div>
                             <div className="flex items-center">
                                 <FaWhatsapp className="mr-2 h-5 w-5" />
-                                <span className="font-medium">+628123456789</span>
+                                <span className="font-medium">+62 813-5561-6263</span>
                             </div>
                             <div className="flex items-center">
                                 <Mail className="mr-2 h-5 w-5" />
@@ -288,6 +291,27 @@ export default function ContactPage() {
                                     className="w-full rounded-md border border-gray-300 px-3 py-2 focus:ring-[#FCC200]"
                                 />
                             </div>
+                        </div>
+
+                        <div>
+                            <label>
+                                <p>
+                                    <span className="mb-1 block text-sm font-bold">
+                                        Category<span className="text-red-500">*</span>
+                                    </span>
+                                </p>
+                            </label>
+                            <select
+                                name="category"
+                                value={formData.category}
+                                onChange={handleChange}
+                                className="w-full rounded-md border border-gray-300 px-3 py-2 focus:ring-[#FCC200]"
+                                required
+                            >
+                                <option value="heavyweight">Heavyweight</option>
+                                <option value="sparepart">Sparepart</option>
+                                <option value="other">Others</option>
+                            </select>
                         </div>
 
                         <div>

@@ -135,25 +135,25 @@ export default function JobDetailPage() {
             <div className="pt-20 pb-10">
                 <div className="mx-auto max-w-6xl px-4">
                     {/* Breadcrumb */}
-                    <nav className="mb-6 hidden text-sm text-gray-500 md:block" aria-label="Breadcrumb">
+                    <nav className="mb-6 hidden text-sm md:block" aria-label="Breadcrumb">
                         <ol className="flex flex-wrap items-center space-x-2">
                             <li>
                                 <a href="/" className="hover:underline">
                                     Home
                                 </a>
-                                <span className="mx-1">/</span>
+                                <span className="mx-1">{' > '}</span>
                             </li>
                             <li>
                                 <a href="/career" className="hover:underline">
                                     Career
                                 </a>
-                                <span className="mx-1">/</span>
+                                <span className="mx-1">{' > '}</span>
                             </li>
                             <li>
                                 <a href="/career/jobs" className="hover:underline">
                                     Jobs
                                 </a>
-                                <span className="mx-1">/</span>
+                                <span className="mx-1">{' > '}</span>
                             </li>
                             <li className="max-w-xs truncate font-semibold text-gray-800 dark:text-white" title={job.title}>
                                 {job.title}
@@ -165,7 +165,7 @@ export default function JobDetailPage() {
                     <h1 className="mb-4 text-center text-4xl font-bold text-[#FCC200]">{job.title}</h1>
 
                     {/* Job Info Grid */}
-                    <div className="mb-4 flex flex-wrap items-center justify-center gap-8 bg-white p-4">
+                    <div className="mb-4 grid grid-cols-1 gap-4 bg-white p-4 sm:grid-cols-2 md:flex md:flex-wrap md:items-center md:justify-center md:gap-8">
                         <div className="text-md flex items-center text-gray-700">
                             <Briefcase className="mr-2 h-6 w-6" />
                             <span>{job.division}</span>
@@ -191,7 +191,7 @@ export default function JobDetailPage() {
                     <div className="mb-8">
                         <h2 className="mb-3 text-2xl font-bold text-gray-900">Job Description</h2>
                         <div
-                            className="prose prose-ul:list-disc prose-ol:list-decimal max-w-none leading-relaxed text-gray-700"
+                            className="jobs prose prose-ul:list-disc prose-ol:list-decimal max-w-none leading-relaxed text-gray-700"
                             dangerouslySetInnerHTML={{ __html: job.job_desc }}
                         />
                     </div>
@@ -214,14 +214,13 @@ export default function JobDetailPage() {
                     {/* Apply */}
                     <div className="mt-12 border-t pt-10">
                         <h2 className="mb-4 text-2xl font-bold text-gray-800">Apply Now</h2>
-                        <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-5 md:grid-cols-2">
+
+                        <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-5 lg:grid-cols-2">
                             {/* Name */}
-                            <div className="flex flex-col">
+                            <div>
                                 <label>
-                                    <p>
-                                        <span className="mb-1 block text-sm font-bold">
-                                            Full Name<span className="text-red-500">*</span>
-                                        </span>
+                                    <p className="mb-1 block text-sm font-bold">
+                                        Full Name<span className="text-red-500">*</span>
                                     </p>
                                 </label>
                                 <input
@@ -236,12 +235,10 @@ export default function JobDetailPage() {
                             </div>
 
                             {/* Email */}
-                            <div className="flex flex-col">
+                            <div>
                                 <label>
-                                    <p>
-                                        <span className="mb-1 block text-sm font-bold">
-                                            Email<span className="text-red-500">*</span>
-                                        </span>
+                                    <p className="mb-1 block text-sm font-bold">
+                                        Email<span className="text-red-500">*</span>
                                     </p>
                                 </label>
                                 <input
@@ -256,12 +253,10 @@ export default function JobDetailPage() {
                             </div>
 
                             {/* Phone */}
-                            <div className="flex flex-col">
+                            <div>
                                 <label>
-                                    <p>
-                                        <span className="mb-1 block text-sm font-bold">
-                                            Phone<span className="text-red-500">*</span>
-                                        </span>
+                                    <p className="mb-1 block text-sm font-bold">
+                                        Phone<span className="text-red-500">*</span>
                                     </p>
                                 </label>
                                 <input
@@ -276,12 +271,10 @@ export default function JobDetailPage() {
                             </div>
 
                             {/* Education */}
-                            <div className="flex flex-col">
+                            <div>
                                 <label>
-                                    <p>
-                                        <span className="mb-1 block text-sm font-bold">
-                                            Education<span className="text-red-500">*</span>
-                                        </span>
+                                    <p className="mb-1 block text-sm font-bold">
+                                        Education<span className="text-red-500">*</span>
                                     </p>
                                 </label>
                                 <select
@@ -300,13 +293,11 @@ export default function JobDetailPage() {
                                 {errors.education && <span className="mt-1 text-sm text-red-500">{errors.education[0]}</span>}
                             </div>
 
-                            {/* Address */}
-                            <div className="col-span-2 flex flex-col">
+                            {/* Address - full width */}
+                            <div className="lg:col-span-2">
                                 <label>
-                                    <p>
-                                        <span className="mb-1 block text-sm font-bold">
-                                            Address<span className="text-red-500">*</span>
-                                        </span>
+                                    <p className="mb-1 block text-sm font-bold">
+                                        Address<span className="text-red-500">*</span>
                                     </p>
                                 </label>
                                 <textarea
@@ -320,12 +311,10 @@ export default function JobDetailPage() {
                             </div>
 
                             {/* Expected Salary */}
-                            <div className="flex flex-col">
+                            <div>
                                 <label>
-                                    <p>
-                                        <span className="mb-1 block text-sm font-bold">
-                                            Expected Salary<span className="text-red-500">*</span>
-                                        </span>
+                                    <p className="mb-1 block text-sm font-bold">
+                                        Expected Salary<span className="text-red-500">*</span>
                                     </p>
                                 </label>
                                 <input
@@ -344,12 +333,10 @@ export default function JobDetailPage() {
                             </div>
 
                             {/* Start Date */}
-                            <div className="flex flex-col">
+                            <div>
                                 <label>
-                                    <p>
-                                        <span className="mb-1 block text-sm font-bold">
-                                            Start Date<span className="text-red-500">*</span>
-                                        </span>
+                                    <p className="mb-1 block text-sm font-bold">
+                                        Start Date<span className="text-red-500">*</span>
                                     </p>
                                 </label>
                                 <input
@@ -363,18 +350,15 @@ export default function JobDetailPage() {
                                 {errors.start_date && <span className="mt-1 text-sm text-red-500">{errors.start_date[0]}</span>}
                             </div>
 
-                            {/* Resume */}
-                            <div className="col-span-2 flex flex-col">
+                            {/* Resume Upload - full width */}
+                            <div className="lg:col-span-2">
                                 <label>
-                                    <p>
-                                        <span className="mb-1 block text-sm">
-                                            <span className="font-bold">Upload your resume</span>
-                                            <span className="text-red-500">*</span>
-                                            <span className="ml-2 text-xs text-gray-500">(PDF, DOC, DOCX only)</span>
-                                        </span>
+                                    <p className="mb-1 block text-sm font-bold">
+                                        Upload your resume<span className="text-red-500">*</span>
+                                        <span className="ml-2 text-xs text-gray-500">(PDF, DOC, DOCX only)</span>
                                     </p>
                                 </label>
-                                <div className="w-full md:w-1/2">
+                                <div className="w-full sm:w-3/4 md:w-1/2">
                                     <label
                                         htmlFor="resume-upload"
                                         className="flex cursor-pointer flex-col items-center justify-center rounded-md border-2 border-dashed border-gray-300 bg-white px-3 py-6 transition hover:border-[#FCC200]"
@@ -401,19 +385,17 @@ export default function JobDetailPage() {
                                         {form.resume ? (
                                             <span className="truncate text-sm text-gray-700">{form.resume.name}</span>
                                         ) : (
-                                            <>
-                                                <span className="text-sm text-gray-400">
-                                                    Drag &amp; drop your resume here, or <span className="text-[#FCC200] underline">browse</span>
-                                                </span>
-                                            </>
+                                            <span className="text-sm text-gray-400">
+                                                Drag &amp; drop your resume here, or <span className="text-[#FCC200] underline">browse</span>
+                                            </span>
                                         )}
                                     </label>
                                 </div>
                                 {errors.resume && <span className="mt-1 text-sm text-red-500">{errors.resume[0]}</span>}
                             </div>
 
-                            {/* Submit */}
-                            <div className="col-span-2">
+                            {/* Submit Button - full width */}
+                            <div className="lg:col-span-2">
                                 {successMessage && <div className="mb-4 w-full rounded bg-green-100 p-4 text-green-700">{successMessage}</div>}
                                 <button
                                     type="submit"

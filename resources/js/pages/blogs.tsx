@@ -4,7 +4,7 @@ import Navbar from '@/components/navbar';
 import { Head, Link } from '@inertiajs/react';
 import axios from 'axios';
 import { motion } from 'framer-motion';
-import { Calendar, Eye, Heart, Search, User } from 'lucide-react';
+import { Calendar, Eye, Heart, User } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 
 interface Blog {
@@ -116,7 +116,7 @@ const Blogs: React.FC = () => {
                         >
                             Discover useful tips, company updates, and industry insights to help you make smarter decisions for your business.
                         </motion.p>
-                        <motion.div className="mb-6 flex justify-center" initial="hidden" animate="visible" variants={fadeInUp}>
+                        {/* <motion.div className="mb-6 flex justify-center" initial="hidden" animate="visible" variants={fadeInUp}>
                             <div className="relative w-full max-w-2xl">
                                 <span className="pointer-events-none absolute top-5 left-3 flex -translate-y-1/2 items-center">
                                     <Search className="h-5 w-5" />
@@ -129,7 +129,7 @@ const Blogs: React.FC = () => {
                                     className="mb-4 w-full rounded-lg border px-4 py-2 pl-10 shadow-sm focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500 focus:outline-none"
                                 />
                             </div>
-                        </motion.div>
+                        </motion.div> */}
                         {IsLoading ? (
                             <div className="flex justify-center py-10">
                                 <div className="h-10 w-10 animate-spin rounded-full border-4 border-yellow-500 border-t-transparent"></div>

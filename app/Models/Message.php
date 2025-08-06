@@ -20,6 +20,7 @@ class Message extends Model
     'company',
     'message',
     'followed_up', // Tambahkan ini
+    'category', // Tambahkan ini
     ];
 
     protected $casts = [

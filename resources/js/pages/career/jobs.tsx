@@ -4,7 +4,7 @@ import Navbar from '@/components/navbar';
 import { Link } from '@inertiajs/react';
 import axios from 'axios';
 import { motion } from 'framer-motion';
-import { Briefcase, DollarSign, LaptopMinimal, MapPin, Search } from 'lucide-react';
+import { Briefcase, DollarSign, LaptopMinimal, MapPin } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 const fadeInUp = {
@@ -41,23 +41,27 @@ const JobCard = ({ job, index }: { job: Job; index: number }) => (
         <Link href={`/career/jobs/${job.slug}`} className="block h-full">
             <div className="grid h-full transform grid-cols-2 gap-2 rounded-xl border p-6 shadow transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-lg">
                 <div className="col-span-2">
-                    <p className="mb-2 text-2xl font-semibold text-[#FCC200] hover:underline">{job.title}</p>
+                    <p className="mb-2 text-xl font-semibold text-[#FCC200] hover:underline sm:text-2xl">{job.title}</p>
                 </div>
-                <div className="flex items-center text-sm">
-                    <Briefcase className="mr-2 h-4 w-4" />
-                    {job.division}
+                <div className="col-span-2 grid grid-cols-2 gap-2 sm:col-span-1 sm:grid-cols-1">
+                    <div className="flex items-center text-sm">
+                        <Briefcase className="mr-2 h-4 w-4" />
+                        <span className="truncate">{job.division}</span>
+                    </div>
+                    <div className="flex items-center text-sm">
+                        <MapPin className="mr-2 h-4 w-4" />
+                        <span className="truncate">{job.location}</span>
+                    </div>
                 </div>
-                <div className="flex items-center text-sm">
-                    <MapPin className="mr-2 h-4 w-4" />
-                    {job.location}
-                </div>
-                <div className="flex items-center text-sm">
-                    <LaptopMinimal className="mr-2 h-4 w-4" />
-                    {job.type}
-                </div>
-                <div className="flex items-center text-sm">
-                    <DollarSign className="mr-2 h-4 w-4" />
-                    {job.salary}
+                <div className="col-span-2 grid grid-cols-2 gap-2 sm:col-span-1 sm:grid-cols-1">
+                    <div className="flex items-center text-sm">
+                        <LaptopMinimal className="mr-2 h-4 w-4" />
+                        <span className="truncate">{job.type}</span>
+                    </div>
+                    <div className="flex items-center text-sm">
+                        <DollarSign className="mr-2 h-4 w-4" />
+                        <span className="truncate">{job.salary}</span>
+                    </div>
                 </div>
                 <div className="col-span-2 mt-2">
                     <span className="inline-block font-semibold text-[#FCC200] hover:underline">View Details →</span>
@@ -101,7 +105,7 @@ export default function JobsPage() {
             </div>
             <div className="mx-auto min-h-screen max-w-6xl px-4 py-8">
                 <motion.div className="mx-auto mb-4 w-full max-w-6xl" initial="hidden" animate="visible" variants={fadeInUp}>
-                    <nav className="flex items-center text-sm" aria-label="Breadcrumb">
+                    <nav className="hidden items-center text-sm md:flex" aria-label="Breadcrumb">
                         <ol className="inline-flex items-center space-x-1">
                             <li>
                                 <Link href="/" className="hover:underline">
@@ -125,21 +129,6 @@ export default function JobsPage() {
                 <motion.p className="mb-4 text-center text-3xl font-bold md:text-5xl" initial="hidden" animate="visible" variants={fadeInUp}>
                     Open Positions
                 </motion.p>
-
-                <motion.div className="mb-6 flex justify-center" initial="hidden" animate="visible" variants={fadeInUp}>
-                    <div className="relative w-full max-w-2xl">
-                        <span className="pointer-events-none absolute top-5 left-3 flex -translate-y-1/2 items-center">
-                            <Search className="h-5 w-5" />
-                        </span>
-                        <input
-                            type="text"
-                            placeholder="Search by title or location..."
-                            value={searchTerm}
-                            onChange={(e) => setSearchTerm(e.target.value)}
-                            className="mb-4 w-full rounded-lg border px-4 py-2 pl-10 shadow-sm focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500 focus:outline-none"
-                        />
-                    </div>
-                </motion.div>
 
                 <div className="flex flex-wrap justify-center gap-8">
                     {loading ? (

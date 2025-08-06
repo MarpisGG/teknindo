@@ -216,7 +216,7 @@ export function TestimonialCareer() {
         
         {/* Content */}
         <div className="z-10 py-8">
-            <h1 className='text-center'>What our teams says</h1>
+            <h1 className='text-center'>What Our Teams Says</h1>
             <AnimatedTestimonialsDemo />
         </div>
     </div>

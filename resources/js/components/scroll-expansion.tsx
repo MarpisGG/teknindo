@@ -1,7 +1,7 @@
 import { ReactNode, useEffect, useRef, useState } from 'react';
 import bg from '../../assets/image/bg-about.jpeg';
 import thumbnail from '../../assets/image/thumbnail-about.jpeg';
-const video = 'https://drive.google.com/uc?export=preview&id=1AvgGrRol4fXiKA9zcfQMPSJQ3NPwoX57';
+import video from '../../assets/video/Compro Potongan.mp4';
 
 interface ScrollExpandMediaProps {
     mediaType?: 'video' | 'image';

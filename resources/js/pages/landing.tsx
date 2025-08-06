@@ -102,7 +102,6 @@ export default function Welcome() {
                     </div>
                     <div className="px-6 md:px-6">
                         <p className="dark:-400 text-lg">
-                            {' '}
                             Teknindo Group is a trusted distributor of heavy equipment, trucks, and material handling solutions in Indonesia. We are
                             the official dealer for leading Chinese brands such as Lonking, Tysim, Zhenzhong, Sinotruk, CHL, and Zhongtong.
                             Established in 2018, our company has expanded to several key cities to strengthen our after-sales service. We are
@@ -203,7 +202,7 @@ export default function Welcome() {
             <div className="flex flex-col items-center bg-black text-white lg:justify-center lg:p-8 dark:bg-[#0a0a0a]">
                 <div className="mt-8 flex flex-col items-center justify-center">
                     <h1 className="text-center text-4xl font-bold text-white dark:text-white">Branch Locations & Service Points</h1>
-                    <p className="dark:-400 my-4 max-w-2xl text-center text-lg text-white">
+                    <p className="dark:-400 my-4 max-w-2xl px-4 text-center text-lg text-white md:px-0">
                         With multiple branches and service centers, we ensure faster response times, seamless support, and better accessibility
                         wherever you are.
                     </p>
@@ -224,7 +223,7 @@ export default function Welcome() {
                     variants={fadeInUp}
                 >
                     <h1 className="-900 mb-4 pt-8 text-center text-3xl font-bold dark:text-white">Let’s Work Together</h1>
-                    <p className="-600 dark:-400 mx-auto max-w-xl pb-8 text-justify text-lg md:text-center">
+                    <p className="-600 dark:-400 mx-auto max-w-xl pb-8 text-lg md:text-center">
                         Interested in partnering with us?
                         <Link href="/contact" className="-800 mx-1 font-bold hover:text-[#FCC200] hover:underline dark:text-white">
                             Contact Us
