@@ -156,7 +156,7 @@ export default function Show({ product, type }: ProductDetailProps) {
 
                     <div className="">
                         <div className="mb-4">
-                            <p className="text-lg font-semibold text-gray-500 transition hover:underline">{product.category?.name}</p>
+                            <p className="text-lg font-semibold text-gray-500 transition">{product.category?.name}</p>
                             <h1 className="text-2xl font-bold text-gray-800">{product.name}</h1>
                             <a href={`/products/${product.type?.slug}`} className="text-md font-semibold text-gray-500 transition hover:underline">
                                 {product.type?.name}

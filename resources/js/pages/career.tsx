@@ -57,6 +57,16 @@ function Career() {
                 animate="visible"
                 variants={fadeInUp}
             >
+                <div
+                    className="career-hero-bg absolute inset-0 -z-10"
+                    style={{
+                        backgroundImage: `url(${bg})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        height: '100%',
+                        width: '100%',
+                    }}
+                />
                 <div className="absolute inset-0 bg-black opacity-50"></div>
 
                 <div className="absolute top-8 left-4 z-10 flex items-center text-white md:left-48">
@@ -82,10 +92,10 @@ function Career() {
                     viewport={{ once: true }}
                     variants={fadeInUp}
                 >
-                    <motion.p className="mb-2 max-w-xl text-5xl font-bold" variants={fadeInUp}>
+                    <motion.p className="mb-2 max-w-xl text-3xl leading-tight font-bold sm:text-4xl md:text-5xl" variants={fadeInUp}>
                         Grow With Us at Teknindo Group
                     </motion.p>
-                    <motion.p className="max-w-xl" variants={fadeInUp}>
+                    <motion.p className="max-w-xl text-base sm:text-lg md:text-xl" variants={fadeInUp}>
                         Explore opportunities to build a future in the heavy equipment industry with one of Indonesia's leading authorized dealers.
                     </motion.p>
                 </motion.div>
@@ -142,7 +152,7 @@ function Career() {
                 variants={fadeInUp}
             >
                 <motion.div className="mx-auto w-[80%] max-w-7xl" variants={fadeInUp}>
-                    <h1 className="-900 mb-4 pt-8 text-center text-3xl font-bold dark:text-white">Join Our Team</h1>
+                    <p className="mb-8 pt-8 text-center text-3xl font-bold sm:text-4xl md:text-5xl">Join Our Team</p>
                     <p className="-600 mx-auto max-w-5xl pb-8 text-justify text-lg md:text-center dark:text-gray-400">
                         Are you passionate, driven, and ready to grow?
                         <br />

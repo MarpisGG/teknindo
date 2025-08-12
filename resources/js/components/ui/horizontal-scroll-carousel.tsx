@@ -26,7 +26,7 @@ const HorizontalScrollCarousel: React.FC<HorizontalScrollCarouselProps> = ({ ima
           <div className="flex flex-col justify-center w-[80vw] max-w-[720px] aspect-[3/2] bg-gradient-to-r from-gray-900 to-gray-700 rounded-lg text-white p-6 sm:p-8 text-start">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold p-4">Want to See More Amazing Products?</h2>
             <p className="text-lg sm:text-xl md:text-2xl p-4 text-justify">
-              Explore our full collection of top-quality products and discover even more options tailored just for you.
+              Explore our premium range of heavyweight equipment and genuine spare parts. Click below to browse our full collection and find the right solutions for your business needs!
             </p>
             <a href="/products" className="mt-4 inline-flex items-center text-lg text-white font-semibold py-1.5 px-3 rounded-lg hover:underline transition-all duration-300">
               View All Products

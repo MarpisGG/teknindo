@@ -64,6 +64,16 @@ const BlogCreate: React.FC = () => {
 
     return (
         <div className="mx-auto max-w-3xl p-6">
+            <div className="mb-4">
+                <button
+                    type="button"
+                    onClick={() => router.get('/admin/blogs')}
+                    className="inline-flex items-center rounded-lg border border-gray-300 px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                    <span className="mr-2">←</span>
+                    Back
+                </button>
+            </div>
             <h2 className="mb-6 text-3xl font-bold">Create Blog</h2>
             <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
@@ -84,7 +94,7 @@ const BlogCreate: React.FC = () => {
                         className="w-full rounded border border-gray-300 p-2"
                     />
                 </div>
-
+                <p className="mb-4 text-sm text-red-500">Image must be 2048KB (2MB) or smaller.</p>
                 <div className="space-y-6">
                     {blocks.map((block, index) => (
                         <div key={index} className="rounded-xl border border-gray-300 bg-white p-4 shadow-sm">

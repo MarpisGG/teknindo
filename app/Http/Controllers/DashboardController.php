@@ -135,7 +135,7 @@ class DashboardController extends Controller
         return Inertia::render('dashboard', [
             'stats' => $stats,
             'visitorStats' => [
-                'total_visitors' => VisitorLog::count(),
+                'total_visitors' => $this->getVisitorCityData()->sum('visitors'),
                 'today_visitors' => $this->countTodayVisitors(),
                 'yesterday_visitors' => $this->countYesterdayVisitors(),
                 'growth_percentage' => $this->calculateGrowthPercentage(),

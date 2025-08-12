@@ -20,11 +20,25 @@ class MessageController extends Controller
         $this->middleware('permission:message-delete', ['only' => ['destroy', 'toggleFollowUp']]);
     }
 
-    public function index(){
+public function index()
+    {
+        $query = Message::query();
+
+        if (auth()->user()->can('heavy-list') && !auth()->user()->can('sparepart-list')) {
+            $query->where('category', 'heavyequipment');
+        } elseif (auth()->user()->can('sparepart-list') && !auth()->user()->can('heavy-list')) {
+            $query->where('category', 'sparepart');
+        } elseif (!auth()->user()->can('heavy-list') && !auth()->user()->can('sparepart-list')) {
+            // If no permission to see anything
+            $query->whereNull('id'); // return empty
+        }
+        // If both permissions exist, show all
+
         return inertia('admin/Messages/Index', [
-            'messages' => Message::paginate(10)
+            'messages' => $query->paginate(10)
         ]);
     }
+
 
     // public function create(){
     //     return inertia('Messages/Create');

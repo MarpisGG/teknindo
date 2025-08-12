@@ -9,42 +9,42 @@ import image from '../../../assets/image/excavator.png'
 const testimonials = [
   {
     quote:
-      "This platform revolutionized our data analysis process. The speed and accuracy are unparalleled. A must-have for any data-driven team.",
-    name: "Marvell Christofer",
-    designation: "Web Developer",
+      "There’s so much to learn at Teknindo Group, and the colleagues are super fun to work with!",
+    name: "Abim",
+    designation: "Finance",
     src: image,
   },
   {
     quote:
-      "The user interface is incredibly intuitive, which made the onboarding process for my team a breeze. We were up and running in hours, not days.",
-    name: "Mas Redho",
-    designation: "Digital Marketing",
+      "Teknindo Group is a growing company that’s always improving in many areas. Since I joined, I’ve seen so many positive changes. The work environment is comfortable and safe, and the relationships between colleagues are genuinely good.",
+    name: "Sylvie",
+    designation: "Finance",
     src: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     quote:
-      "Customer support is top-notch. They are responsive, knowledgeable, and genuinely invested in our success. It feels like a true partnership.",
-    name: "Mba Angel",
+      "This is my first time working in the heavy equipment industry, but the team here has helped me adapt quickly. My work is dynamic and full of challenges, which I see as opportunities to learn new things and keep growing.",
+    name: "Angel",
     designation: "Digital Marketing",
     src: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1888&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     quote:
-      "I'm impressed by the constant stream of updates and new features. The development team is clearly passionate and listens to user feedback.",
-    name: "Mas Wahyu",
-    designation: "Digital Marketing",
+      "Working at Teknindo Group is really fun. The team here is solid and always supportive of each other.",
+    name: "Tanti",
+    designation: "HR - GA",
     src: "https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%D%3D",
   },
   {
     quote:
-      "The ROI was almost immediate. It streamlined our workflows so effectively that we cut project delivery times by nearly 30%.",
+      "Working here has helped me grow and finish projects faster. I feel proud to be part of this team.",
     name: "Mas Nanda",
     designation: "Digital Marketing",
     src: "https://images.unsplash.com/photo-1557053910-d9eadeed1c58?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%D%3D",
   },
   {
     quote:
-      "The ROI was almost immediate. It streamlined our workflows so effectively that we cut project delivery times by nearly 30%.",
+      "I enjoy working with my team. We help each other and always try to do our best.",
     name: "Rafi",
     designation: "Digital Marketing",
     src: "https://images.unsplash.com/photo-1557053910-d9eadeed1c58?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%D%3D",
@@ -85,95 +85,54 @@ const AnimatedTestimonials = ({
 
   const isActive = (index: number) => index === active;
 
-  const randomRotate = () => `${Math.floor(Math.random() * 16) - 8}deg`;
+const randomRotate = () => `${Math.floor(Math.random() * 16) - 8}deg`;
 
-  return (
-    <div className="w-full mx-auto max-w-4xl px-4 py-20 font-sans antialiased md:px-8 lg:px-12">
-      <div className="relative grid grid-cols-1 gap-y-12 md:grid-cols-2 md:gap-x-20">
-        {/* Image Section */}
-        <div className="flex items-center justify-center">
-            <div className="relative h-80 w-full max-w-xs">
-              <AnimatePresence>
-                {testimonials.map((testimonial, index) => (
-                  <motion.div
-                    key={testimonial.src}
-                    // Animation properties reverted to the previous version.
-                    initial={{ opacity: 0, scale: 0.9, y: 50, rotate: randomRotate() }}
-                    animate={{
-                      opacity: isActive(index) ? 1 : 0.5,
-                      scale: isActive(index) ? 1 : 0.9,
-                      y: isActive(index) ? 0 : 20,
-                      zIndex: isActive(index) ? testimonials.length : testimonials.length - Math.abs(index - active),
-                      rotate: isActive(index) ? '0deg' : randomRotate(),
-                    }}
-                    exit={{ opacity: 0, scale: 0.9, y: -50 }}
-                    transition={{ duration: 0.5, ease: "easeInOut" }}
-                    className="absolute inset-0 origin-bottom"
-                    style={{ perspective: '1000px' }}
-                  >
-                    <img
-                      src={testimonial.src}
-                      alt={testimonial.name}
-                      width={500}
-                      height={500}
-                      draggable={false}
-                      className="h-full w-full rounded-3xl object-fill shadow-2xl"
-                      onError={(e) => {
-                        e.currentTarget.src = `https://placehold.co/500x500/e2e8f0/64748b?text=${testimonial.name.charAt(0)}`;
-                        e.currentTarget.onerror = null;
-                      }}
-                    />
-                  </motion.div>
-                ))}
-              </AnimatePresence>
-            </div>
-        </div>
-
-        {/* Text and Controls Section */}
-        <div className="flex flex-col justify-center py-4">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={active}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              // Animation properties reverted to the previous version.
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="flex flex-col justify-between"
-            >
-                <div>
-                    <h2 className="text-2xl font-bold mb-1 dark:text-slate-50">
-                        {testimonials[active].name}
-                    </h2>
-                    <p className="text-sm dark:text-slate-400">
-                        {testimonials[active].designation}
-                    </p>
-                    <motion.p className="mt-4 text-lg  dark:text-slate-300">
-                        "{testimonials[active].quote}"
-                    </motion.p>
-                </div>
-            </motion.div>
-          </AnimatePresence>
-          <div className="flex gap-4 pt-8 justify-center md:justify-start">
-            <button
-              onClick={handlePrev}
-              aria-label="Previous testimonial"
-              className="group flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 transition-colors hover:bg-slate-200 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 dark:bg-slate-800 dark:hover:bg-slate-700 dark:focus:ring-slate-500"
-            >
-              <ArrowLeft className="h-5 w-5 text-slate-800 transition-transform duration-300 group-hover:-translate-x-1 dark:text-slate-300" />
-            </button>
-            <button
-              onClick={handleNext}
-              aria-label="Next testimonial"
-              className="group flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 transition-colors hover:bg-slate-200 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 dark:bg-slate-800 dark:hover:bg-slate-700 dark:focus:ring-slate-500"
-            >
-              <ArrowRight className="h-5 w-5 text-slate-800 transition-transform duration-300 group-hover:translate-x-1 dark:text-slate-300" />
-            </button>
+return (
+  <div className="w-full max-w-3xl mx-auto px-4 py-8 font-sans antialiased md:px-8 lg:px-12">
+    <div className="flex flex-col items-center text-center gap-8">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={active}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
+          className="w-full"
+        >
+          <blockquote className="text-xl italic text-gray-700 dark:text-slate-300 leading-relaxed">
+            “{testimonials[active].quote}”
+          </blockquote>
+          <div className="mt-6">
+            <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-50">
+              {testimonials[active].name}
+            </h2>
+            <p className="text-sm text-slate-500 dark:text-slate-400">
+              {testimonials[active].designation}
+            </p>
           </div>
-        </div>
+        </motion.div>
+      </AnimatePresence>
+
+      <div className="flex gap-4">
+        <button
+          onClick={handlePrev}
+          aria-label="Previous testimonial"
+          className="group flex h-10 w-10 items-center justify-center rounded-full bg-slate-200 transition-colors hover:bg-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 dark:bg-slate-700 dark:hover:bg-slate-600 dark:focus:ring-slate-500"
+        >
+          <ArrowLeft className="h-5 w-5 text-slate-800 group-hover:-translate-x-1 transition-transform dark:text-slate-300" />
+        </button>
+        <button
+          onClick={handleNext}
+          aria-label="Next testimonial"
+          className="group flex h-10 w-10 items-center justify-center rounded-full bg-slate-200 transition-colors hover:bg-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 dark:bg-slate-700 dark:hover:bg-slate-600 dark:focus:ring-slate-500"
+        >
+          <ArrowRight className="h-5 w-5 text-slate-800 group-hover:translate-x-1 transition-transform dark:text-slate-300" />
+        </button>
       </div>
     </div>
-  );
+  </div>
+);
+
 };
 
 
@@ -216,7 +175,7 @@ export function TestimonialCareer() {
         
         {/* Content */}
         <div className="z-10 py-8">
-            <h1 className='text-center'>What Our Teams Says</h1>
+            <p className="mb-4 text-center text-3xl font-bold sm:text-4xl md:text-5xl">What Our Teams Says</p>
             <AnimatedTestimonialsDemo />
         </div>
     </div>

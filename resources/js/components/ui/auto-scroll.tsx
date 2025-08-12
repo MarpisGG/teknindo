@@ -19,7 +19,7 @@ const cards = [
     description: "Elementum curabitur vitae nunc sed velit dignissim sodales ut eu sem integer.",
   },
   {
-    title: "TSH",
+    title: "Teknindo Super Haul",
     imageSrc: TSH,
     description: "Vitae tortor condimentum lacinia quis vel eros donec ac odio tempor.",
   },

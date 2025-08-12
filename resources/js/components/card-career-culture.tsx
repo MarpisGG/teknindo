@@ -119,7 +119,7 @@ export default function CardCareerCulture() {
 
     return (
         <div className="mx-auto max-w-6xl px-4 py-8">
-            <h1 className="mb-8 text-center text-2xl font-bold">Our Ways of Working</h1>
+            <p className="mb-8 text-center text-3xl font-bold sm:text-4xl md:text-5xl">Our Ways of Working</p>
             <div className="flex items-center gap-4">
                 <button onClick={handlePrev} className="h-10 w-10 rounded-full border bg-white shadow hover:bg-gray-100">
                     ←
@@ -145,9 +145,12 @@ export default function CardCareerCulture() {
                                         </div>
                                     </div>
                                     <p className="mb-4 text-center text-xl font-semibold">{item.title}</p>
-                                    <ul className="list-inside list-disc space-y-1 text-sm text-gray-700">
+                                    <ul className="list-none space-y-2 text-sm">
                                         {item.points.map((pt, j) => (
-                                            <li key={j}>{pt}</li>
+                                            <li key={j} className="flex items-start gap-2">
+                                                <span className="mt-2 inline-block h-2 w-2 flex-shrink-0 rounded-full bg-[#FCC200]"></span>
+                                                <span>{pt}</span>
+                                            </li>
                                         ))}
                                     </ul>
                                 </div>

@@ -14,6 +14,8 @@ interface Types {
 }
 
 const Navbar: React.FC = () => {
+    const { url } = usePage();
+    const isHome = url === '/';
     const { t: translate, i18n } = useTranslation();
     const { auth: authData } = usePage().props;
     const [types, setTypes] = useState<Types[]>([]);
@@ -119,11 +121,15 @@ const Navbar: React.FC = () => {
 
     return (
         <div
-            className="group fixed top-0 z-50 w-full transition-all duration-300"
+            className="group fixed top-0 z-200 w-full transition-all duration-300"
             onMouseEnter={() => setNavHover(true)}
             onMouseLeave={() => setNavHover(false)}
         >
-            <nav className={`transition-all duration-300 ${scrolled || navhover ? 'bg-[#181818]' : 'bg-transparent'} group-hover:bg-black`}>
+            <nav
+                className={`transition-all duration-300 ${
+                    scrolled || navhover ? 'bg-[#181818]' : isHome ? 'bg-white/40' : 'bg-transparent'
+                } group-hover:bg-black`}
+            >
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div className="flex h-16 items-center justify-between">
                         <Link

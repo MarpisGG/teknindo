@@ -75,10 +75,22 @@ public function store(Request $request)
         'user_id' => auth()->id(),
     ]);
 
-foreach ($request->contents as $item) {
+foreach ($request->contents as $index => $item) {
     $imagePath = null;
 
     if (isset($item['image']) && $item['image'] instanceof UploadedFile) {
+        if ($item['image']->getSize() > 2048 * 1024) {
+            if ($blog->thumbnail) {
+                \Storage::disk('public')->delete($blog->thumbnail);
+            }
+            $blog->delete();
+
+            return redirect()
+                ->back()
+                ->withErrors(["contents.$index.image" => 'The image must not be greater than 2 MB.'])
+                ->withInput();
+        }
+
         $imagePath = $item['image']->store('blog', 'public');
     } elseif (isset($item['existing_image'])) {
         $imagePath = str_replace(asset('storage/'), '', $item['existing_image']);
@@ -92,9 +104,8 @@ foreach ($request->contents as $item) {
     ]);
 }
 
-    return redirect()->route('blogs.index')->with('success', 'Blog created successfully.');
+return redirect()->route('blogs.index')->with('success', 'Blog created successfully.');
 }
-
 
     public function edit($id)
     {

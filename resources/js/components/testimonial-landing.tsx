@@ -5,44 +5,26 @@ import { useState } from 'react';
 
 const testimonials = [
     {
-        name: 'Sarah Johnson',
-        role: 'Product Manager',
-        company: 'Amazun',
+        name: 'TB. UD. Barokah HS',
         rating: 5,
         image: 'https://i.pravatar.cc/150?u=sarah',
-        testimonial: 'This library has completely transformed how we build our UI components. Highly recommended!',
+        testimonial:
+            'The team at Teknindo Group has greatly supported my building material business with fast response, excellent service, and reliable assistance for loading and delivery operations.',
     },
     {
-        name: 'John Doe',
-        role: 'Software Engineer',
-        company: 'Goggle',
-        rating: 4,
+        name: 'PT. Advanced Agri Indonesia',
+        rating: 5,
         image: 'https://i.pravatar.cc/150?u=john',
-        testimonial: "The components are well documented and easy to customize. I'm very happy with my purchase.",
+        testimonial:
+            "I chose this product because of its great quality. The spare parts are easy to find, delivery time matches the estimate, and the service is very fast and responsive. I'm happy to recommend it to others.",
     },
     {
-        name: 'Emily Chen',
-        role: 'UX Designer',
+        name: 'PT Kayu Karet Cemerlang',
         company: 'Microsift',
         rating: 5,
         image: 'https://i.pravatar.cc/150?u=emily',
-        testimonial: 'The accessibility features and design system consistency are impressive.',
-    },
-    {
-        name: 'Michael Smith',
-        role: 'CTO',
-        company: 'Startapp',
-        rating: 5,
-        image: 'https://i.pravatar.cc/150?u=michael',
-        testimonial: 'Outstanding library. Great support and very developer-friendly.',
-    },
-    {
-        name: 'Linda Brown',
-        role: 'Frontend Developer',
-        company: 'Frontendify',
-        rating: 4,
-        image: 'https://i.pravatar.cc/150?u=linda',
-        testimonial: 'Clean components and great for accessibility.',
+        testimonial:
+            "The product is economical, the spare parts are easy to find, and it offers a win-win solution for both sides. It's been a smart choice for my business.",
     },
 ];
 

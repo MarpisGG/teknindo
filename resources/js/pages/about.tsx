@@ -20,27 +20,6 @@ const About = () => {
             <div className="mb-16">
                 <Navbar />
             </div>
-            <div className="flex w-full flex-col items-center justify-center bg-[#FCC200] p-8 text-center shadow-sm">
-                <div className="mx-auto mb-6 hidden w-[80%] max-w-6xl md:block">
-                    <nav className="flex items-center space-x-2 text-sm dark:text-gray-400">
-                        <Link href="/" className="text-gray-800 hover:underline dark:text-white">
-                            Home
-                        </Link>
-                        <span>{'>'}</span>
-                        <p className="font-bold">About</p>
-                    </nav>
-                </div>
-                <div className="flex w-full justify-center">
-                    <div className="relative aspect-video w-full max-w-5xl">
-                        <iframe
-                            src="https://drive.google.com/file/d/1AvgGrRol4fXiKA9zcfQMPSJQ3NPwoX57/preview"
-                            allow="autoplay"
-                            allowFullScreen
-                            className="absolute top-0 left-0 h-full w-full rounded-xl"
-                        ></iframe>
-                    </div>
-                </div>
-            </div>
 
             {/* <ScrollExpansion /> */}
 
@@ -52,27 +31,28 @@ const About = () => {
                     viewport={{ once: true }}
                     variants={fadeInUp}
                 >
+                    <div className="mx-auto my-6 hidden md:block">
+                        <nav className="flex items-center space-x-2 text-sm dark:text-gray-400">
+                            <Link href="/" className="text-gray-800 hover:underline dark:text-white">
+                                Home
+                            </Link>
+                            <span>{'>'}</span>
+                            <p className="font-bold">About</p>
+                        </nav>
+                    </div>
                     <div className="mb-8">
-                        <img src={Teknindo} alt="Teknindo Logo" className="mx-auto mb-4 h-auto w-[50%]" />
+                        <img src={Teknindo} alt="Teknindo Logo" className="mx-auto mb-4 h-auto md:w-[60%]" />
                         <p className="mx-auto max-w-6xl text-lg md:text-start dark:text-gray-400">
                             Teknindo Group is a trusted distributor and authorized dealer of heavy equipment, trucks, and material handling solutions
-                            in Indonesia. We represent several world-class Chinese brands that have successfully entered global markets.
-                            <br />
-                            <br />
-                            We continue to expand our business network across Indonesia, opening opportunities for partnerships with companies,
-                            business partners, and local entrepreneurs in the heavy equipment industry.
-                            <br />
-                            <br />
-                            Since our establishment in 2018, Teknindo Group has opened branches in key cities across Indonesia to strengthen our
-                            after-sales service network and maintain our commitment to excellent customer service.
-                            <br />
+                            in Indonesia. We represent several world-class Chinese brands that have successfully entered global markets. We continue
+                            to expand our business network across Indonesia, opening opportunities for partnerships with companies, business partners,
+                            and local entrepreneurs in the heavy equipment industry. Since our establishment in 2018, Teknindo Group has opened
+                            branches in key cities across Indonesia to strengthen our after-sales service network and maintain our commitment to
+                            excellent customer service.
                             <br />
                             Here you will find information about who we are, the range of products we offer, and how we can help you achieve success
-                            in your projects.
-                            <br />
-                            <br />
-                            We proudly represent leading brands such as <strong>LONKING</strong> for construction and mining equipment,{' '}
-                            <strong>TYSIM</strong> for bore pile construction equipment, <strong>ZHENZHONG</strong> for piling equipment,{' '}
+                            in your projects. We proudly represent leading brands such as <strong>LONKING</strong> for construction and mining
+                            equipment, <strong>TYSIM</strong> for bore pile construction equipment, <strong>ZHENZHONG</strong> for piling equipment,{' '}
                             <strong>SINOTRUK</strong> for heavy-duty trucks, <strong>CHL</strong> for material handling equipment, and{' '}
                             <strong>ZHONGTONG</strong> for shuttle buses.
                         </p>
@@ -91,9 +71,12 @@ const About = () => {
                     {/* Who We Are */}
                     <div className="mb-8 grid grid-cols-1 items-center gap-8 md:grid-cols-[1fr_2fr]">
                         <div className="border-gray-300 pr-8 text-center md:border-r dark:border-gray-700">
-                            <h1 className="text-3xl font-bold text-gray-900 dark:text-white" style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)' }}>
+                            <p
+                                className="text-4xl font-bold text-gray-900 md:text-5xl dark:text-white"
+                                style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)' }}
+                            >
                                 Who We Are
-                            </h1>
+                            </p>
                         </div>
                         <div className="SliderImage">
                             <p className="text-lg text-gray-600 md:text-start dark:text-gray-400">
@@ -107,16 +90,19 @@ const About = () => {
                     {/* What We Do */}
                     <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-[1fr_2fr]">
                         <div className="self-start border-gray-300 pr-8 text-center md:sticky md:top-20 md:border-r dark:border-gray-700">
-                            <h1 className="text-3xl font-bold text-gray-900 dark:text-white" style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)' }}>
+                            <p
+                                className="text-4xl font-bold text-gray-900 md:text-5xl dark:text-white"
+                                style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)' }}
+                            >
                                 What We Do
-                            </h1>
+                            </p>
                         </div>
                         <div className="SliderImage space-y-6">
                             {[
                                 {
                                     title: 'Heavy Equipment & Parts',
                                     content:
-                                        'We specialize in the sale of high-quality heavy equipment and parts from leading brands. Our extensive inventory includes excavators, bulldozers, cranes, and more, ensuring that we have the right equipment for every job.',
+                                        'We specialize in the sale of high-quality heavy equipment and dump truck from leading brands. Our extensive inventory includes excavators, dump truck, wheel loader, shuttle bus, and more, ensuring that we have the right equipment for every job.',
                                 },
                                 {
                                     title: 'Construction Equipment',
@@ -126,7 +112,7 @@ const About = () => {
                                 {
                                     title: 'Mining Transportation',
                                     content:
-                                        'We offer specialized transportation solutions for mining operations, ensuring that your equipment and materials are delivered safely and efficiently.',
+                                        'We offer specialized transportation solutions for mining operations, ensuring that your minerals and materials are delivered safely and efficiently.',
                                 },
                                 {
                                     title: 'Mining Contractor',
@@ -135,8 +121,7 @@ const About = () => {
                                 },
                                 {
                                     title: 'Mining Services',
-                                    content:
-                                        'Our mining services encompass everything from exploration and development to production and reclamation.',
+                                    content: 'Our mining services cover everything from exploration and development to production and reclamation.',
                                 },
                             ].map((item, i) => (
                                 <motion.div
@@ -147,7 +132,7 @@ const About = () => {
                                     variants={fadeInUp}
                                     className="md:text-start"
                                 >
-                                    <h2 className="my-2 text-xl font-semibold text-gray-800 dark:text-white">{item.title}</h2>
+                                    <p className="my-2 text-2xl font-semibold text-gray-800 md:text-3xl dark:text-white">{item.title}</p>
                                     <p className="text-lg text-gray-600 dark:text-gray-400">{item.content}</p>
                                 </motion.div>
                             ))}
