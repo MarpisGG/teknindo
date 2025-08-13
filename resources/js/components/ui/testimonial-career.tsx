@@ -37,9 +37,9 @@ const testimonials = [
   },
   {
     quote:
-      "Working here has helped me grow and finish projects faster. I feel proud to be part of this team.",
-    name: "Mas Nanda",
-    designation: "Digital Marketing",
+      "This company truly prioritizes employee safety, whether at the warehouse or on site.",
+    name: "Deri",
+    designation: "Service",
     src: "https://images.unsplash.com/photo-1557053910-d9eadeed1c58?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%D%3D",
   },
   {
@@ -59,7 +59,7 @@ type Testimonial = {
 };
 
 // --- Main Animated Testimonials Component ---
-// This is the core component that handles the animation and logic.
+// This is the core component that handles the animation and logic.32
 const AnimatedTestimonials = ({
   testimonials,
   autoplay = true,

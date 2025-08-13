@@ -116,23 +116,32 @@ const Blogs: React.FC = () => {
                         >
                             Discover useful tips, company updates, and industry insights to help you make smarter decisions for your business.
                         </motion.p>
-                        {/* <motion.div className="mb-6 flex justify-center" initial="hidden" animate="visible" variants={fadeInUp}>
-                            <div className="relative w-full max-w-2xl">
-                                <span className="pointer-events-none absolute top-5 left-3 flex -translate-y-1/2 items-center">
-                                    <Search className="h-5 w-5" />
-                                </span>
-                                <input
-                                    type="text"
-                                    placeholder="Search blog by title..."
-                                    value={searchTerm}
-                                    onChange={(e) => setSearchTerm(e.target.value)}
-                                    className="mb-4 w-full rounded-lg border px-4 py-2 pl-10 shadow-sm focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500 focus:outline-none"
-                                />
-                            </div>
-                        </motion.div> */}
                         {IsLoading ? (
-                            <div className="flex justify-center py-10">
-                                <div className="h-10 w-10 animate-spin rounded-full border-4 border-yellow-500 border-t-transparent"></div>
+                            <div className="grid max-w-[71rem] grid-cols-1 gap-8 py-4 md:grid-cols-2 lg:grid-cols-3">
+                                {[...Array(6)].map((_, index) => (
+                                    <div
+                                        key={index}
+                                        className="mx-auto flex w-full max-w-xl animate-pulse flex-col overflow-hidden rounded-lg bg-white shadow-lg"
+                                    >
+                                        {/* Skeleton thumbnail */}
+                                        <div className="h-48 w-full bg-gray-200 sm:h-56 md:h-64" />
+
+                                        <div className="flex flex-1 flex-col p-4 sm:p-6">
+                                            {/* Skeleton title */}
+                                            <div className="mb-4 h-5 w-3/4 rounded bg-gray-200" />
+
+                                            {/* Skeleton meta info */}
+                                            <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+                                                {[...Array(4)].map((_, i) => (
+                                                    <div key={i} className="flex items-center gap-1">
+                                                        <div className="h-4 w-4 rounded bg-gray-200" />
+                                                        <div className="h-4 w-12 rounded bg-gray-200" />
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
                             </div>
                         ) : (
                             <div className="grid max-w-[71rem] grid-cols-1 gap-8 py-4 md:grid-cols-2 lg:grid-cols-3">

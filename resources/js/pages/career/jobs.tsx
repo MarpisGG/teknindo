@@ -133,26 +133,37 @@ export default function JobsPage() {
                 <div className="flex flex-wrap justify-center gap-8">
                     {loading ? (
                         <div className="flex w-full flex-wrap justify-center gap-8">
-                            {[...Array(4)].map((_, i) => (
-                                <div key={i} className="w-full max-w-sm animate-pulse rounded-xl border p-6 shadow">
-                                    <div className="mb-4 h-8 w-2/3 rounded bg-gray-200" />
-                                    <div className="mb-2 flex items-center">
-                                        <div className="mr-2 h-4 w-4 rounded bg-gray-200" />
-                                        <div className="h-4 w-1/4 rounded bg-gray-200" />
+                            {[...Array(2)].map((_, i) => (
+                                <div
+                                    key={i}
+                                    className="grid h-full w-full max-w-3xl transform animate-pulse grid-cols-2 gap-2 rounded-xl border p-6 shadow sm:w-[48%]"
+                                >
+                                    <div className="col-span-2">
+                                        <div className="mb-2 h-6 w-3/4 rounded bg-gray-200 sm:h-8" />
                                     </div>
-                                    <div className="mb-2 flex items-center">
-                                        <div className="mr-2 h-4 w-4 rounded bg-gray-200" />
-                                        <div className="h-4 w-1/4 rounded bg-gray-200" />
+                                    <div className="col-span-2 grid grid-cols-2 gap-2 sm:col-span-1 sm:grid-cols-1">
+                                        <div className="flex items-center">
+                                            <div className="mr-2 h-4 w-4 rounded bg-gray-200" />
+                                            <div className="h-4 w-1/2 rounded bg-gray-200" />
+                                        </div>
+                                        <div className="flex items-center">
+                                            <div className="mr-2 h-4 w-4 rounded bg-gray-200" />
+                                            <div className="h-4 w-1/2 rounded bg-gray-200" />
+                                        </div>
                                     </div>
-                                    <div className="mb-2 flex items-center">
-                                        <div className="mr-2 h-4 w-4 rounded bg-gray-200" />
-                                        <div className="h-4 w-1/4 rounded bg-gray-200" />
+                                    <div className="col-span-2 grid grid-cols-2 gap-2 sm:col-span-1 sm:grid-cols-1">
+                                        <div className="flex items-center">
+                                            <div className="mr-2 h-4 w-4 rounded bg-gray-200" />
+                                            <div className="h-4 w-1/2 rounded bg-gray-200" />
+                                        </div>
+                                        <div className="flex items-center">
+                                            <div className="mr-2 h-4 w-4 rounded bg-gray-200" />
+                                            <div className="h-4 w-1/2 rounded bg-gray-200" />
+                                        </div>
                                     </div>
-                                    <div className="mb-2 flex items-center">
-                                        <div className="mr-2 h-4 w-4 rounded bg-gray-200" />
-                                        <div className="h-4 w-1/4 rounded bg-gray-200" />
+                                    <div className="col-span-2 mt-2">
+                                        <div className="h-5 w-1/3 rounded bg-gray-200" />
                                     </div>
-                                    <div className="mt-4 h-6 w-1/3 rounded bg-gray-200" />
                                 </div>
                             ))}
                         </div>

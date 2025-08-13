@@ -126,7 +126,39 @@ export default function JobDetailPage() {
             .finally(() => setLoading(false));
     }, [slug]);
 
-    if (loading) return <div className="py-20 text-center text-gray-600">Loading...</div>;
+    if (loading) {
+        return (
+            <div className="pt-20 pb-10">
+                <div className="mx-auto max-w-6xl animate-pulse px-4">
+                    {/* Title skeleton */}
+                    <div className="mx-auto mb-6 h-8 w-1/2 rounded bg-gray-200"></div>
+
+                    {/* Job info grid skeleton */}
+                    <div className="mb-4 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4">
+                        {Array.from({ length: 4 }).map((_, i) => (
+                            <div key={i} className="h-6 rounded bg-gray-200"></div>
+                        ))}
+                    </div>
+
+                    {/* Job description skeleton */}
+                    <div className="space-y-3">
+                        {Array.from({ length: 5 }).map((_, i) => (
+                            <div key={i} className="h-4 rounded bg-gray-200"></div>
+                        ))}
+                    </div>
+
+                    {/* Form skeleton */}
+                    <div className="mt-10 grid grid-cols-1 gap-5 lg:grid-cols-2">
+                        {Array.from({ length: 6 }).map((_, i) => (
+                            <div key={i} className="h-10 rounded bg-gray-200"></div>
+                        ))}
+                        <div className="h-12 rounded bg-gray-200 lg:col-span-2"></div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
     if (!job) return <div className="py-20 text-center text-red-500">Job not found</div>;
 
     return (
@@ -135,7 +167,7 @@ export default function JobDetailPage() {
             <div className="pt-20 pb-10">
                 <div className="mx-auto max-w-6xl px-4">
                     {/* Breadcrumb */}
-                    <nav className="mb-6 hidden text-sm md:block" aria-label="Breadcrumb">
+                    <nav className="emd:block mb-6 hidden text-sm" aria-label="Breadcrumb">
                         <ol className="flex flex-wrap items-center space-x-2">
                             <li>
                                 <a href="/" className="hover:underline">

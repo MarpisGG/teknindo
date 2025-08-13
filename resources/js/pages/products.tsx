@@ -21,14 +21,34 @@ const fadeInUp = {
     visible: { opacity: 1, y: 0, transition: { duration: 0.2 } },
 };
 
-function products() {
+function Products() {
     const [types, setTypes] = useState<Types[]>([]);
+    const [loading, setLoading] = useState(true);
+
     useEffect(() => {
         axios
             .get('/api/types')
             .then((response) => setTypes(response.data))
-            .catch((error) => console.error('Error fetching types:', error));
+            .catch((error) => console.error('Error fetching types:', error))
+            .finally(() => setLoading(false));
     }, []);
+
+    // Skeleton Card
+    const SkeletonCard = () => (
+        <div className="mx-auto my-4 flex w-full max-w-6xl animate-pulse flex-col rounded-2xl bg-gray-200 shadow-lg md:flex-row dark:bg-[#232326]">
+            {/* Left Side */}
+            <div className="flex w-full flex-col items-center justify-center p-4 md:w-1/2 md:p-8">
+                <div className="mb-4 h-6 w-2/3 rounded bg-gray-300 dark:bg-gray-600"></div>
+                <div className="h-48 w-full rounded bg-gray-300 md:h-64 dark:bg-gray-600"></div>
+            </div>
+            {/* Right Side */}
+            <div className="flex w-full flex-col p-4 md:w-1/2 md:p-8">
+                <div className="mb-4 h-4 w-full rounded bg-gray-300 dark:bg-gray-600"></div>
+                <div className="mb-4 h-4 w-5/6 rounded bg-gray-300 dark:bg-gray-600"></div>
+                <div className="mt-auto h-10 w-48 rounded bg-gray-300 dark:bg-gray-600"></div>
+            </div>
+        </div>
+    );
 
     return (
         <>
@@ -45,44 +65,48 @@ function products() {
             </div>
             <div className="flex flex-col py-8">
                 <div className="flex flex-wrap justify-center">
-                    {types.map((type, idx) => {
-                        const isGray = idx % 4 === 1 || idx % 4 === 2; // 1 dan 2 dari 0-based
-                        return (
-                            <motion.div
-                                key={type.id}
-                                className={`mx-auto my-4 flex w-full max-w-6xl flex-col rounded-2xl shadow-lg transition-all duration-300 md:flex-row ${isGray ? 'bg-[#fcc200] dark:bg-[#232326]' : 'bg-white dark:bg-[#18181b]'} hover:scale-[1.02] hover:shadow-xl`}
-                                initial={{ opacity: 0, y: 50 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.2, ease: 'easeOut' }}
-                                viewport={{ once: true }}
-                            >
-                                {/* Left Side: Name & Image */}
-                                <div className="flex w-full flex-col items-center justify-center p-4 md:w-1/2 md:p-8">
-                                    <h1 className="mb-4 text-center text-2xl font-bold text-gray-900 md:text-3xl dark:text-white">{type.name}</h1>
-                                    <div className="flex h-48 w-full items-center justify-center md:h-64">
-                                        <img
-                                            src={`/storage/${type.image}`}
-                                            alt={type.name}
-                                            className="max-h-full max-w-full object-contain dark:bg-[#232326]"
-                                        />
-                                    </div>
-                                </div>
-                                {/* Right Side: Description & Button */}
-                                <div className="flex w-full flex-col p-4 md:w-1/2 md:p-8">
-                                    <h3 className="mb-6 text-base text-gray-700 md:text-lg dark:text-gray-300">{type.description}</h3>
-                                    <div className="flex">
-                                        <Link href={`/products/${type.slug ?? type.id}`} className="w-full">
-                                            <InteractiveHoverButton
-                                                className={`w-full py-2 text-base font-medium md:w-48 ${isGray ? '' : 'bg-[#d9d9d9]'} rounded-lg`}
-                                            >
-                                                Learn More
-                                            </InteractiveHoverButton>
-                                        </Link>
-                                    </div>
-                                </div>
-                            </motion.div>
-                        );
-                    })}
+                    {loading
+                        ? Array.from({ length: 4 }).map((_, idx) => <SkeletonCard key={idx} />)
+                        : types.map((type, idx) => {
+                              const isGray = idx % 4 === 1 || idx % 4 === 2;
+                              return (
+                                  <motion.div
+                                      key={type.id}
+                                      className={`mx-auto my-4 flex w-full max-w-6xl flex-col rounded-2xl shadow-lg transition-all duration-300 md:flex-row ${isGray ? 'bg-[#fcc200] dark:bg-[#232326]' : 'bg-white dark:bg-[#18181b]'} hover:scale-[1.02] hover:shadow-xl`}
+                                      initial={{ opacity: 0, y: 50 }}
+                                      whileInView={{ opacity: 1, y: 0 }}
+                                      transition={{ duration: 0.2, ease: 'easeOut' }}
+                                      viewport={{ once: true }}
+                                  >
+                                      {/* Left Side */}
+                                      <div className="flex w-full flex-col items-center justify-center p-4 md:w-1/2 md:p-8">
+                                          <h1 className="mb-4 text-center text-2xl font-bold text-gray-900 md:text-3xl dark:text-white">
+                                              {type.name}
+                                          </h1>
+                                          <div className="flex h-48 w-full items-center justify-center md:h-64">
+                                              <img
+                                                  src={`/storage/${type.image}`}
+                                                  alt={type.name}
+                                                  className="max-h-full max-w-full object-contain dark:bg-[#232326]"
+                                              />
+                                          </div>
+                                      </div>
+                                      {/* Right Side */}
+                                      <div className="flex w-full flex-col p-4 md:w-1/2 md:p-8">
+                                          <h3 className="mb-6 text-base text-gray-700 md:text-lg dark:text-gray-300">{type.description}</h3>
+                                          <div className="flex">
+                                              <Link href={`/products/${type.slug ?? type.id}`} className="w-full">
+                                                  <InteractiveHoverButton
+                                                      className={`w-full py-2 text-base font-medium md:w-48 ${isGray ? '' : 'bg-[#d9d9d9]'} rounded-lg`}
+                                                  >
+                                                      Learn More
+                                                  </InteractiveHoverButton>
+                                              </Link>
+                                          </div>
+                                      </div>
+                                  </motion.div>
+                              );
+                          })}
                 </div>
             </div>
             <motion.div className="dark:bg-[#0a0a0a]" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
@@ -114,4 +138,4 @@ function products() {
     );
 }
 
-export default products;
+export default Products;
