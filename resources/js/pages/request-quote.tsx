@@ -92,118 +92,141 @@ function RequestQuote() {
                             <span className="relative z-10">Request Quotation</span>
                             <span className="absolute -bottom-1 -left-1 z-0 text-gray-300">Request Quotation</span>
                         </h1>
-                        <p className="mx-auto mt-4 max-w-xl text-base text-gray-600 drop-shadow-sm">
+                        <p className="drop- mx-auto mt-4 max-w-xl text-base text-gray-600">
                             Please fill out the form below to request a quotation for our products.
                         </p>
                     </motion.div>
                     <form onSubmit={handleSubmit} className="space-y-6">
                         <motion.div className="grid grid-cols-1 gap-6 sm:grid-cols-2" variants={container}>
                             <motion.div variants={item}>
-                                <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-                                    Name <span className="text-red-500">*</span>
+                                <label htmlFor="name" className="block text-sm font-bold">
+                                    Name<span className="text-red-500">*</span>
                                 </label>
                                 <input
                                     type="text"
                                     name="name"
                                     id="name"
                                     required
-                                    className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2 shadow-sm transition focus:border-yellow-400 focus:ring-2 focus:ring-yellow-300 focus:outline-none"
+                                    className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2 transition focus:border-yellow-400 focus:ring-2 focus:ring-yellow-300 focus:outline-none"
                                 />
                             </motion.div>
                             <motion.div variants={item}>
-                                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                                    Email <span className="text-red-500">*</span>
+                                <label htmlFor="email" className="block text-sm font-bold">
+                                    Email<span className="text-red-500">*</span>
                                 </label>
                                 <input
                                     type="email"
                                     name="email"
                                     id="email"
                                     required
-                                    className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2 shadow-sm transition focus:border-yellow-400 focus:ring-2 focus:ring-yellow-300 focus:outline-none"
+                                    className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2 transition focus:border-yellow-400 focus:ring-2 focus:ring-yellow-300 focus:outline-none"
                                 />
                             </motion.div>
                         </motion.div>
 
                         <motion.div className="grid grid-cols-1 gap-6 sm:grid-cols-2" variants={container}>
                             <motion.div variants={item}>
-                                <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
-                                    Phone Number <span className="text-red-500">*</span>
+                                <label htmlFor="phone" className="block text-sm font-bold">
+                                    Phone Number<span className="text-red-500">*</span>
                                 </label>
                                 <input
                                     type="text"
                                     name="phone"
                                     id="phone"
                                     required
-                                    className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2 shadow-sm transition focus:border-yellow-400 focus:ring-2 focus:ring-yellow-300 focus:outline-none"
+                                    className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2 transition focus:border-yellow-400 focus:ring-2 focus:ring-yellow-300 focus:outline-none"
                                 />
                             </motion.div>
                             <motion.div variants={item}>
-                                <label htmlFor="company" className="block text-sm font-medium text-gray-700">
+                                <label htmlFor="company" className="block text-sm font-bold">
                                     Company Name
                                 </label>
                                 <input
                                     type="text"
                                     name="company"
                                     id="company"
-                                    required
-                                    className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2 shadow-sm transition focus:border-yellow-400 focus:ring-2 focus:ring-yellow-300 focus:outline-none"
+                                    className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2 transition focus:border-yellow-400 focus:ring-2 focus:ring-yellow-300 focus:outline-none"
                                 />
                             </motion.div>
                         </motion.div>
 
                         <motion.div variants={item}>
-                            <label htmlFor="country" className="block text-sm font-medium text-gray-700">
+                            <label htmlFor="country" className="block text-sm font-bold">
                                 Country
                             </label>
                             <input
                                 type="text"
                                 name="country"
                                 id="country"
-                                required
-                                className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2 shadow-sm transition focus:border-yellow-400 focus:ring-2 focus:ring-yellow-300 focus:outline-none"
+                                className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2 transition focus:border-yellow-400 focus:ring-2 focus:ring-yellow-300 focus:outline-none"
                             />
                         </motion.div>
 
                         <motion.div variants={item}>
-                            <label htmlFor="message" className="block text-sm font-medium text-gray-700">
-                                Message or Requirements <span className="text-red-500">*</span>
+                            <label htmlFor="message" className="block text-sm font-bold">
+                                Message or Requirements<span className="text-red-500">*</span>
                             </label>
                             <textarea
                                 name="message"
                                 id="message"
                                 rows={10}
                                 required
-                                className="mt-1 w-full resize-none rounded-lg border border-gray-300 px-4 py-2 shadow-sm transition focus:border-yellow-400 focus:ring-2 focus:ring-yellow-300 focus:outline-none"
+                                className="mt-1 w-full resize-none rounded-lg border border-gray-300 px-4 py-2 transition focus:border-yellow-400 focus:ring-2 focus:ring-yellow-300 focus:outline-none"
                             ></textarea>
                         </motion.div>
 
                         <motion.div variants={item}>
-                            <label htmlFor="product_id" className="block text-sm font-medium text-gray-700">
-                                Select Product <span className="text-red-500">*</span>
+                            <label htmlFor="product_id" className="block text-sm font-bold">
+                                Select Product<span className="text-red-500">*</span>
                             </label>
                             <div>
-                                <input
-                                    type="text"
-                                    placeholder="Search product..."
-                                    className="mb-2 w-full rounded-lg border border-gray-300 px-4 py-2 shadow-sm transition focus:border-yellow-400 focus:ring-2 focus:ring-yellow-300 focus:outline-none"
-                                    value={searchTerm}
-                                    onChange={(e) => setSearchTerm(e.target.value)}
-                                />
-                                <select
-                                    name="product_id"
-                                    id="product_id"
-                                    required
-                                    className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2 shadow-sm transition focus:border-yellow-400 focus:ring-2 focus:ring-yellow-300 focus:outline-none"
-                                >
-                                    <option value="">-- Select a Product --</option>
-                                    {products
-                                        .filter((product) => product.name.toLowerCase().includes(searchTerm.toLowerCase()))
-                                        .map((product) => (
-                                            <option key={product.id} value={product.id}>
-                                                {product.name}
-                                            </option>
-                                        ))}
-                                </select>
+                                <div className="relative mt-4">
+                                    <input
+                                        type="text"
+                                        placeholder="Search product..."
+                                        className="w-full rounded-lg border border-gray-300 px-4 py-2 transition focus:border-yellow-400 focus:ring-2 focus:ring-yellow-300 focus:outline-none"
+                                        autoComplete="off"
+                                        value={searchTerm}
+                                        onChange={(e) => setSearchTerm(e.target.value)}
+                                        aria-autocomplete="list"
+                                        aria-expanded={!!searchTerm && !products.some((p) => p.name.toLowerCase() === searchTerm.toLowerCase())}
+                                    />
+
+                                    {/* This hidden (visually) text input carries the selected product_id and enforces required */}
+                                    <input
+                                        type="text"
+                                        name="product_id"
+                                        readOnly
+                                        required
+                                        value={(products.find((p) => p.name.toLowerCase() === searchTerm.toLowerCase())?.id ?? '').toString()}
+                                        className="sr-only"
+                                        aria-hidden="true"
+                                        tabIndex={-1}
+                                    />
+
+                                    {searchTerm && !products.some((p) => p.name.toLowerCase() === searchTerm.toLowerCase()) && (
+                                        <ul
+                                            role="listbox"
+                                            className="absolute z-20 mt-1 max-h-60 w-full overflow-auto rounded-md border border-gray-200 bg-white shadow-lg"
+                                        >
+                                            {products
+                                                .filter((product) => product.name.toLowerCase().includes(searchTerm.toLowerCase()))
+                                                .map((product) => (
+                                                    <li
+                                                        key={product.id}
+                                                        role="option"
+                                                        className="cursor-pointer px-4 py-2 hover:bg-yellow-50"
+                                                        onMouseDown={() => setSearchTerm(product.name)}
+                                                    >
+                                                        {product.name}
+                                                    </li>
+                                                ))}
+                                            {products.filter((p) => p.name.toLowerCase().includes(searchTerm.toLowerCase())).length === 0 && (
+                                                <li className="px-4 py-2 text-gray-500">No products found</li>
+                                            )}
+                                        </ul>
+                                    )}
+                                </div>
                             </div>
                         </motion.div>
 

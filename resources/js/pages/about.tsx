@@ -23,7 +23,7 @@ const About = () => {
 
             {/* <ScrollExpansion /> */}
 
-            <div className="bg-[#d9d9d9] dark:bg-[#0a0a0a]">
+            <div className="bg-[#d9d9d9]/60 dark:bg-[#0a0a0a]">
                 <motion.div
                     className="mx-auto w-[80%] max-w-6xl py-4"
                     initial="hidden"
@@ -42,20 +42,35 @@ const About = () => {
                     </div>
                     <div className="mb-8">
                         <img src={Teknindo} alt="Teknindo Logo" className="mx-auto mb-4 h-auto md:w-[60%]" />
-                        <p className="mx-auto max-w-6xl text-lg md:text-start dark:text-gray-400">
-                            Teknindo Group is a trusted distributor and authorized dealer of heavy equipment, trucks, and material handling solutions
-                            in Indonesia. We represent several world-class Chinese brands that have successfully entered global markets. We continue
-                            to expand our business network across Indonesia, opening opportunities for partnerships with companies, business partners,
-                            and local entrepreneurs in the heavy equipment industry. Since our establishment in 2018, Teknindo Group has opened
-                            branches in key cities across Indonesia to strengthen our after-sales service network and maintain our commitment to
-                            excellent customer service.
-                            <br />
-                            Here you will find information about who we are, the range of products we offer, and how we can help you achieve success
-                            in your projects. We proudly represent leading brands such as <strong>LONKING</strong> for construction and mining
-                            equipment, <strong>TYSIM</strong> for bore pile construction equipment, <strong>ZHENZHONG</strong> for piling equipment,{' '}
-                            <strong>SINOTRUK</strong> for heavy-duty trucks, <strong>CHL</strong> for material handling equipment, and{' '}
-                            <strong>ZHONGTONG</strong> for shuttle buses.
-                        </p>
+                        <div className="mx-auto max-w-6xl space-y-6 text-lg md:text-start dark:text-gray-400">
+                            <p>
+                                Teknindo Group is a corporate group engaged in the provision of equipment and services for the mining, construction,
+                                and industrial sectors. At present, Teknindo Group comprises seven member companies. The parent entity of the group is{' '}
+                                <strong>PT. Mitra Teknindo Sejati (MTS)</strong>, a heavy equipment distributor established in 2018. Since its
+                                establishment, MTS has consistently expanded and invested in various business lines, which led to the creation of
+                                several subsidiaries and the formation of Teknindo Group as a whole.
+                            </p>
+
+                            <div>
+                                <p className="mb-2 font-semibold">The member companies under Teknindo Group include:</p>
+                                <ul className="list-inside list-disc space-y-1">
+                                    <li>Mitra Teknindo Sejati (MTS)</li>
+                                    <li>Mitra Suplaindo Sejati (MSS)</li>
+                                    <li>Teknindo Super Haul (TSH)</li>
+                                    <li>LGCM Laigong Indonesia (LI)</li>
+                                    <li>Teknindo Adhya Pane (TAP)</li>
+                                    <li>Tenrich Tyre Indonesia (TTI)</li>
+                                    <li>Wenzhou Yunding International (WYI)</li>
+                                </ul>
+                            </div>
+
+                            <p>
+                                In line with its vision and mission, Teknindo Group continues to pursue innovation, growth, and excellence in order to
+                                become a highly competent and integrated enterprise. Moving forward, the Group is committed to broadening its business
+                                network, enhancing its contribution to Indonesia’s national development, and creating more job opportunities in
+                                Indonesia.
+                            </p>
+                        </div>
                     </div>
                 </motion.div>
             </div>
@@ -68,25 +83,6 @@ const About = () => {
                     viewport={{ once: true }}
                     variants={fadeInUp}
                 >
-                    {/* Who We Are */}
-                    <div className="mb-8 grid grid-cols-1 items-center gap-8 md:grid-cols-[1fr_2fr]">
-                        <div className="border-gray-300 pr-8 text-center md:border-r dark:border-gray-700">
-                            <p
-                                className="text-4xl font-bold text-gray-900 md:text-5xl dark:text-white"
-                                style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)' }}
-                            >
-                                Who We Are
-                            </p>
-                        </div>
-                        <div className="SliderImage">
-                            <p className="text-lg text-gray-600 md:text-start dark:text-gray-400">
-                                We are a team of experienced professionals specializing in heavy equipment sales and services. Since 2018, we have
-                                supported businesses across Indonesia with reliable machinery solutions, expert maintenance, and personalized customer
-                                support to help them achieve operational excellence.
-                            </p>
-                        </div>
-                    </div>
-
                     {/* What We Do */}
                     <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-[1fr_2fr]">
                         <div className="self-start border-gray-300 pr-8 text-center md:sticky md:top-20 md:border-r dark:border-gray-700">
@@ -141,7 +137,7 @@ const About = () => {
                 </motion.div>
             </div>
 
-            <div className="bg-[#d9d9d9] dark:bg-[#0a0a0a]">
+            <div className="bg-[#d9d9d9]/60 dark:bg-[#0a0a0a]">
                 <motion.div
                     className="mx-auto mt-8 w-[80%] max-w-6xl pb-8"
                     initial="hidden"
@@ -159,24 +155,32 @@ const About = () => {
                         <div className="">
                             <h2 className="mb-4 text-center">Vision</h2>
                             <p className="SliderImage text-lg text-black md:text-start dark:text-gray-400">
-                                To become a provider of heavy equipment with international standards by prioritizing product quality and after-sales
-                                service, while contributing to the advancement of Indonesia's economic development and infrastructure.
+                                becoming a leading, reliable, and integrated group of companies in providing equipment and services for the mining,
+                                construction, and industrial sectors.
                             </p>
                         </div>
                         <div className="md:border-l md:pl-8">
                             <h2 className="mb-4 text-center">Mission</h2>
                             <ul className="SliderImage list-disc space-y-4 pl-6 text-black dark:text-gray-400">
                                 <li>
-                                    To become a provider of heavy equipment with international standards by prioritizing product quality and
-                                    after-sales service.
+                                    Providing complete heavy equipment solutions, including units, spare parts, and after-sales services, to support
+                                    operations in mining, construction, and industry.
                                 </li>
                                 <li>
-                                    To develop professional and competent human resources in their respective fields, ensuring continuous company
-                                    growth and excellent service delivery to all business partners.
+                                    Delivering professional and safe mining contractor services, focused on achieving the best results with high
+                                    efficiency, strong operational standards, and prioritizing team safety.
                                 </li>
                                 <li>
-                                    To uphold honesty and integrity, while fostering a strong work ethic and a positive work environment, in order to
-                                    achieve comfort, progress, and prosperity for all shareholders.
+                                    Offering full-service solutions for various internal needs that support worksite operations in mining,
+                                    construction, and industry.
+                                </li>
+                                <li>
+                                    Developing innovative and efficient systems in company activities, building a positive work environment, and
+                                    creating competent, honest, well-mannered, and high-integrity human resources to support long-term company growth.
+                                </li>
+                                <li>
+                                    Practicing good, fair, and transparent corporate governance in order to achieve optimal results for all
+                                    shareholders and stakeholders.
                                 </li>
                             </ul>
                         </div>
@@ -186,7 +190,7 @@ const About = () => {
 
             <StickyScrollRevealComponent />
 
-            <div className="bg-[#d9d9d9] dark:bg-[#0a0a0a]">
+            <div className="bg-[#d9d9d9]/60 dark:bg-[#0a0a0a]">
                 <motion.div
                     className="mx-auto w-[80%] max-w-6xl py-8"
                     initial="hidden"

@@ -159,7 +159,46 @@ export default function JobDetailPage() {
         );
     }
 
-    if (!job) return <div className="py-20 text-center text-red-500">Job not found</div>;
+    if (!job) {
+        return (
+            <>
+                <Navbar />
+                <div className="pt-20 pb-10">
+                    <div className="mx-auto max-w-3xl px-4">
+                        <div className="rounded-xl border border-gray-200 bg-white p-10 text-center shadow-sm">
+                            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-yellow-50">
+                                <Briefcase className="h-8 w-8 text-[#FCC200]" />
+                            </div>
+                            <h1 className="mb-2 text-2xl font-bold text-gray-900">Job not found</h1>
+                            <p className="mb-6 text-gray-600">We couldn’t find the job you’re looking for. It may have been filled or removed.</p>
+                            <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
+                                <a
+                                    href="/career/jobs"
+                                    className="inline-flex items-center rounded-md bg-[#FCC200] px-5 py-2.5 font-semibold text-white transition hover:bg-yellow-500"
+                                >
+                                    Browse jobs
+                                </a>
+                                <button
+                                    onClick={() => window.history.back()}
+                                    className="inline-flex items-center rounded-md border border-gray-300 px-5 py-2.5 text-gray-700 transition hover:bg-gray-50"
+                                >
+                                    Go back
+                                </button>
+                                <button
+                                    onClick={() => window.location.reload()}
+                                    className="inline-flex items-center rounded-md border border-gray-300 px-5 py-2.5 text-gray-700 transition hover:bg-gray-50"
+                                >
+                                    Retry
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <FloatingQuickActions />
+                <Footer7 />
+            </>
+        );
+    }
 
     return (
         <>

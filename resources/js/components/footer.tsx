@@ -119,6 +119,9 @@ export const Footer7 = ({
                                 </li>
                             ))}
                         </ul>
+                        <div className="relative hidden md:block">
+                            <div id="google_translate_element"></div>
+                        </div>
                     </div>
 
                     {/* Links Sections & Newsletter */}

@@ -32,8 +32,7 @@ const actions = [
         hasSubmenu: true,
         submenu: [
             { label: 'Heavy Equipment', link: 'https://wa.me/6281355616263?text=I%20need%20help%20with%20Heavy%20Equipment' },
-            { label: 'Spare Part', link: 'https://wa.me/6281355616263?text=I%20need%20help%20with%20Spare%20Part' },
-            { label: 'Others', link: 'https://wa.me/6281355616263?text=I%20need%20help%20with%20Other%20Inquiry' },
+            { label: 'Spare Part', link: 'https://wa.me/628118885331?text=I%20need%20help%20with%20Spare%20Part' },
         ],
     },
 ];
@@ -43,7 +42,7 @@ const FloatingQuickActions: React.FC = () => {
 
     return (
         <div
-            className={`fixed right-0 bottom-0 z-50 m-0 flex w-full flex-row items-center justify-between p-0 shadow-[0_-2px_10px_rgba(0,0,0,0.1)] md:top-1/2 md:right-0 md:bottom-auto md:w-auto md:translate-y-0 md:flex-col md:items-end md:justify-normal md:space-y-0 md:shadow-none`}
+            className={`pointer-events-none fixed right-0 bottom-0 z-50 m-0 flex w-full flex-row items-center justify-between p-0 shadow-[0_-2px_10px_rgba(0,0,0,0.1)] hover:pointer-events-auto md:top-1/2 md:right-0 md:bottom-auto md:w-auto md:translate-y-0 md:flex-col md:items-end md:justify-normal md:space-y-0 md:shadow-none`}
         >
             {actions.map((action, index) => (
                 <div key={index} className="group relative w-full md:w-auto">
@@ -66,10 +65,9 @@ const FloatingQuickActions: React.FC = () => {
                             </span>
                         </button>
                     </a>
-
                     {/* Submenu */}
                     {action.hasSubmenu && (
-                        <div className="absolute bottom-full left-0 hidden w-52 rounded-md bg-white p-2 text-sm shadow-md group-hover:block md:right-0 md:left-auto">
+                        <div className="pointer-events-none absolute bottom-full left-0 w-50 translate-y-2 scale-95 rounded-l-lg bg-white p-2 text-sm opacity-0 transition-all duration-200 ease-out group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100 md:right-0 md:left-auto">
                             {action.submenu?.map((sub, subIndex) => (
                                 <a
                                     key={subIndex}

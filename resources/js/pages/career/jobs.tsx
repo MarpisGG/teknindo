@@ -126,7 +126,7 @@ export default function JobsPage() {
                     </nav>
                 </motion.div>
 
-                <motion.p className="mb-4 text-center text-3xl font-bold md:text-5xl" initial="hidden" animate="visible" variants={fadeInUp}>
+                <motion.p className="mb-8 text-center text-3xl font-bold md:text-5xl" initial="hidden" animate="visible" variants={fadeInUp}>
                     Open Positions
                 </motion.p>
 

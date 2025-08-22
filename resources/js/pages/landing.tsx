@@ -102,11 +102,11 @@ export default function Welcome() {
                     </div>
                     <div className="px-6 md:px-6">
                         <p className="dark:-400 text-lg">
-                            Teknindo Group is a trusted distributor of heavy equipment, trucks, and material handling solutions in Indonesia. We are
-                            the official dealer for leading Chinese brands such as Lonking, Tysim, Zhenzhong, Sinotruk, CHL, and Zhongtong.
-                            Established in 2018, our company has expanded to several key cities to strengthen our after-sales service. We are
-                            committed to delivering reliable solutions for construction, mining, and transportation industries. Today, Teknindo Group
-                            is trusted by major corporations and large-scale project sites across Indonesia.
+                            Teknindo Group is a group of companies providing heavy equipment, spare parts, and services for the mining, construction,
+                            and industrial sectors. Established in 2018 through its parent company PT. Mitra Teknindo Sejati (MTS), the Group has now
+                            expanded into seven member companies. With continuous growth and innovation, Teknindo Group is committed to becoming a
+                            competent and integrated enterprise, contributing to national development and creating more job opportunities in
+                            Indonesia.
                         </p>
                         <motion.div
                             className="mt-4 flex"
