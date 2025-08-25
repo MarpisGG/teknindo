@@ -4,7 +4,7 @@ import Navbar from '@/components/navbar';
 import ServiceCard from '@/components/service-card';
 import ServiceIntroSection from '@/components/service-intro';
 import Statistic from '@/components/statistic';
-import { TestimonialService } from '@/components/testimonial-services';
+import { TestimonialLanding } from '@/components/testimonial-landing';
 import { Head, Link } from '@inertiajs/react';
 import { motion } from 'framer-motion';
 import React from 'react';
@@ -130,7 +130,7 @@ const Service = () => {
                         Discover what our clients say about the quality and impact of our specialized services. Their feedback highlights our
                         commitment to excellence in every project we undertake.
                     </p>
-                    <TestimonialService />
+                    <TestimonialLanding />
                 </motion.div>
             </motion.section>
 

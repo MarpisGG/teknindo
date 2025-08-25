@@ -39,7 +39,7 @@ const defaultSections = [
     {
         title: 'Our Branches',
         links: [
-            { name: 'Jakarta Branch', href: 'https://maps.app.goo.gl/zmAA71A8xhvB2gCM8' },
+            { name: 'Jakarta Branch', href: 'https://maps.app.goo.gl/cf6ouSoAfw8qTgAC9' },
             { name: 'Tangerang Branch', href: 'https://maps.app.goo.gl/22tPesVz2hKMtCPSA' },
             { name: 'Surabaya Branch', href: 'https://maps.app.goo.gl/rBQXgFDrTd3Qcuqg9' },
             { name: 'Samarinda Branch', href: 'https://maps.app.goo.gl/WzC1UBWAfN8f2XsJ6' },
@@ -119,9 +119,9 @@ export const Footer7 = ({
                                 </li>
                             ))}
                         </ul>
-                        <div className="relative hidden md:block">
+                        {/* <div className="relative hidden md:block">
                             <div id="google_translate_element"></div>
-                        </div>
+                        </div> */}
                     </div>
 
                     {/* Links Sections & Newsletter */}

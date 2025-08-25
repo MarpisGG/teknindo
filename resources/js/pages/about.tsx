@@ -1,8 +1,8 @@
 import FloatingQuickActions from '@/components/floatingquickaction';
 import { Footer7 } from '@/components/footer';
 import Navbar from '@/components/navbar';
+import Timeline_02 from '@/components/timeline-02';
 import { AutoScroll } from '@/components/ui/auto-scroll';
-import StickyScrollRevealComponent from '@/components/ui/sticky-scroll';
 import { Head, Link } from '@inertiajs/react';
 import { motion } from 'framer-motion';
 import Teknindo from '../../assets/image/Teknindo Awal.png';
@@ -77,7 +77,58 @@ const About = () => {
 
             <div className="bg-[#FDFDFC] dark:bg-[#0a0a0a]">
                 <motion.div
-                    className="mx-auto my-8 w-[80%] max-w-6xl"
+                    className="mx-auto mt-8 w-[80%] max-w-6xl pb-8"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    variants={fadeInUp}
+                >
+                    <div className="mb-8">
+                        <h1 className="pt-8 pb-4 text-center">Our Vision & Mission</h1>
+                        <p className="SliderImage ext-lg mx-auto max-w-xl text-gray-600 md:text-center dark:text-gray-400">
+                            Our vision and mission guide us in delivering exceptional service and value to our customers.
+                        </p>
+                    </div>
+                    <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-2">
+                        <div className="">
+                            <h2 className="mb-4 text-center">Vision</h2>
+                            <p className="SliderImage text-lg text-black md:text-start dark:text-gray-400">
+                                becoming a leading, reliable, and integrated group of companies in providing equipment and services for the mining,
+                                construction, and industrial sectors.
+                            </p>
+                        </div>
+                        <div className="md:border-l md:pl-8">
+                            <h2 className="mb-4 text-center">Mission</h2>
+                            <ul className="SliderImage list-disc space-y-4 pl-6 text-black dark:text-gray-400">
+                                <li>
+                                    Providing complete heavy equipment solutions, including units, spare parts, and after-sales services, to support
+                                    operations in mining, construction, and industry.
+                                </li>
+                                <li>
+                                    Delivering professional and safe mining contractor services, focused on achieving the best results with high
+                                    efficiency, strong operational standards, and prioritizing team safety.
+                                </li>
+                                <li>
+                                    Offering full-service solutions for various internal needs that support worksite operations in mining,
+                                    construction, and industry.
+                                </li>
+                                <li>
+                                    Developing innovative and efficient systems in company activities, building a positive work environment, and
+                                    creating competent, honest, well-mannered, and high-integrity human resources to support long-term company growth.
+                                </li>
+                                <li>
+                                    Practicing good, fair, and transparent corporate governance in order to achieve optimal results for all
+                                    shareholders and stakeholders.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </motion.div>
+            </div>
+
+            <div className="bg-[#d9d9d9]/60 dark:bg-[#0a0a0a]">
+                <motion.div
+                    className="mx-auto w-[80%] max-w-6xl py-8"
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
@@ -137,60 +188,7 @@ const About = () => {
                 </motion.div>
             </div>
 
-            <div className="bg-[#d9d9d9]/60 dark:bg-[#0a0a0a]">
-                <motion.div
-                    className="mx-auto mt-8 w-[80%] max-w-6xl pb-8"
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    variants={fadeInUp}
-                >
-                    <div className="mb-8">
-                        <h1 className="pt-8 pb-4 text-center">Our Vision & Mission</h1>
-                        <p className="SliderImage ext-lg mx-auto max-w-xl text-gray-600 md:text-center dark:text-gray-400">
-                            Our vision and mission guide us in delivering exceptional service and value to our customers.
-                        </p>
-                    </div>
-                    <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-2">
-                        <div className="">
-                            <h2 className="mb-4 text-center">Vision</h2>
-                            <p className="SliderImage text-lg text-black md:text-start dark:text-gray-400">
-                                becoming a leading, reliable, and integrated group of companies in providing equipment and services for the mining,
-                                construction, and industrial sectors.
-                            </p>
-                        </div>
-                        <div className="md:border-l md:pl-8">
-                            <h2 className="mb-4 text-center">Mission</h2>
-                            <ul className="SliderImage list-disc space-y-4 pl-6 text-black dark:text-gray-400">
-                                <li>
-                                    Providing complete heavy equipment solutions, including units, spare parts, and after-sales services, to support
-                                    operations in mining, construction, and industry.
-                                </li>
-                                <li>
-                                    Delivering professional and safe mining contractor services, focused on achieving the best results with high
-                                    efficiency, strong operational standards, and prioritizing team safety.
-                                </li>
-                                <li>
-                                    Offering full-service solutions for various internal needs that support worksite operations in mining,
-                                    construction, and industry.
-                                </li>
-                                <li>
-                                    Developing innovative and efficient systems in company activities, building a positive work environment, and
-                                    creating competent, honest, well-mannered, and high-integrity human resources to support long-term company growth.
-                                </li>
-                                <li>
-                                    Practicing good, fair, and transparent corporate governance in order to achieve optimal results for all
-                                    shareholders and stakeholders.
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </motion.div>
-            </div>
-
-            <StickyScrollRevealComponent />
-
-            <div className="bg-[#d9d9d9]/60 dark:bg-[#0a0a0a]">
+            <div className="dark:bg-[#0a0a0a]">
                 <motion.div
                     className="mx-auto w-[80%] max-w-6xl py-8"
                     initial="hidden"
@@ -203,6 +201,8 @@ const About = () => {
                     <AutoScroll />
                 </motion.div>
             </div>
+            {/* <StickyScrollRevealComponent /> */}
+            <Timeline_02 />
             <div className="dark:bg-[#0a0a0a]">
                 <motion.div
                     className="mx-auto w-[80%] max-w-6xl py-8"

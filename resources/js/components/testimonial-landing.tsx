@@ -1,6 +1,5 @@
 import { Testimonial } from '@/components/ui/testimonial-card';
 import { motion } from 'framer-motion';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState } from 'react';
 
 const testimonials = [
@@ -63,21 +62,21 @@ export function TestimonialLanding() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -100 }}
                 transition={{ duration: 0.4 }}
-                className="grid w-full max-w-[76rem] cursor-grab gap-6 active:cursor-grabbing sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+                className="grid w-full max-w-[76rem] cursor-grab gap-6 py-4 active:cursor-grabbing sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
             >
                 {getVisibleTestimonials().map((testimonial, idx) => (
                     <Testimonial key={idx} {...testimonial} />
                 ))}
             </motion.div>
 
-            <div className="flex gap-4">
+            {/* <div className="flex gap-4">
                 <button onClick={handlePrev} className="rounded-full border p-2 transition hover:scale-110 hover:bg-gray-100 dark:hover:bg-gray-800">
                     <ChevronLeft />
                 </button>
                 <button onClick={handleNext} className="rounded-full border p-2 transition hover:scale-110 hover:bg-gray-100 dark:hover:bg-gray-800">
                     <ChevronRight />
                 </button>
-            </div>
+            </div> */}
         </div>
     );
 }

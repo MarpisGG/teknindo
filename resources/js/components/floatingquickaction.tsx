@@ -42,7 +42,7 @@ const FloatingQuickActions: React.FC = () => {
 
     return (
         <div
-            className={`pointer-events-none fixed right-0 bottom-0 z-50 m-0 flex w-full flex-row items-center justify-between p-0 shadow-[0_-2px_10px_rgba(0,0,0,0.1)] hover:pointer-events-auto md:top-1/2 md:right-0 md:bottom-auto md:w-auto md:translate-y-0 md:flex-col md:items-end md:justify-normal md:space-y-0 md:shadow-none`}
+            className={`fixed right-0 bottom-0 z-50 m-0 flex w-full flex-row items-center justify-between p-0 shadow-[0_-2px_10px_rgba(0,0,0,0.1)] hover:pointer-events-auto md:top-1/2 md:right-0 md:bottom-auto md:w-auto md:translate-y-0 md:flex-col md:items-end md:justify-normal md:space-y-0 md:shadow-none`}
         >
             {actions.map((action, index) => (
                 <div key={index} className="group relative w-full md:w-auto">

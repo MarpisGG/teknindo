@@ -6,83 +6,47 @@ interface Service {
     description: string;
 }
 
-// const services: Service[] = [
-//     {
-//         title: 'Solusi Terbaik untuk Masalah Alat Berat',
-//         description: 'Kami menyediakan produk - produk alat berat berkualitas Internasional dan sudah di ekspor ke banyak negara di seluruh dunia',
-//         icon: '🛠️',
-//     },
-//     {
-//         title: 'Layanan Konsultasi Proyek',
-//         description: 'Kami menyediakan layanan konsultasi mengenai referensi produk terbaik yang sesuai dengan kebutuhan customer.',
-//         icon: '🔩',
-//     },
-//     {
-//         title: 'Harga Bersainig',
-//         description: 'Kami menyediakan produk berkualitas terbaik dengan harga yang kompetitif dan bersifat negosiasi.',
-//         icon: '🧰',
-//     },
-//     {
-//         title: 'Ketersediaan Spare Part',
-//         description: 'Kami menyediakan sparepart di seluruh cabang kami agar semua customer mudah mendapatkannya.',
-//         icon: '📞',
-//     },
-//     {
-//         title: 'Jaminan Garansi Unit',
-//         description: 'Kami memberikan jaminan garansi unit bagi setiap pembelian alat berat dan jasa service perbaikan unit.',
-//         icon: '👨‍🔧',
-//     },
-//     {
-//         title: 'Layanan Pembiayaan',
-//         description:
-//             'Kami telah bekerja sama dengan beberapa perusahaan leasing alat berat untuk menghadirkan bantuan pembiayaan bagi para customer kami.',
-//         icon: '👨‍🔧',
-//     },
-// ];
-
 const services: Service[] = [
     {
-        title: 'The Best Solutions for Your Heavy Equipment Needs',
+        title: 'Comprehensive Solutions',
         description:
-            'We provide high-quality heavy equipment products with international standards, trusted and exported to many countries around the world.',
-        icon: '🛠️',
+            'From heavy equipment distribution and rental services to industrial supplies, tire production, and even international sourcing, we provide everything you need in one place.',
+        icon: '⚙️', // gear → melambangkan solusi teknis dan lengkap
     },
     {
-        title: 'Professional Project Consultation',
-        description: 'We offer expert consultation services to help you choose the most suitable products according to your project requirements.',
-        icon: '🔩',
+        title: 'Expertise Across Industries',
+        description:
+            'With both local and international presence, including partnerships in China, we connect you with high-quality products and services that you can trust.',
+        icon: '🌍', // globe → melambangkan jangkauan global & lintas industri
     },
     {
-        title: 'Competitive Pricing',
-        description: 'We deliver top-quality products at competitive and negotiable prices to ensure the best value for our customers.',
-        icon: '🧰',
+        title: 'Commitment to Growth and Innovation',
+        description:
+            'We continuously invest in our people, our technology, and our services to deliver better solutions that help your business move forward.',
+        icon: '🚀', // rocket → melambangkan inovasi & pertumbuhan
     },
     {
-        title: 'Spare Parts Availability',
-        description: 'We ensure the availability of spare parts at all our branch offices, making it easy for our customers to get what they need.',
-        icon: '📞',
+        title: 'Customer-Focused Partnership',
+        description:
+            'Your business is our priority. We don’t just deliver products—we build long-term partnerships based on trust, reliability, and shared growth.',
+        icon: '🤝', // handshake → kemitraan & kepercayaan
     },
     {
         title: 'Unit Warranty Guarantee',
         description: 'We provide a warranty guarantee for every heavy equipment purchase and repair service to give our customers peace of mind.',
-        icon: '👨‍🔧',
-    },
-    {
-        title: 'Financing Support',
-        description: 'We collaborate with leading heavy equipment leasing companies to offer financing solutions for our valued customers.',
-        icon: '💰',
+        icon: '🛡️', // shield → melambangkan proteksi & garansi
     },
 ];
 
 const ServiceCard: React.FC = () => {
     return (
-        <div className="flex flex-col items-center gap-12">
+        <div className="flex w-full flex-col items-center gap-12 px-4">
             {/* Baris 1 - 3 Item */}
-            <div className="grid w-full max-w-6xl items-stretch gap-8 md:grid-cols-3">
+            <div className="grid w-full max-w-6xl auto-rows-fr gap-8 md:grid-cols-2 lg:grid-cols-3">
                 {services.slice(0, 3).map((service, idx) => (
                     <div
                         key={idx}
-                        className="flex h-full transform flex-col rounded-lg bg-white p-6 shadow transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg dark:bg-[#1a1a1a]"
+                        className="flex h-full flex-col rounded-lg bg-white p-6 shadow transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg dark:bg-[#1a1a1a]"
                     >
                         <div className="mb-4 text-4xl">{service.icon}</div>
                         <h3 className="mb-2 text-xl font-semibold text-gray-900 dark:text-white">{service.title}</h3>
@@ -92,11 +56,11 @@ const ServiceCard: React.FC = () => {
             </div>
 
             {/* Baris 2 - 2 Item */}
-            <div className="grid w-full max-w-6xl items-stretch gap-8 md:grid-cols-3">
+            <div className="grid w-full max-w-4xl auto-rows-fr gap-8 md:grid-cols-2">
                 {services.slice(3).map((service, idx) => (
                     <div
                         key={idx}
-                        className="flex h-full transform flex-col rounded-lg bg-white p-6 shadow transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg dark:bg-[#1a1a1a]"
+                        className="flex h-full flex-col rounded-lg bg-white p-6 shadow transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg dark:bg-[#1a1a1a]"
                     >
                         <div className="mb-4 text-4xl">{service.icon}</div>
                         <h3 className="mb-2 text-xl font-semibold text-gray-900 dark:text-white">{service.title}</h3>

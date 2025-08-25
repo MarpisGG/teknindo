@@ -2,12 +2,12 @@ import CardCareerCulture from '@/components/card-career-culture';
 import FloatingQuickActions from '@/components/floatingquickaction';
 import { Footer7 } from '@/components/footer';
 import Navbar from '@/components/navbar';
-import SliderImage from '@/components/slider-image';
+import SliderImageCareer from '@/components/slider-image-career';
 import { InteractiveHoverButton } from '@/components/ui/interactive-hover-button';
 import { TestimonialCareer } from '@/components/ui/testimonial-career';
 import { Head } from '@inertiajs/react';
 import { motion } from 'framer-motion';
-import bg from '../../assets/image/career.png';
+import bg from '../../assets/image/careerthumbnail.png';
 
 const fadeInUp = {
     hidden: { opacity: 0, y: 40 },
@@ -57,16 +57,6 @@ function Career() {
                 animate="visible"
                 variants={fadeInUp}
             >
-                <div
-                    className="career-hero-bg absolute inset-0 -z-10"
-                    style={{
-                        backgroundImage: `url(${bg})`,
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center',
-                        height: '100%',
-                        width: '100%',
-                    }}
-                />
                 <div className="absolute inset-0 bg-black opacity-50"></div>
 
                 <div className="absolute top-8 left-4 z-10 flex items-center text-white md:left-48">
@@ -112,7 +102,7 @@ function Career() {
                         variants={zoomIn}
                     >
                         <div className="w-full sm:max-w-sm md:max-w-md lg:max-w-2xl xl:max-w-3xl">
-                            <SliderImage />
+                            <SliderImageCareer />
                         </div>
                     </motion.div>
 

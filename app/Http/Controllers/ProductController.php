@@ -272,12 +272,14 @@ class ProductController extends Controller
 
     public function landingCarousel()
     {
-        $products = Product::with('type')
-            ->select('id', 'name', 'slug', 'image')
+        $products = Product::with('type:id,slug')
+            ->whereHas('type')
+            ->select('id', 'name', 'slug', 'image', 'type_id')
             ->orderBy('order')
             ->limit(10)
             ->get();
 
         return response()->json($products);
     }
+
 }

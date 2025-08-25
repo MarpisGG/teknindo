@@ -5,7 +5,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 export default function HorizontalScrollCarouselDemo() {
-    const [products, setProducts] = useState([]);
+    const [products, setProducts] = useState<{ src: string; label: string; link: string }[]>([]);
 
     useEffect(() => {
         axios.get('/api/landing-products').then((res) => {
@@ -13,7 +13,8 @@ export default function HorizontalScrollCarouselDemo() {
                 res.data.slice(0, 4).map((product: any) => ({
                     src: `/storage/${product.image}`,
                     label: product.name,
-                    link: `/products/heavyweight-equipment/${product.slug}`, // tambahkan link
+                    // pakai optional chaining biar aman kalau type null
+                    link: `/products/${product.type?.slug || 'unknown'}/${product.slug}`,
                 })),
             );
         });

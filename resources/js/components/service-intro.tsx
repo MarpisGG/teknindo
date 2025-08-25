@@ -1,43 +1,37 @@
 import { motion } from 'framer-motion';
 import React, { useState } from 'react';
 import excavator from '../../assets/image/excavator-services.png';
-import periodic from '../../assets/image/service/2.png';
-import inspection from '../../assets/image/service/3.png';
-import troubleshooting from '../../assets/image/service/4.png';
-import overhaul from '../../assets/image/service/5.png';
-import sparePart from '../../assets/image/service/6.png';
-import serviceContract from '../../assets/image/service/service-contract-svgrepo-com.png';
 
 const services = [
     {
-        title: 'Service Contract',
-        description: 'Keep your machine protected longer with our extended warranty and repair services.',
-        image: serviceContract,
+        title: 'Heavy Equipment & Truck Distribution',
+        description: 'Supplying reliable heavy machinery and trucks to power your operations with trusted performance.',
+        image: '🚛', // Truck
     },
     {
-        title: 'Periodic Service',
-        description: 'Regular service to keep your equipment in top condition and ready for work anytime.',
-        image: periodic,
+        title: 'Equipment Rental Services',
+        description: 'Offering heavy equipment, dump trucks, and operational vehicles on flexible rental terms to keep projects running smoothly.',
+        image: '📦', // Rental/Service
     },
     {
-        title: 'Inspection Unit',
-        description: 'Thorough checks to make sure your machines are safe and free from hidden issues.',
-        image: inspection,
+        title: 'Industrial Supplies',
+        description: 'Delivering bulk industrial equipment, project hardware, and lubricants to meet the growing needs of diverse industries.',
+        image: '⚙️', // Industrial gear
     },
     {
-        title: 'Trouble shooting',
-        description: 'Fast and accurate solutions to fix any problem with your machine.',
-        image: troubleshooting,
+        title: 'Tire Manufacturing',
+        description: 'Producing durable, high-performance tires designed specifically for heavy equipment and dump trucks.',
+        image: '🔘', // Tire
     },
     {
-        title: 'Overhaul Engine',
-        description: "Restore your engine's power and performance to make it feel like new.",
-        image: overhaul,
+        title: 'Agricultural & Compact Machinery',
+        description: 'Providing versatile machines for agricultural productivity and smaller-scale industrial applications.',
+        image: '🚜', // Tractor
     },
     {
-        title: 'Spare Part Installation',
-        description: 'We install spare parts properly to keep your machine strong and reliable.',
-        image: sparePart,
+        title: 'Mining Contractor Services',
+        description: 'Supporting mining operations with professional hauling and contractor services, built on safety and efficiency.',
+        image: '⛏️', // Mining
     },
 ];
 
@@ -112,7 +106,7 @@ const ServiceIntroSection: React.FC = () => {
                                             className="mb-3 flex cursor-grab items-center justify-center active:cursor-grabbing"
                                             whileTap={{ scale: 0.95 }}
                                         >
-                                            <img src={service.image} alt={service.title} className="h-20 w-20 object-contain" />
+                                            <span className="text-4xl">{service.image}</span>
                                         </motion.div>
                                         <p className="mb-2 text-center text-base font-semibold text-gray-900 dark:text-white">{service.title}</p>
                                         <p className="text-center text-sm text-gray-600 dark:text-gray-400">{service.description}</p>

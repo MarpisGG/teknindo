@@ -81,7 +81,7 @@ function move(delta: number) {
         {...props}
       >
         <motion.div
-          className="flex flex-nowrap gap-6"
+          className="flex flex-nowrap gap-8"
           style={{ x }}
           initial={{ x: 0 }} // Start with content visible
         >

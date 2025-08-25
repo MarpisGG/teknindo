@@ -15,7 +15,7 @@ interface Types {
 
 const Navbar: React.FC = () => {
     const { url } = usePage();
-    const isHome = url === '/';
+    const isHome = url === '/' || '/career';
     const { t: translate, i18n } = useTranslation();
     const { auth: authData } = usePage().props;
     const [types, setTypes] = useState<Types[]>([]);

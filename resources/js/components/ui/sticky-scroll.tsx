@@ -10,9 +10,9 @@ interface ContentItem {
 
 const content: ContentItem[] = [
     {
-        title: "2019 - The Beginning",
+        title: "2018 – Foundation of Mitra Teknindo Sejati (MTS)",
         description:
-            "In 2019, we embarked on a journey to revolutionize the way teams collaborate. Our mission was clear: to create a platform that would empower teams to work together seamlessly, no matter where they were located.",
+            "The journey began with the establishment of Mitra Teknindo Sejati (MTS), specializing in the distribution of heavy equipment and heavy-duty trucks. With a strong commitment to reliability and customer trust, MTS laid the foundation of what would later grow into Teknindo Group.",
         content: (
             <div className="h-full w-full bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] flex items-center justify-center text-white">
                 Collaborative Editing
@@ -20,9 +20,9 @@ const content: ContentItem[] = [
         ),
     },
     {
-        title: "2022 ",
+        title: "2019 – Establishment of Mitra Suplaindo Sejati (MSS)",
         description:
-            "See changes as they happen. With our platform, you can track every modification in real time. No more confusion about the latest version of your project. Say goodbye to the chaos of version control and embrace the simplicity of real-time updates.",
+            "To meet the growing demand for industrial support, Mitra Suplaindo Sejati (MSS) was founded as a supplier of bulk industrial equipment, hardware for project sites, and industrial lubricants. MSS quickly became a trusted partner for mining, construction, and manufacturing industries.",
         content: (
             <div className="h-full w-full  flex items-center justify-center text-white">
                 <img
@@ -36,9 +36,9 @@ const content: ContentItem[] = [
         ),
     },
     {
-        title: "Version control",
+        title: "2020 – Expansion to Global Trading with Wenzhou Yunding International (WYI)",
         description:
-            "Experience real-time updates and never stress about version control again. Our platform ensures that you're always working on the most recent version of your project, eliminating the need for constant manual updates. Stay in the loop, keep your team aligned, and maintain the flow of your work without any interruptions.",
+            "Strengthening its international presence, Wenzhou Yunding International (WYI) was established in China. As a global trading company, WYI provides diverse machinery, industrial tools, and specialized equipment, connecting global markets with trusted quality and value.",
         content: (
             <div className="h-full w-full bg-[linear-gradient(to_bottom_right,var(--orange-500),var(--yellow-500))] flex items-center justify-center text-white">
                 Version control
@@ -46,9 +46,19 @@ const content: ContentItem[] = [
         ),
     },
     {
-        title: "Running out of content",
+        title: "2024 – Launch of Teknindo Super Haul (TSH)",
         description:
-            "Experience real-time updates and never stress about version control again. Our platform ensures that you're always working on the most recent version of your project, eliminating the need for constant manual updates. Stay in the loop, keep your team aligned, and maintain the flow of your work without any interruptions.",
+            "After years of steady growth, Teknindo Super Haul (TSH) was launched to provide heavy equipment and dump truck rental services, along with operational vehicles, ensuring smooth operations in the mining sector.",
+        content: (
+            <div className="h-full w-full bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] flex items-center justify-center text-white">
+                Running out of content
+            </div>
+        ),
+    },
+    {
+        title: "2025 – A Year of Rapid Expansion",
+        description:
+            "In 2025, Teknindo Group entered a phase of rapid expansion by establishing three new subsidiaries: LGCM Laigong Indonesia, focusing on compact heavy machinery and agricultural equipment; Teknindo Adhya Pane, providing mining contractor services with a strong emphasis on safety and efficiency; and Tenrich Tyre Indonesia, dedicated to producing durable, high-performance tires for heavy equipment and dump trucks.",
         content: (
             <div className="h-full w-full bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] flex items-center justify-center text-white">
                 Running out of content

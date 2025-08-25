@@ -247,7 +247,7 @@ Route::get('/api/blogs', [BlogController::class, 'apiBlogs'])->name('api.blogs')
 Route::get('/api/blogs/{slug}', [BlogController::class, 'showSlug'])->name('api.blogs.showSlug');
 
 
-Route::get('/products/sparepart', [ProductController::class, 'sparepartLanding'])->name('products.sparepart');
+Route::get('/products/spare-part', [ProductController::class, 'sparepartLanding'])->name('products.sparepart');
 Route::get('/products/{slug}', [ProductController::class, 'productsByType'])->name('products.byType');
 Route::get('/products/{typeSlug}/{productSlug}', [ProductController::class, 'showByType'])->name('products.showByType');
 Route::patch('/admin/products/{product}/move', [ProductController::class, 'moveOrder']);
