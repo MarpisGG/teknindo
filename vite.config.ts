@@ -23,7 +23,7 @@ export default defineConfig({
         },
     },
     build: {
-        outDir: 'public/build', // HARUS BEGITU
+        outDir: 'public_html/build', // HARUS BEGITU
         manifest: true,
     },
 });
