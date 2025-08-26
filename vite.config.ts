@@ -3,7 +3,6 @@ import react from '@vitejs/plugin-react';
 import laravel from 'laravel-vite-plugin';
 import { resolve } from 'node:path';
 import { defineConfig } from 'vite';
-import typography from '@tailwindcss/typography';
 
 export default defineConfig({
     plugins: [
@@ -22,5 +21,9 @@ export default defineConfig({
         alias: {
             'ziggy-js': resolve(__dirname, 'vendor/tightenco/ziggy'),
         },
+    },
+    build: {
+        outDir: 'public/build', // HARUS BEGITU
+        manifest: true,
     },
 });
