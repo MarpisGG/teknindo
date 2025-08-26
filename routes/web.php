@@ -125,7 +125,7 @@ Route::middleware(['auth', 'preventBack'])->prefix('admin')->group(function () {
     // Blogs
     Route::get('/blogs', [BlogController::class, 'index'])->name('blogs.index');
     Route::get('/blogs/create', [BlogController::class, 'create'])->name('blogs.create');
-    Route::get('/blogs/{slug}', [BlogController::class, 'show'])->name('blogs.show');
+    Route::get('/blogs/{slug}', [BlogController::class, 'show'])->name('blogs.show.admin');
     Route::get('/blogs/{id}/edit', [BlogController::class, 'edit'])->name('blogs.edit');
     
     // Jobs
@@ -143,7 +143,7 @@ Route::middleware(['auth', 'preventBack'])->prefix('admin')->group(function () {
     Route::get('/types', [TypeProductController::class, 'index'])->name('types.index');
     Route::get('/types/create', [TypeProductController::class, 'create'])->name('types.create');
     Route::get('/types/{id}/edit', [TypeProductController::class, 'edit'])->name('types.edit');
-    Route::delete('/types/{id}', [TypeProductController::class, 'destroy'])->name('types.destroy');
+    Route::delete('/types/{id}', [TypeProductController::class, 'destroy'])->name('types.destroy.admin');
     
     
     // Products
