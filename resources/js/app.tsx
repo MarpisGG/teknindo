@@ -7,7 +7,6 @@ import 'leaflet/dist/leaflet.css';
 import { createRoot } from 'react-dom/client';
 import 'react-quill-new/dist/quill.snow.css';
 import GoogleTranslateLoader from './components/googletranslateloader';
-import { initializeTheme } from './hooks/use-appearance';
 import './i18n'; // Import i18n configuration
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
@@ -36,6 +35,3 @@ createInertiaApp({
         color: '#4B5563',
     },
 });
-
-// This will set light / dark mode on load...
-initializeTheme();
