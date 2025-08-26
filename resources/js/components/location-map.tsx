@@ -12,7 +12,7 @@ L.Icon.Default.mergeOptions({
 
 export default function LocationMap() {
     return (
-        <div className="relative z-0 mb-8 flex h-[75vh] w-full flex-col items-center justify-center bg-black">
+        <div className="relative z-0 flex h-[75vh] w-full flex-col items-center justify-center bg-black pb-8">
             <div className="mx-auto flex h-full w-full max-w-6xl flex-col items-center justify-center">
                 <MapContainer
                     center={[0, 118]}
