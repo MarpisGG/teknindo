@@ -226,7 +226,7 @@ export default function JobDetailPage() {
                                 </a>
                                 <span className="mx-1">{' > '}</span>
                             </li>
-                            <li className="max-w-xs truncate font-semibold text-gray-800 dark:text-white" title={job.title}>
+                            <li className="max-w-xs truncate font-semibold" title={job.title}>
                                 {job.title}
                             </li>
                         </ol>

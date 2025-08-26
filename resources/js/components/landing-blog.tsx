@@ -42,7 +42,7 @@ const LandingBlog: React.FC = () => {
     return (
         <div className="container mx-auto rounded px-4 py-8">
             <motion.h1
-                className="mb-6 text-center text-3xl font-bold text-gray-900 dark:text-white"
+                className="mb-6 text-center text-3xl font-bold text-gray-900"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
@@ -51,7 +51,7 @@ const LandingBlog: React.FC = () => {
             </motion.h1>
 
             <motion.p
-                className="mx-auto mb-4 max-w-2xl text-center text-lg dark:text-gray-400"
+                className="mx-auto mb-4 max-w-2xl text-center text-lg"
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.5 }}

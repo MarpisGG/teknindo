@@ -23,7 +23,7 @@ const About = () => {
 
             {/* <ScrollExpansion /> */}
 
-            <div className="bg-[#d9d9d9]/60 dark:bg-[#0a0a0a]">
+            <div className="bg-[#d9d9d9]/60">
                 <motion.div
                     className="mx-auto w-[80%] max-w-6xl py-4"
                     initial="hidden"
@@ -32,8 +32,8 @@ const About = () => {
                     variants={fadeInUp}
                 >
                     <div className="mx-auto my-6 hidden md:block">
-                        <nav className="flex items-center space-x-2 text-sm dark:text-gray-400">
-                            <Link href="/" className="text-gray-800 hover:underline dark:text-white">
+                        <nav className="flex items-center space-x-2 text-sm">
+                            <Link href="/" className="text-gray-800 hover:underline">
                                 Home
                             </Link>
                             <span>{'>'}</span>
@@ -42,7 +42,7 @@ const About = () => {
                     </div>
                     <div className="mb-8">
                         <img src={Teknindo} alt="Teknindo Logo" className="mx-auto mb-4 h-auto md:w-[60%]" />
-                        <div className="mx-auto max-w-6xl space-y-6 text-lg md:text-start dark:text-gray-400">
+                        <div className="mx-auto max-w-6xl space-y-6 text-lg md:text-start">
                             <p>
                                 Teknindo Group is a corporate group engaged in the provision of equipment and services for the mining, construction,
                                 and industrial sectors. At present, Teknindo Group comprises seven member companies. The parent entity of the group is{' '}
@@ -75,7 +75,7 @@ const About = () => {
                 </motion.div>
             </div>
 
-            <div className="bg-[#FDFDFC] dark:bg-[#0a0a0a]">
+            <div className="bg-[#FDFDFC]">
                 <motion.div
                     className="mx-auto mt-8 w-[80%] max-w-6xl pb-8"
                     initial="hidden"
@@ -85,21 +85,21 @@ const About = () => {
                 >
                     <div className="mb-8">
                         <h1 className="pt-8 pb-4 text-center">Our Vision & Mission</h1>
-                        <p className="SliderImage ext-lg mx-auto max-w-xl text-gray-600 md:text-center dark:text-gray-400">
+                        <p className="SliderImage ext-lg mx-auto max-w-xl text-gray-600 md:text-center">
                             Our vision and mission guide us in delivering exceptional service and value to our customers.
                         </p>
                     </div>
                     <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-2">
                         <div className="">
                             <h2 className="mb-4 text-center">Vision</h2>
-                            <p className="SliderImage text-lg text-black md:text-start dark:text-gray-400">
+                            <p className="SliderImage text-lg text-black md:text-start">
                                 becoming a leading, reliable, and integrated group of companies in providing equipment and services for the mining,
                                 construction, and industrial sectors.
                             </p>
                         </div>
                         <div className="md:border-l md:pl-8">
                             <h2 className="mb-4 text-center">Mission</h2>
-                            <ul className="SliderImage list-disc space-y-4 pl-6 text-black dark:text-gray-400">
+                            <ul className="SliderImage list-disc space-y-4 pl-6 text-black">
                                 <li>
                                     Providing complete heavy equipment solutions, including units, spare parts, and after-sales services, to support
                                     operations in mining, construction, and industry.
@@ -126,7 +126,7 @@ const About = () => {
                 </motion.div>
             </div>
 
-            <div className="bg-[#d9d9d9]/60 dark:bg-[#0a0a0a]">
+            <div className="bg-[#d9d9d9]/60">
                 <motion.div
                     className="mx-auto w-[80%] max-w-6xl py-8"
                     initial="hidden"
@@ -136,11 +136,8 @@ const About = () => {
                 >
                     {/* What We Do */}
                     <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-[1fr_2fr]">
-                        <div className="self-start border-gray-300 pr-8 text-center md:sticky md:top-20 md:border-r dark:border-gray-700">
-                            <p
-                                className="text-4xl font-bold text-gray-900 md:text-5xl dark:text-white"
-                                style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)' }}
-                            >
+                        <div className="self-start border-gray-300 pr-8 text-center md:sticky md:top-20 md:border-r">
+                            <p className="text-4xl font-bold text-gray-900 md:text-5xl" style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)' }}>
                                 What We Do
                             </p>
                         </div>
@@ -179,8 +176,8 @@ const About = () => {
                                     variants={fadeInUp}
                                     className="md:text-start"
                                 >
-                                    <p className="my-2 text-2xl font-semibold text-gray-800 md:text-3xl dark:text-white">{item.title}</p>
-                                    <p className="text-lg text-gray-600 dark:text-gray-400">{item.content}</p>
+                                    <p className="my-2 text-2xl font-semibold text-gray-800 md:text-3xl">{item.title}</p>
+                                    <p className="text-lg text-gray-600">{item.content}</p>
                                 </motion.div>
                             ))}
                         </div>
@@ -188,7 +185,7 @@ const About = () => {
                 </motion.div>
             </div>
 
-            <div className="dark:bg-[#0a0a0a]">
+            <div className="">
                 <motion.div
                     className="mx-auto w-[80%] max-w-6xl py-8"
                     initial="hidden"
@@ -196,14 +193,14 @@ const About = () => {
                     viewport={{ once: true }}
                     variants={fadeInUp}
                 >
-                    <h1 className="mb-4 text-center text-3xl font-bold text-gray-900 dark:text-white">Part of the Teknindo Group</h1>
-                    <p className="mb-4 text-center text-lg dark:text-gray-400">Meet the businesses that drive our collective success.</p>
+                    <h1 className="mb-4 text-center text-3xl font-bold text-gray-900">Part of the Teknindo Group</h1>
+                    <p className="mb-4 text-center text-lg">Meet the businesses that drive our collective success.</p>
                     <AutoScroll />
                 </motion.div>
             </div>
             {/* <StickyScrollRevealComponent /> */}
             <Timeline_02 />
-            <div className="dark:bg-[#0a0a0a]">
+            <div className="">
                 <motion.div
                     className="mx-auto w-[80%] max-w-6xl py-8"
                     initial="hidden"
@@ -211,15 +208,15 @@ const About = () => {
                     viewport={{ once: true }}
                     variants={fadeInUp}
                 >
-                    <h1 className="py-4 text-center text-3xl font-bold text-gray-900 dark:text-white">Our Loyal Customer</h1>
-                    <p className="mx-auto mb-4 max-w-2xl text-center text-lg dark:text-gray-400">
+                    <h1 className="py-4 text-center text-3xl font-bold text-gray-900">Our Loyal Customer</h1>
+                    <p className="mx-auto mb-4 max-w-2xl text-center text-lg">
                         We are proud to serve loyal customers who have been part of our journey. Your trust is a testament to the quality of our
                         products and services.
                     </p>
                 </motion.div>
                 <img src={ListPerusahaan} alt="List of Companies" className="mx-auto max-h-screen w-full max-w-6xl" />
             </div>
-            <div className="bg-[#FCC200] dark:bg-[#0a0a0a]">
+            <div className="bg-[#FCC200]">
                 <motion.div
                     className="mx-auto w-[80%] max-w-6xl"
                     initial="hidden"
@@ -227,10 +224,10 @@ const About = () => {
                     viewport={{ once: true }}
                     variants={fadeInUp}
                 >
-                    <h1 className="mb-4 pt-8 text-center text-3xl font-bold text-gray-900 dark:text-white">Let’s Work Together</h1>
-                    <p className="SliderImage mx-auto max-w-xl pb-8 text-center text-lg text-gray-600 dark:text-gray-400">
+                    <h1 className="mb-4 pt-8 text-center text-3xl font-bold text-gray-900">Let’s Work Together</h1>
+                    <p className="SliderImage mx-auto max-w-xl pb-8 text-center text-lg text-gray-600">
                         Interested in partnering with us?
-                        <Link href="/contact" className="mx-1 font-bold text-gray-800 hover:underline dark:text-white dark:hover:text-[#FCC200]">
+                        <Link href="/contact" className="mx-1 font-bold text-gray-800 hover:underline">
                             Contact Us
                         </Link>
                         to start a conversation about collaboration or procurement.

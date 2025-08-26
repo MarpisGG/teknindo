@@ -127,7 +127,7 @@ export default function Type({ type, products }: TypePageProps) {
                             <Link
                                 href={`/products/${type.slug}/${product.slug}`}
                                 key={product.id}
-                                className="group relative flex w-full max-w-6xl flex-col rounded-lg border bg-white shadow-md transition-transform duration-300 hover:scale-[1.02] hover:shadow-lg dark:bg-[#18181b]"
+                                className="group relative flex w-full max-w-6xl flex-col rounded-lg border bg-white shadow-md transition-transform duration-300 hover:scale-[1.02] hover:shadow-lg"
                             >
                                 <motion.div
                                     key={product.id}
@@ -201,23 +201,15 @@ export default function Type({ type, products }: TypePageProps) {
             </div>
 
             {/* Discover More */}
-            <motion.div className="dark:bg-[#0a0a0a]" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
-                <motion.div
-                    className="mx-auto bg-[#fcc200] dark:bg-[#0a0a0a]"
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    variants={fadeInUp}
-                >
-                    <h1 className="mb-4 px-4 pt-8 text-center text-3xl font-bold text-gray-900 md:px-0 dark:text-white">
-                        Discover More of Our Products
-                    </h1>
-                    <p className="mx-auto px-4 pb-8 text-center text-lg text-gray-600 md:px-0 dark:text-gray-400">
+            <motion.div className="" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
+                <motion.div className="mx-auto bg-[#fcc200]" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
+                    <h1 className="mb-4 px-4 pt-8 text-center text-3xl font-bold text-gray-900 md:px-0">Discover More of Our Products</h1>
+                    <p className="mx-auto px-4 pb-8 text-center text-lg text-gray-600 md:px-0">
                         Explore our full product catalog for more solutions to fit your needs.
                         <br />
                         <a
                             href="https://www.mitrateknindosejati.com/product"
-                            className="mx-1 font-bold text-gray-800 hover:underline dark:text-white"
+                            className="mx-1 font-bold text-gray-800 hover:underline"
                             target="_blank"
                             rel="noopener noreferrer"
                         >

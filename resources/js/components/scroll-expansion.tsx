@@ -242,7 +242,7 @@ const ScrollExpansion = () => {
     }, []);
 
     return (
-        <div className="min-h-screen bg-[#FFFFF] text-[#1b1b18] dark:bg-[#0a0a0a] dark:text-white">
+        <div className="min-h-screen bg-[#FFFFF] text-[#1b1b18]">
             <ScrollExpandMedia
                 mediaType="video"
                 mediaSrc={video}

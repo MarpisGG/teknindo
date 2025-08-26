@@ -51,7 +51,7 @@ const ServiceIntroSection: React.FC = () => {
     const visibleServices = services.slice(currentIndex, currentIndex + ITEMS_PER_PAGE);
 
     return (
-        <section className="bg-white px-6 py-8 dark:bg-[#ffff]">
+        <section className="bg-white px-6 py-8">
             <div className="mx-auto flex max-w-6xl flex-col-reverse gap-12 lg:flex-row lg:items-center">
                 {/* Left - Carousel */}
                 <div className="flex flex-col lg:w-2/3">
@@ -61,11 +61,11 @@ const ServiceIntroSection: React.FC = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5 }}
                             viewport={{ once: true }}
-                            className="mb-6 text-3xl font-bold text-gray-900 dark:text-white"
+                            className="mb-6 text-3xl font-bold text-gray-900"
                         >
                             Your Equipment, Our Priority
                         </motion.h2>
-                        <p className="mb-8 max-w-md text-gray-600 dark:text-gray-300">
+                        <p className="mb-8 max-w-md text-gray-600">
                             Reliable service and expert care to keep your machines running at their best—so you can focus on what matters most.
                         </p>
                     </div>
@@ -77,7 +77,7 @@ const ServiceIntroSection: React.FC = () => {
                             <button
                                 onClick={handlePrev}
                                 disabled={currentIndex === 0}
-                                className="group flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full border border-gray-300 bg-white text-xl font-bold text-gray-700 shadow transition hover:bg-gray-100 disabled:opacity-50 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white"
+                                className="group flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full border border-gray-300 bg-white text-xl font-bold text-gray-700 shadow transition hover:bg-gray-100 disabled:opacity-50"
                             >
                                 ←
                             </button>
@@ -90,7 +90,7 @@ const ServiceIntroSection: React.FC = () => {
                                         initial={{ opacity: 0, y: 40 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         transition={{ duration: 0.5, delay: index * 0.1 }}
-                                        className="flex h-full flex-col rounded-2xl bg-gradient-to-br from-white via-gray-50 to-gray-100 p-5 shadow-lg ring-1 ring-gray-200 transition hover:-translate-y-1 hover:shadow-2xl dark:from-neutral-900 dark:via-neutral-800 dark:to-neutral-900 dark:ring-neutral-800"
+                                        className="flex h-full flex-col rounded-2xl bg-gradient-to-br from-white via-gray-50 to-gray-100 p-5 shadow-lg ring-1 ring-gray-200 transition hover:-translate-y-1 hover:shadow-2xl"
                                     >
                                         <motion.div
                                             drag="x"
@@ -108,8 +108,8 @@ const ServiceIntroSection: React.FC = () => {
                                         >
                                             <span className="text-4xl">{service.image}</span>
                                         </motion.div>
-                                        <p className="mb-2 text-center text-base font-semibold text-gray-900 dark:text-white">{service.title}</p>
-                                        <p className="text-center text-sm text-gray-600 dark:text-gray-400">{service.description}</p>
+                                        <p className="mb-2 text-center text-base font-semibold text-gray-900">{service.title}</p>
+                                        <p className="text-center text-sm text-gray-600">{service.description}</p>
                                     </motion.div>
                                 ))}
                             </div>
@@ -118,7 +118,7 @@ const ServiceIntroSection: React.FC = () => {
                             <button
                                 onClick={handleNext}
                                 disabled={currentIndex + ITEMS_PER_PAGE >= services.length}
-                                className="group flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full border border-gray-300 bg-white text-xl font-bold text-gray-700 shadow transition hover:bg-gray-100 disabled:opacity-50 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white"
+                                className="group flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full border border-gray-300 bg-white text-xl font-bold text-gray-700 shadow transition hover:bg-gray-100 disabled:opacity-50"
                             >
                                 →
                             </button>

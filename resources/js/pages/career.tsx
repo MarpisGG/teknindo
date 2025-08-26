@@ -108,7 +108,7 @@ function Career() {
 
                     <motion.div className="px-6 md:px-6" variants={fadeInUp}>
                         <h2 className="-900 mb-4 text-3xl font-bold">Why Join Us?</h2>
-                        <p className="-600 dark:-400 text-lg">
+                        <p className="-600 text-lg">
                             At Teknindo Group, we believe that our people are the driving force behind our success. We offer not just a job, but a
                             place where your ideas matter, your growth is prioritized, and your achievements are recognized. If you’re looking for a
                             place to learn, lead, and grow—this is it.
@@ -134,16 +134,10 @@ function Career() {
             </motion.div>
 
             {/* CTA SECTION */}
-            <motion.div
-                className="bg-[#FCC200] dark:bg-[#0a0a0a]"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeInUp}
-            >
+            <motion.div className="bg-[#FCC200]" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
                 <motion.div className="mx-auto w-[80%] max-w-7xl" variants={fadeInUp}>
                     <p className="mb-8 pt-8 text-center text-3xl font-bold sm:text-4xl md:text-5xl">Join Our Team</p>
-                    <p className="-600 mx-auto max-w-5xl pb-8 text-justify text-lg md:text-center dark:text-gray-400">
+                    <p className="-600 mx-auto max-w-5xl pb-8 text-justify text-lg md:text-center">
                         Are you passionate, driven, and ready to grow?
                         <br />
                         Become part of a dynamic team where your ideas matter and your contributions make an impact.

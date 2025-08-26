@@ -46,11 +46,11 @@ const ServiceCard: React.FC = () => {
                 {services.slice(0, 3).map((service, idx) => (
                     <div
                         key={idx}
-                        className="flex h-full flex-col rounded-lg bg-white p-6 shadow transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg dark:bg-[#1a1a1a]"
+                        className="flex h-full flex-col rounded-lg bg-white p-6 shadow transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg"
                     >
                         <div className="mb-4 text-4xl">{service.icon}</div>
-                        <h3 className="mb-2 text-xl font-semibold text-gray-900 dark:text-white">{service.title}</h3>
-                        <p className="flex-grow text-gray-600 dark:text-gray-400">{service.description}</p>
+                        <h3 className="mb-2 text-xl font-semibold text-gray-900">{service.title}</h3>
+                        <p className="flex-grow text-gray-600">{service.description}</p>
                     </div>
                 ))}
             </div>
@@ -60,11 +60,11 @@ const ServiceCard: React.FC = () => {
                 {services.slice(3).map((service, idx) => (
                     <div
                         key={idx}
-                        className="flex h-full flex-col rounded-lg bg-white p-6 shadow transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg dark:bg-[#1a1a1a]"
+                        className="flex h-full flex-col rounded-lg bg-white p-6 shadow transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg"
                     >
                         <div className="mb-4 text-4xl">{service.icon}</div>
-                        <h3 className="mb-2 text-xl font-semibold text-gray-900 dark:text-white">{service.title}</h3>
-                        <p className="flex-grow text-gray-600 dark:text-gray-400">{service.description}</p>
+                        <h3 className="mb-2 text-xl font-semibold">{service.title}</h3>
+                        <p className="flex-grow">{service.description}</p>
                     </div>
                 ))}
             </div>

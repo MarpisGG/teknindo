@@ -13,7 +13,6 @@ import { Head, Link, usePage } from '@inertiajs/react';
 import axios from 'axios';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
-import video from '../../assets/video/videolanding.mp4';
 import HorizontalScrollCarouselDemo from './demo';
 
 interface Types {
@@ -59,7 +58,7 @@ export default function Welcome() {
                         loop
                         muted
                         className="absolute top-0 left-0 h-full w-full object-cover"
-                        src={video}
+                        src="/landing.mp4"
                         style={{
                             transform: 'translateZ(-1px) scale(2)',
                             minHeight: '100vh',
@@ -93,7 +92,7 @@ export default function Welcome() {
             </div>
             <div className="relative z-30 flex w-full items-center justify-center bg-[#d9d9d9]">
                 <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-4 py-8 md:grid-cols-2">
-                    <div className="flex max-w-full items-center justify-center overflow-hidden border-gray-300 px-4 text-center md:border-r dark:border-gray-700">
+                    <div className="flex max-w-full items-center justify-center overflow-hidden border-gray-300 px-4 text-center md:border-r">
                         <div className="flex h-full w-full items-center justify-center">
                             <div className="w-full sm:max-w-sm md:max-w-md lg:max-w-2xl xl:max-w-3xl">
                                 <SliderImage />
@@ -101,7 +100,7 @@ export default function Welcome() {
                         </div>
                     </div>
                     <div className="px-6 md:px-6">
-                        <p className="dark:-400 text-lg">
+                        <p className="text-lg">
                             Teknindo Group is a group of companies providing heavy equipment, spare parts, and services for the mining, construction,
                             and industrial sectors. Established in 2018 through its parent company PT. Mitra Teknindo Sejati (MTS), the Group has now
                             expanded into seven member companies. With continuous growth and innovation, Teknindo Group is committed to becoming a
@@ -126,7 +125,7 @@ export default function Welcome() {
             <div className="w-full">
                 <HorizontalScrollCarouselDemo />
             </div>
-            <div className="w-full bg-[#FCC200] px-0 dark:bg-[#0a0a0a]">
+            <div className="w-full bg-[#FCC200] px-0">
                 <div className="py-8 text-center">
                     <h1 className="text-4xl font-bold">Our Products</h1>
                 </div>
@@ -138,9 +137,7 @@ export default function Welcome() {
                             return (
                                 <motion.div
                                     key={type.id}
-                                    className={`flex w-full flex-col py-4 md:w-[50%] ${
-                                        isGray ? 'bg-[#d9d9d9] dark:bg-[#232326]' : 'bg-white dark:bg-[#18181b]'
-                                    }`}
+                                    className={`flex w-full flex-col py-4 md:w-[50%] ${isGray ? 'bg-[#d9d9d9]' : 'bg-white'}`}
                                     initial={{ opacity: 0, y: 50 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.6, ease: 'easeOut' }}
@@ -152,8 +149,8 @@ export default function Welcome() {
                                         className="h-64 w-full object-contain transition-transform duration-300 hover:scale-105"
                                     />
                                     <div className="mx-auto flex max-w-md flex-col gap-4 p-6">
-                                        <h2 className="-900 text-2xl font-bold dark:text-white">{type.name}</h2>
-                                        <p className="-700 dark:-300 text-base">{type.description}</p>
+                                        <h2 className="-900 text-2xl font-bold">{type.name}</h2>
+                                        <p className="-700 text-base">{type.description}</p>
                                         <div className="flex justify-center">
                                             <Link href={`/products/${type.slug ?? type.id}`}>
                                                 <InteractiveHoverButton className={`w-48 py-2 text-base font-medium ${isGray ? '' : 'bg-[#d9d9d9]'}`}>
@@ -170,7 +167,7 @@ export default function Welcome() {
             </div>
             <Statistic />
             <motion.section
-                className="bg-[#181818] px-6 pb-8 text-white dark:bg-[#0a0a0a]"
+                className="bg-[#181818] px-6 pb-8 text-white"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
@@ -189,32 +186,32 @@ export default function Welcome() {
                     </motion.div>
                 </div>
             </motion.section>
-            <motion.section className="py-8 dark:bg-gray-900" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
+            <motion.section className="py-8" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
                 <motion.div className="mx-auto max-w-6xl px-4" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
-                    <h1 className="-900 mb-4 text-center text-3xl font-bold dark:text-white">What Our Clients Say</h1>
-                    <p className="-600 dark:-400 mx-auto mb-4 max-w-2xl text-center text-lg">
+                    <h1 className="-900 mb-4 text-center text-3xl font-bold">What Our Clients Say</h1>
+                    <p className="-600 mx-auto mb-4 max-w-2xl text-center text-lg">
                         Hear from our satisfied clients about their experiences with our services and how we have helped them achieve their project
                         goals.
                     </p>
                     <TestimonialLanding />
                 </motion.div>
             </motion.section>
-            <div className="flex flex-col items-center bg-black text-white lg:justify-center lg:p-8 dark:bg-[#0a0a0a]">
+            <div className="flex flex-col items-center bg-black text-white lg:justify-center lg:p-8">
                 <div className="mt-8 flex flex-col items-center justify-center">
-                    <h1 className="text-center text-4xl font-bold text-white dark:text-white">Branch Locations & Service Points</h1>
-                    <p className="dark:-400 my-4 max-w-2xl px-4 text-center text-lg text-white md:px-0">
+                    <h1 className="text-center text-4xl font-bold text-white">Branch Locations & Service Points</h1>
+                    <p className="my-4 max-w-2xl px-4 text-center text-lg text-white md:px-0">
                         With multiple branches and service centers, we ensure faster response times, seamless support, and better accessibility
                         wherever you are.
                     </p>
                 </div>
             </div>
             <LocationMap />
-            <div className="flex w-full items-center justify-center bg-[#d9d9d9] dark:bg-[#232326]">
+            <div className="flex w-full items-center justify-center bg-[#d9d9d9]">
                 <div className="mx-auto px-4">
                     <LandingBlog />
                 </div>
             </div>
-            <motion.div className="dark:bg-[#0a0a0a]" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
+            <motion.div className="" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
                 <motion.div
                     className="mx-auto w-[80%] max-w-6xl"
                     initial="hidden"
@@ -222,10 +219,10 @@ export default function Welcome() {
                     viewport={{ once: true }}
                     variants={fadeInUp}
                 >
-                    <h1 className="-900 mb-4 pt-8 text-center text-3xl font-bold dark:text-white">Let’s Work Together</h1>
-                    <p className="-600 dark:-400 mx-auto max-w-xl pb-8 text-lg md:text-center">
+                    <h1 className="-900 mb-4 pt-8 text-center text-3xl font-bold">Let’s Work Together</h1>
+                    <p className="-600 mx-auto max-w-xl pb-8 text-lg md:text-center">
                         Interested in partnering with us?
-                        <Link href="/contact" className="-800 mx-1 font-bold hover:text-[#FCC200] hover:underline dark:text-white">
+                        <Link href="/contact" className="-800 mx-1 font-bold hover:text-[#FCC200] hover:underline">
                             Contact Us
                         </Link>
                         to start a conversation about collaboration or procurement.

@@ -32,7 +32,7 @@ export default function SparepartLanding() {
                         please visit&nbsp;
                         <a
                             href="https://www.mitrateknindosejati.com/parts-168197"
-                            className="font-bold text-gray-800 hover:underline dark:text-white"
+                            className="font-bold hover:underline"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
@@ -48,7 +48,7 @@ export default function SparepartLanding() {
                         downtime and extend the lifespan of your equipment. Visit&nbsp;
                         <a
                             href="https://www.mitrateknindosejati.com/parts-168197"
-                            className="font-bold text-gray-800 hover:underline dark:text-white"
+                            className="font-bold text-gray-800 hover:underline"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
@@ -58,21 +58,15 @@ export default function SparepartLanding() {
                     </p>
                 </div>
             </div>
-            <motion.div className="dark:bg-[#0a0a0a]" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
-                <motion.div
-                    className="mx-auto bg-[#fcc200] dark:bg-[#0a0a0a]"
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    variants={fadeInUp}
-                >
-                    <h1 className="mb-4 pt-8 text-center text-3xl font-bold text-gray-900 dark:text-white">More Spare Parts</h1>
-                    <p className="text-md mx-auto pb-8 text-justify text-gray-600 md:text-center dark:text-gray-400">
+            <motion.div className="" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
+                <motion.div className="mx-auto bg-[#fcc200]" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
+                    <h1 className="mb-4 pt-8 text-center text-3xl font-bold text-gray-900">More Spare Parts</h1>
+                    <p className="text-md mx-auto pb-8 text-justify text-gray-600 md:text-center">
                         Explore our full spare part catalog for more solutions to fit your needs.
                         <br />
                         <a
                             href="https://www.mitrateknindosejati.com/parts-168197"
-                            className="mx-1 font-bold text-gray-800 hover:underline dark:text-white"
+                            className="mx-1 font-bold text-gray-800 hover:underline"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
