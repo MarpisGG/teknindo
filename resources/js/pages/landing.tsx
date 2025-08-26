@@ -13,7 +13,6 @@ import { Head, Link, usePage } from '@inertiajs/react';
 import axios from 'axios';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
-import video from '../../assets/video/videolanding.mp4';
 import HorizontalScrollCarouselDemo from './demo';
 
 interface Types {
@@ -59,7 +58,7 @@ export default function Welcome() {
                         loop
                         muted
                         className="absolute top-0 left-0 h-full w-full object-cover"
-                        src={video}
+                        src="/videos/videolanding.mp4"
                         style={{
                             transform: 'translateZ(-1px) scale(2)',
                             minHeight: '100vh',
