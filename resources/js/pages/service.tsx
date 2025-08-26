@@ -89,22 +89,16 @@ const Service = () => {
                         Services
                     </span>
                 </h1>
-                <p className="-600 dark:-400 mb-6 text-lg">We are committed to delivering the best heavy equipment solutions for your projects.</p>
+                <p className="-600 mb-6 text-lg">We are committed to delivering the best heavy equipment solutions for your projects.</p>
             </motion.div>
 
             <ServiceIntroSection />
 
-            <motion.section
-                className="bg-[#FCC200] px-6 py-8 dark:bg-[#0a0a0a]"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeInUp}
-            >
+            <motion.section className="bg-[#FCC200] px-6 py-8" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
                 <div className="mx-auto max-w-6xl text-center">
                     <motion.div className="py-8" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
-                        <h1 className="-900 mb-4 text-4xl font-bold dark:text-white">Why Choose Us?</h1>
-                        <p className="-600 dark:-400 mx-auto mb-4 max-w-2xl text-lg">
+                        <h1 className="-900 mb-4 text-4xl font-bold">Why Choose Us?</h1>
+                        <p className="-600 mx-auto mb-4 max-w-2xl text-lg">
                             We provide a comprehensive range of services to meet all your heavy equipment needs, from procurement to support.
                         </p>
                     </motion.div>
@@ -117,16 +111,10 @@ const Service = () => {
 
             <Statistic />
 
-            <motion.section
-                className="bg-[#FCC200] py-10 dark:bg-gray-900"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeInUp}
-            >
+            <motion.section className="bg-[#FCC200] py-10" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
                 <motion.div className="mx-auto max-w-6xl px-4" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
-                    <h1 className="-900 mb-6 text-center text-3xl font-bold dark:text-white">Service Testimonials</h1>
-                    <p className="-600 dark:-400 mx-auto mb-4 max-w-2xl text-center text-lg">
+                    <h1 className="-900 mb-6 text-center text-3xl font-bold">Service Testimonials</h1>
+                    <p className="-600 mx-auto mb-4 max-w-2xl text-center text-lg">
                         Discover what our clients say about the quality and impact of our specialized services. Their feedback highlights our
                         commitment to excellence in every project we undertake.
                     </p>
@@ -134,7 +122,7 @@ const Service = () => {
                 </motion.div>
             </motion.section>
 
-            <motion.div className="dark:bg-[#0a0a0a]" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
+            <motion.div className="" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
                 <motion.div
                     className="mx-auto w-[80%] max-w-6xl"
                     initial="hidden"
@@ -142,10 +130,10 @@ const Service = () => {
                     viewport={{ once: true }}
                     variants={fadeInUp}
                 >
-                    <h1 className="-900 mb-4 pt-8 text-center text-3xl font-bold dark:text-white">Let’s Work Together</h1>
-                    <p className="-600 dark:-400 mx-auto max-w-xl pb-8 text-justify text-lg md:text-center">
+                    <h1 className="-900 mb-4 pt-8 text-center text-3xl font-bold">Let’s Work Together</h1>
+                    <p className="-600 mx-auto max-w-xl pb-8 text-justify text-lg md:text-center">
                         Interested in partnering with us?
-                        <Link href="/contact" className="-800 mx-1 font-bold hover:text-[#FCC200] hover:underline dark:text-white">
+                        <Link href="/contact" className="-800 mx-1 font-bold hover:text-[#FCC200] hover:underline">
                             Contact Us
                         </Link>
                         to start a conversation about collaboration or procurement.

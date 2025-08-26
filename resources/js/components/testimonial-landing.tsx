@@ -68,15 +68,6 @@ export function TestimonialLanding() {
                     <Testimonial key={idx} {...testimonial} />
                 ))}
             </motion.div>
-
-            {/* <div className="flex gap-4">
-                <button onClick={handlePrev} className="rounded-full border p-2 transition hover:scale-110 hover:bg-gray-100 dark:hover:bg-gray-800">
-                    <ChevronLeft />
-                </button>
-                <button onClick={handleNext} className="rounded-full border p-2 transition hover:scale-110 hover:bg-gray-100 dark:hover:bg-gray-800">
-                    <ChevronRight />
-                </button>
-            </div> */}
         </div>
     );
 }

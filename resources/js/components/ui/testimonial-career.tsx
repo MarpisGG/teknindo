@@ -99,14 +99,14 @@ return (
           transition={{ duration: 0.3, ease: "easeInOut" }}
           className="w-full"
         >
-          <blockquote className="text-xl italic text-gray-700 dark:text-slate-300 leading-relaxed">
+          <blockquote className="text-xl italic text-gray-700leading-relaxed">
             “{testimonials[active].quote}”
           </blockquote>
           <div className="mt-6">
-            <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-50">
+            <h2 className="text-lg font-semibold text-slate-800">
               {testimonials[active].name}
             </h2>
-            <p className="text-sm text-slate-500 dark:text-slate-400">
+            <p className="text-sm text-slate-500">
               {testimonials[active].designation}
             </p>
           </div>
@@ -117,16 +117,16 @@ return (
         <button
           onClick={handlePrev}
           aria-label="Previous testimonial"
-          className="group flex h-10 w-10 items-center justify-center rounded-full bg-slate-200 transition-colors hover:bg-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 dark:bg-slate-700 dark:hover:bg-slate-600 dark:focus:ring-slate-500"
+          className="group flex h-10 w-10 items-center justify-center rounded-full bg-slate-200 transition-colors hover:bg-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2"
         >
-          <ArrowLeft className="h-5 w-5 text-slate-800 group-hover:-translate-x-1 transition-transform dark:text-slate-300" />
+          <ArrowLeft className="h-5 w-5 text-slate-800 group-hover:-translate-x-1 transition-transform " />
         </button>
         <button
           onClick={handleNext}
           aria-label="Next testimonial"
-          className="group flex h-10 w-10 items-center justify-center rounded-full bg-slate-200 transition-colors hover:bg-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 dark:bg-slate-700 dark:hover:bg-slate-600 dark:focus:ring-slate-500"
+          className="group flex h-10 w-10 items-center justify-center rounded-full bg-slate-200 transition-colors hover:bg-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2"
         >
-          <ArrowRight className="h-5 w-5 text-slate-800 group-hover:translate-x-1 transition-transform dark:text-slate-300" />
+          <ArrowRight className="h-5 w-5 text-slate-800 group-hover:translate-x-1 transition-transform" />
         </button>
       </div>
     </div>
@@ -146,7 +146,7 @@ function AnimatedTestimonialsDemo() {
 // This is the root of our application.
 export function TestimonialCareer() {
   return (
-    <div className="relative flex  w-full items-center justify-center overflow-hidden bg-slate-50 dark:bg-slate-950">
+    <div className="relative flex  w-full items-center justify-center overflow-hidden bg-slate-50 ">
         {/* Animated grid background with 10% opacity */}
         <style>
             {`
@@ -157,17 +157,12 @@ export function TestimonialCareer() {
                 .animated-grid {
                     width: 200%;
                     height: 200%;
-                    /* Grid color for light and dark mode */
+                    /* Grid color for light and  mode */
                     background-image: 
                         linear-gradient(to right, #e2e8f0 1px, transparent 1px), 
                         linear-gradient(to bottom, #e2e8f0 1px, transparent 1px);
                     background-size: 3rem 3rem;
                     animation: animate-grid 40s linear infinite alternate;
-                }
-                .dark .animated-grid {
-                    background-image: 
-                        linear-gradient(to right, #1e293b 1px, transparent 1px), 
-                        linear-gradient(to bottom, #1e293b 1px, transparent 1px);
                 }
             `}
         </style>

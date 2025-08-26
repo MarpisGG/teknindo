@@ -31,7 +31,7 @@ export default function LocationMap() {
                 >
                     <TileLayer
                         attribution='&copy; <a href="https://carto.com/">CARTO</a>'
-                        url="https://cartodb-basemaps-a.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png"
+                        url="https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png"
                     />
                     {[
                         {
