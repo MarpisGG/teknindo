@@ -44,7 +44,6 @@ export default function Welcome() {
             <Head title="Welcome" />
             <Navbar />
             <div className="relative min-h-screen overflow-hidden text-[#1b1b18]">
-                {/* Parallax Video Background */}
                 <div
                     className="absolute top-0 left-0 z-0 h-full w-full"
                     style={{

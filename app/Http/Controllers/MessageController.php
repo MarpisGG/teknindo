@@ -34,7 +34,7 @@ public function index()
         }
         // If both permissions exist, show all
 
-        return inertia('admin/Messages/Index', [
+        return inertia('admin/messages/index', [
             'messages' => $query->paginate(10)
         ]);
     }

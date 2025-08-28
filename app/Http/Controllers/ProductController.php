@@ -46,7 +46,7 @@ class ProductController extends Controller
             ->orderBy('order', 'asc')
             ->paginate(10);
 
-        return Inertia::render('admin/Products/Index', ['products' => $products]);
+        return Inertia::render('admin/products/index', ['products' => $products]);
     }
 
     public function apiIndex()
@@ -59,7 +59,7 @@ class ProductController extends Controller
     {
         $categories = ProductCategory::all();
         $types = TypeProduct::all();
-        return Inertia::render('admin/Products/Create', compact('categories', 'types'));
+        return Inertia::render('admin/products/create', compact('categories', 'types'));
     }
 
     public function store(Request $request)
@@ -109,7 +109,7 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         $categories = ProductCategory::all();
         $types = TypeProduct::all();
-        return Inertia::render('admin/Products/Edit', [
+        return Inertia::render('admin/products/edit', [
             'products'   => $product,
             'categories' => $categories,
             'types'      => $types
@@ -238,7 +238,7 @@ class ProductController extends Controller
             ->orderBy('order', 'asc')
             ->paginate(10);
 
-        return Inertia::render('Products/Type', [
+        return Inertia::render('products/type', [
             'type' => $type,
             'products' => $products,
         ]);
@@ -267,7 +267,7 @@ class ProductController extends Controller
 
     public function sparepartLanding()
     {
-        return Inertia::render('products/SparepartLanding');
+        return Inertia::render('products/sparepartlanding');
     }
 
     public function landingCarousel()

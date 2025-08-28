@@ -1,6 +1,3 @@
-/*
-	Installed from https://reactbits.dev/tailwind/
-*/
 
 import React, { useEffect, useRef } from 'react';
 

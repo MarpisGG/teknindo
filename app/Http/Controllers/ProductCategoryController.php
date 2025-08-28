@@ -29,14 +29,14 @@ class ProductCategoryController extends Controller
     public function index()
     {
         $categories = ProductCategory::paginate(10);
-        return Inertia::render('admin/Categories/Index', [
+        return Inertia::render('admin/categories/index', [
             'categories' => $categories
         ]);
     }
 
     public function create()
     {
-        return Inertia::render('admin/Categories/Create');
+        return Inertia::render('admin/categories/create');
     }
 
     public function store(Request $request){
@@ -60,7 +60,7 @@ class ProductCategoryController extends Controller
 
     public function edit($id){
         $category = ProductCategory::find($id);
-        return Inertia::render('admin/Categories/Edit', [
+        return Inertia::render('admin/categories/edit', [
             'category' => $category
         ]);
     }

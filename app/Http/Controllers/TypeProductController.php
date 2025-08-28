@@ -26,7 +26,7 @@ class TypeProductController extends Controller
     public function index()
     {
         $types = ProductType::paginate(10);
-        return Inertia::render('admin/Types/Index', [
+        return Inertia::render('admin/types/index', [
             'types' => $types
         ]);
     }
@@ -34,7 +34,7 @@ class TypeProductController extends Controller
 
     public function create()
     {
-        return Inertia::render('admin/Types/Create');
+        return Inertia::render('admin/types/create');
     }
 
     public function store(Request $request)
@@ -62,7 +62,7 @@ class TypeProductController extends Controller
     public function edit($id)
     {
         $type = ProductType::find($id);
-        return Inertia::render('admin/Types/Edit', [
+        return Inertia::render('admin/types/edit', [
             'type' => $type
         ]);
     }

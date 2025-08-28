@@ -1,6 +1,6 @@
 import { Link, router, usePage } from '@inertiajs/react';
 import axios from 'axios';
-import { ChevronDown, ChevronRight, Globe, Menu, Search, X } from 'lucide-react';
+import { ChevronDown, ChevronRight, Menu, Search, X } from 'lucide-react';
 import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Teknindo from '../../assets/image/Logo Teknindo Group - ORI (1).png';
@@ -250,9 +250,6 @@ const Navbar: React.FC = () => {
                                 <Search className="h-4 w-4" />
                             </button>
                         </form>
-                        <button onClick={() => setLanguageDropdownOpen(true)} className="w-full py-2 text-left text-gray-900">
-                            <Globe className="mr-1 inline" /> Change Language
-                        </button>
                     </div>
                 </div>
             )}
