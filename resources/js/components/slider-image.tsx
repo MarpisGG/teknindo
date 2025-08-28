@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 // Gunakan path public langsung (tanpa import)
-const images = ['/image/1.jpg', '/image/2.jpg', '/image/3.jpg', '/image/4.jpg'];
+const images = ['/image/1.jpg', '/image/2.jpg', '/image/3.jpg', '/image/4.jpg', '/image/5.jpg', '/image/6.jpg'];
 
 const SLIDE_INTERVAL = 3000; // 3 seconds
 
