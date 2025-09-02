@@ -1,10 +1,11 @@
+import ContactCard from '@/components/contact-card';
 import FloatingQuickActions from '@/components/floatingquickaction';
 import { Footer7 } from '@/components/footer';
 import Navbar from '@/components/navbar';
 import { Head } from '@inertiajs/react';
 import axios from 'axios';
 import { motion } from 'framer-motion';
-import { Mail, MapPin, Phone } from 'lucide-react';
+import { BadgeCheck, Mail, MapPin, Phone } from 'lucide-react';
 import React from 'react';
 import { FaFacebook, FaInstagram, FaLinkedin, FaTiktok, FaWhatsapp } from 'react-icons/fa';
 
@@ -24,14 +25,44 @@ interface SubmitStatus {
     message: string;
 }
 
-export default function ContactPage() {
-    const defaultSocialLinks = [
-        { icon: <FaInstagram className="size-5" />, href: 'https://www.instagram.com/teknindo.group/', label: 'Instagram' },
-        { icon: <FaFacebook className="size-5" />, href: 'https://www.facebook.com/pt.mitrateknindosejati', label: 'Facebook' },
-        { icon: <FaTiktok className="size-5" />, href: 'https://www.tiktok.com/@mitra_teknindo_sejati', label: 'Tiktok' },
-        { icon: <FaLinkedin className="size-5" />, href: 'https://www.linkedin.com/company/pt-mitra-teknindo-sejati/', label: 'LinkedIn' },
-    ];
+const defaultSocialLinks = [
+    { icon: <FaInstagram className="size-5" />, href: 'https://www.instagram.com/teknindo.group/', label: 'Instagram' },
+    { icon: <FaFacebook className="size-5" />, href: 'https://www.facebook.com/pt.mitrateknindosejati', label: 'Facebook' },
+    { icon: <FaTiktok className="size-5" />, href: 'https://www.tiktok.com/@mitra_teknindo_sejati', label: 'Tiktok' },
+    { icon: <FaLinkedin className="size-5" />, href: 'https://www.linkedin.com/company/pt-mitra-teknindo-sejati/', label: 'LinkedIn' },
+];
 
+const Contact = [
+    {
+        icon: <FaWhatsapp className="mr-2 h-5 w-5" />,
+        href: 'https://wa.me/6281355616263',
+        label: '+62 813-5561-6263',
+        name: (
+            <p className="text-md">
+                Teknindo <BadgeCheck />
+            </p>
+        ),
+    },
+    {
+        icon: <Phone className="mr-2 inline" />,
+        href: '#',
+        label: '021 38769054',
+        name: '',
+    },
+    {
+        icon: <Mail className="mr-2 inline" />,
+        href: '#',
+        label: 'teknindo@gmail.com',
+        name: '',
+    },
+    {
+        icon: <MapPin className="mr-2 inline" />,
+        href: 'https://maps.app.goo.gl/xyBjwypbdDLiSVi4A',
+        label: ' Komplek Galeri Niaga Mediterania, Pantai Indah No.1 Blok. X3 No. G8A-8B, Kapuk, Kec. Penjaringan, Jkt Utara,Daerah Khusus Ibukota Jakarta 14460',
+        name: '',
+    },
+];
+export default function ContactPage() {
     const [formData, setFormData] = React.useState<FormData>({
         first_name: '',
         last_name: '',
@@ -120,74 +151,8 @@ export default function ContactPage() {
                         Feel free to reach out to us with any questions, feedback, or collaboration opportunities.
                     </p>
                 </motion.div>
-
-                <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 overflow-hidden rounded-lg bg-white shadow-2xl md:grid-cols-5">
-                    {/* LEFT CONTACT INFO */}
-                    <motion.div
-                        initial={{ x: -100, opacity: 0 }}
-                        whileInView={{ x: 0, opacity: 1 }}
-                        transition={{ duration: 0.8 }}
-                        viewport={{ once: true }}
-                        className="bg-[#FCC200] px-8 py-10 text-slate-800 md:col-span-2"
-                    >
-                        <h2 className="mb-2 text-3xl font-bold">Contact Information</h2>
-                        <p className="mb-6 text-lg font-medium opacity-90">Say something to start a conversation</p>
-
-                        <div className="space-y-4">
-                            <div className="flex items-center">
-                                <Phone className="mr-2 h-5 w-5" />
-                                <span className="font-medium"> 021 38769054</span>
-                            </div>
-                            <div className="flex items-center">
-                                <FaWhatsapp className="mr-2 h-5 w-5" />
-                                <span className="font-medium">+62 813-5561-6263</span>
-                            </div>
-                            <div className="flex items-center">
-                                <Mail className="mr-2 h-5 w-5" />
-                                <span className="font-medium">teknindo@gmail.com</span>
-                            </div>
-                            <div className="flex items-start gap-2">
-                                <MapPin className="mt-1 h-5 w-5 flex-shrink-0 text-slate-800" />
-                                <span className="leading-relaxed font-medium">
-                                    Komplek Galeri Niaga Mediterania, Pantai Indah No.1 Blok. X3 No. G8A-8B, Kapuk, Kec. Penjaringan, Jkt Utara,
-                                    Daerah Khusus Ibukota Jakarta 14460
-                                </span>
-                            </div>
-                        </div>
-
-                        <div className="mt-6">
-                            <iframe
-                                title="Our Location"
-                                src="https://maps.google.com/maps?q=-6.117374,106.770885&z=15&output=embed"
-                                width="100%"
-                                height="200"
-                                style={{ border: 0 }}
-                                allowFullScreen
-                                loading="lazy"
-                                referrerPolicy="no-referrer-when-downgrade"
-                                className="rounded-lg shadow-md"
-                            ></iframe>
-                        </div>
-
-                        <div className="mt-6">
-                            <p className="mb-2 text-lg font-medium opacity-90">Connect With Us</p>
-                            <ul className="flex space-x-4">
-                                {defaultSocialLinks.map((social, idx) => (
-                                    <li key={idx}>
-                                        <a
-                                            href={social.href}
-                                            aria-label={social.label}
-                                            title={social.label}
-                                            className="flex h-10 w-10 items-center justify-center rounded-full transition-all hover:scale-110 hover:bg-white hover:shadow-md"
-                                        >
-                                            <span className="scale-125 text-slate-800">{social.icon}</span>
-                                        </a>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    </motion.div>
-
+                <ContactCard />
+                <div className="mx-auto grid max-w-4xl grid-cols-1 gap-6 overflow-hidden rounded-lg bg-white md:grid-cols-3">
                     {/* RIGHT FORM */}
                     <motion.form
                         initial={{ x: 100, opacity: 0 }}

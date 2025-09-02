@@ -156,7 +156,7 @@ export default function Dashboard({ stats, visitorStats, dailyVisitors, location
                 {/* Visitor Charts */}
                 <div className="mt-6">
                     <h2 className="mb-3 text-xl font-semibold">Visitors by City</h2>
-                    <div className="mx-auto w-full max-w-md">
+                    <div className="mx-auto flex w-full justify-center">
                         <Doughnut
                             data={{
                                 labels: locationData.map((loc) => loc.city),

@@ -49,7 +49,7 @@ function RequestQuote() {
     };
 
     const fetchProducts = () => {
-        axios.get(`/api/products`).then((response) => {
+        axios.get(`/api/product-quotations`).then((response) => {
             const data = Array.isArray(response.data) ? response.data : response.data.data;
             setProducts(data || []);
         });
@@ -176,7 +176,7 @@ function RequestQuote() {
                         </motion.div>
 
                         <motion.div variants={item}>
-                            <label htmlFor="product_id" className="block text-sm font-bold">
+                            <label htmlFor="quotation_product_id" className="block text-sm font-bold">
                                 Select Product<span className="text-red-500">*</span>
                             </label>
                             <div>
@@ -192,10 +192,10 @@ function RequestQuote() {
                                         aria-expanded={!!searchTerm && !products.some((p) => p.name.toLowerCase() === searchTerm.toLowerCase())}
                                     />
 
-                                    {/* This hidden (visually) text input carries the selected product_id and enforces required */}
+                                    {/* This hidden (visually) text input carries the selected quotation_product_id and enforces required */}
                                     <input
                                         type="text"
-                                        name="product_id"
+                                        name="quotation_product_id"
                                         readOnly
                                         required
                                         value={(products.find((p) => p.name.toLowerCase() === searchTerm.toLowerCase())?.id ?? '').toString()}

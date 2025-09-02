@@ -1,8 +1,8 @@
 import FloatingQuickActions from '@/components/floatingquickaction';
 import { Footer7 } from '@/components/footer';
 import Navbar from '@/components/navbar';
-import Timeline_02 from '@/components/timeline-02';
 import { AutoScroll } from '@/components/ui/auto-scroll';
+import StickyScrollRevealComponent from '@/components/ui/sticky-scroll';
 import { Head, Link } from '@inertiajs/react';
 import { motion } from 'framer-motion';
 import Teknindo from '../../assets/image/Teknindo Awal.png';
@@ -42,7 +42,7 @@ const About = () => {
                     </div>
                     <div className="mb-8">
                         <img src={Teknindo} alt="Teknindo Logo" className="mx-auto mb-4 h-auto md:w-[60%]" />
-                        <div className="mx-auto max-w-6xl space-y-6 text-lg md:text-start">
+                        <div className="mx-auto max-w-6xl space-y-6 text-lg md:text-justify">
                             <p>
                                 Teknindo Group is a corporate group engaged in the provision of equipment and services for the mining, construction,
                                 and industrial sectors. At present, Teknindo Group comprises seven member companies. The parent entity of the group is{' '}
@@ -198,8 +198,8 @@ const About = () => {
                     <AutoScroll />
                 </motion.div>
             </div>
-            {/* <StickyScrollRevealComponent /> */}
-            <Timeline_02 />
+            <StickyScrollRevealComponent />
+            {/* <Timeline_02 /> */}
             <div className="">
                 <motion.div
                     className="mx-auto w-[80%] max-w-6xl py-8"

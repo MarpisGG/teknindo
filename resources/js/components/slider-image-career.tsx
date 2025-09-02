@@ -3,8 +3,9 @@ import slider1 from '../../assets/image/career1 (1).jpg';
 import slider2 from '../../assets/image/career2 (1).jpg';
 import slider3 from '../../assets/image/career3 (1).jpg';
 import slider4 from '../../assets/image/career4 (1).jpg';
+import slider5 from '../../assets/image/career5 (1).jpg';
 
-const images = [slider1, slider2, slider3, slider4];
+const images = [slider1, slider2, slider3, slider4, slider5];
 const SLIDE_INTERVAL = 3000; // 3 seconds
 
 const SliderImageCareer: React.FC = () => {

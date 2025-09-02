@@ -18,6 +18,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VisitorLogController;
 use App\Http\Controllers\TranslateController;
 use App\Http\Controllers\QuotationController;
+use App\Http\Controllers\QuotationProductController;
 use App\Http\Controllers\SearchController;
 
 use Inertia\Inertia;
@@ -86,6 +87,10 @@ Route::prefix('business')->group(function () {
     Route::get('/mining-services', function () {
         return Inertia::render('mining-services');
     })->name('business.mining-services');
+
+    Route::get('/industry-supplies', function () {
+        return Inertia::render('industry-supplies');
+    })->name('business.industry-supplies');
 });
 
 Route::get('/career/jobs', function () {
@@ -160,8 +165,13 @@ Route::middleware(['auth', 'preventBack'])->prefix('admin')->group(function () {
     // Quotation
     Route::get('/quotations', [QuotationController::class, 'index'])->name('quotations.index');
     Route::delete('/quotations/{id}', [QuotationController::class, 'destroy'])->name('quotations.destroy');
-    
-    
+
+    //Quotation product
+    Route::get('/quotation-products', [QuotationProductController::class, 'index'])->name('quotation-products.index');
+    Route::get('/quotation-products/create', [QuotationProductController::class, 'create'])->name('quotation-products.create');
+    Route::post('/quotation-products', [QuotationProductController::class, 'store'])->name('quotation-products.store');
+
+
     // Subscriptions
     Route::get('/subscriptions', [SubscriptionController::class, 'index'])->name('subscriptions.index');
     Route::get('/subscriptions/create', [SubscriptionController::class, 'create'])->name('subscriptions.create');
@@ -212,9 +222,11 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/quotations/{id}/follow-up', [QuotationController::class, 'toggleFollowUp'])->name('quotations.toggleFollowUp');
 
 
+
     
     // subscriptions
     Route::delete('/subscriptions/{id}', [SubscriptionController::class, 'destroy'])->name('subscriptions.destroy');
+
     
     
     
@@ -263,6 +275,8 @@ Route::post('/api/blogs/{id}/comments', [CommentController::class, 'store']);
 Route::post('/api/blogs/{id}/like', [BlogController::class, 'like']);
 Route::post('/api/blogs/{id}/unlike', [BlogController::class, 'unlike']);
 Route::get('/api/blogs/{id}/related-random', [BlogController::class, 'relatedRandom']);
+
+Route::get('/api/product-quotations', [QuotationProductController::class, 'indexQuotation']);
 
 Route::get('/search', [SearchController::class, 'search'])->name('search');
 

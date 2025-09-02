@@ -116,18 +116,24 @@ const Navbar: React.FC = () => {
             >
                 <span className="mr-2">⛏️</span> Mining Services
             </Link>
+            <Link
+                href="/business/industry-supplies"
+                className="flex items-center px-4 py-3 text-sm text-gray-900 hover:bg-yellow-50 hover:text-yellow-700"
+            >
+                <span className="mr-2">🏭</span> Industry Supplies
+            </Link>
         </div>
     );
 
     return (
         <div
-            className="group fixed top-0 z-200 w-full transition-all duration-300"
+            className="group text-bold fixed top-0 z-200 w-full transition-all duration-300"
             onMouseEnter={() => setNavHover(true)}
             onMouseLeave={() => setNavHover(false)}
         >
             <nav
                 className={`transition-all duration-300 ${
-                    scrolled || navhover ? 'bg-[#181818]' : isHome ? 'bg-white/40' : 'bg-transparent'
+                    scrolled || navhover ? 'bg-[#181818]' : isHome ? 'bg-white/20' : 'bg-transparent'
                 } group-hover:bg-black`}
             >
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -147,7 +153,7 @@ const Navbar: React.FC = () => {
                             <div className="relative inline-block text-left" ref={dropdownRef}>
                                 <button
                                     onClick={() => setBusinessDropdownOpen(!businessDropdownOpen)}
-                                    className={`relative flex items-center after:absolute after:bottom-[-3px] after:left-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full ${navhover ? 'text-white hover:text-gray-200' : navTextClass}`}
+                                    className={`relative flex items-center font-medium after:absolute after:bottom-[-3px] after:left-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full ${navhover ? 'text-white hover:text-gray-200' : navTextClass}`}
                                 >
                                     Business
                                     <ChevronDown
@@ -161,7 +167,7 @@ const Navbar: React.FC = () => {
                                 <Link
                                     key={item.href}
                                     href={item.href}
-                                    className={`relative after:absolute after:bottom-[-3px] after:left-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full ${navhover ? 'text-white hover:text-gray-200' : navTextClass}`}
+                                    className={`relative font-medium after:absolute after:bottom-[-3px] after:left-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full ${navhover ? 'text-white hover:text-gray-200' : navTextClass}`}
                                 >
                                     {item.text}
                                 </Link>

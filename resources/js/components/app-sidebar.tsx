@@ -84,7 +84,13 @@ const mainNavItems: NavItem[] = [
         title: 'Quotation',
         href: '/admin/quotations',
         icon: FileText,
-        permission: 'product-list',
+        permission: 'quotation-list',
+    },
+    {
+        title: 'Quotation Product',
+        href: '/admin/quotation-products',
+        icon: FileText,
+        permission: 'product-quotation-list',
     },
 ];
 

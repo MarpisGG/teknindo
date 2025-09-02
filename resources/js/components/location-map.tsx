@@ -36,14 +36,14 @@ export default function LocationMap() {
                     {[
                         {
                             position: [-6.117160858656681, 106.77083705355722],
-                            link: 'https://maps.app.goo.gl/zmAA71A8xhvB2gCM8',
+                            link: 'https://maps.app.goo.gl/xyBjwypbdDLiSVi4A',
                             name: 'PT Mitra Teknindo Sejati',
                             address:
                                 'Komplek Galeri Niaga Mediterania, Pantai Indah No.1 Blok. X3 No. G8A-8B, Kapuk, Kecamatan Penjaringan, Jkt Utara, Daerah Khusus Ibukota Jakarta 14460',
                         },
                         {
                             position: [-6.252559999741867, 106.4908825],
-                            link: 'https://maps.app.goo.gl/22tPesVz2hKMtCPSA',
+                            link: 'https://maps.app.goo.gl/8LiV92KiyBbp2EKu8',
                             name: 'PT. MITRA TEKNINDO SEJATI (Tangerang Warehouse)',
                             address:
                                 'Millenium Industrial Estate, Jl. Pemda Tigaraksa No.3 Blok P2, Mata Gara, Kec. Tigaraksa, Kabupaten Tangerang, Banten 15710',

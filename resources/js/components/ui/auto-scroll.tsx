@@ -7,7 +7,7 @@ import laigong from "../../../assets/image/Logo share (12).png"
 import TSH from "../../../assets/image/Logo TSH.png"
 import TAP from "../../../assets/image/Logo share (8).png"
 import TTI from '../../../assets/image/Logo share (10).png'
-import WYZ from '../../../assets/image/Logo share (14).png'
+import WYZ from '../../../assets/image/Wenzhou yunding logo.png'
 
 
 const cards = [

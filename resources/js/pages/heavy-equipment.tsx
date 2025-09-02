@@ -3,7 +3,6 @@ import { Footer7 } from '@/components/footer';
 import Navbar from '@/components/navbar';
 import { Head } from '@inertiajs/react';
 import { motion } from 'framer-motion';
-import bg from '../../assets/image/heavy-bg.jpeg';
 
 const fadeInUp = {
     hidden: { opacity: 0, y: 40 },
@@ -12,21 +11,13 @@ const fadeInUp = {
 
 function HeavyEquipment() {
     return (
-        <div className="flex min-h-screen flex-col bg-gray-50">
+        <div className="flex min-h-screen flex-col">
             <Head title="Heavy Equipment" />
             <Navbar />
-            <div
-                className="relative flex h-[50vh] w-full items-center justify-center px-4 py-8"
-                style={{
-                    backgroundImage: `url(${bg})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                }}
-            >
-                <div className="absolute inset-0 bg-white opacity-50"></div>
-                <h1 className="text font- relative z-10 mb-8 text-center text-3xl">Heavy Equipment</h1>
+            <div className="flex min-h-screen flex-col items-center justify-center px-4 py-8">
+                <h1 className="mb-8 text-center text-3xl font-bold text-gray-900">Mining Contractor </h1>
             </div>
-            <main className="flex flex-1 flex-col items-center bg-[#d9d9d9] px-4 py-4">
+            <main className="flex flex-1 flex-col items-center px-4 py-4">
                 <div className="w-full max-w-6xl">
                     <div className="mx-auto rounded-2xl p-10 text-justify text-lg leading-relaxed">
                         <p className="mb-6 text-gray-700">

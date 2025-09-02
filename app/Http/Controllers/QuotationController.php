@@ -11,8 +11,7 @@ class QuotationController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('permission:product-list', ['only' => ['index', 'show']]);
-        $this->middleware('permission:product-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:quotation-list', ['only' => ['index', 'show']]);
         // $this->middleware('permission:product-delete', ['only' => ['destroy']]);
     }
 
@@ -33,7 +32,7 @@ class QuotationController extends Controller
             'country' => 'nullable|string|max:100',
             'company' => 'nullable|string|max:255',
             'message' => 'nullable|string',
-            'product_id' => 'required|exists:products,id',
+            'quotation_product_id' => 'required|exists:quotation_product,id',
         ]);
 
         Quotation::create($data);

@@ -13,6 +13,7 @@ const menuItems = [
     { title: 'Message', href: '/admin/messages', permission: 'message-list' },
     { title: 'Subscriptions', href: '/admin/subscriptions', permission: 'subscription-list' },
     { title: 'Quotation', href: '/admin/quotations', permission: 'product-list' },
+    { title: 'Quotation Products', href: '/admin/quotation-products', permission: 'product-list' },
 ];
 
 interface PageProps {
@@ -38,8 +39,8 @@ const NavbarAdmin = () => {
     }, []);
 
     return (
-        <nav className="mb-6 rounded-lg bg-white p-4 shadow-md">
-            <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <nav className="mb-6 rounded-lg bg-white p-4">
+            <div className="flex flex-col items-center gap-4 md:flex-row md:items-center md:justify-center">
                 {/* Kiri: Logo */}
                 <div className="flex w-full items-center justify-between md:w-auto">
                     <Link href="/admin/dashboard" className="text-xl font-bold text-blue-600">

@@ -14,8 +14,12 @@ const content: ContentItem[] = [
         description:
             "The journey began with the establishment of Mitra Teknindo Sejati (MTS), specializing in the distribution of heavy equipment and heavy-duty trucks. With a strong commitment to reliability and customer trust, MTS laid the foundation of what would later grow into Teknindo Group.",
         content: (
-            <div className="h-full w-full bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] flex items-center justify-center text-white">
-                Collaborative Editing
+            <div className="h-full w-full  flex items-center justify-center text-white">
+                <img
+                    src="/image/about/1.jpg"
+                    className="h-full w-full object-cover"
+                    alt="linear board demo"
+                />
             </div>
         ),
     },

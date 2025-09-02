@@ -18,7 +18,7 @@
     return (
       <div className="w-72 rounded-xl overflow-hidden shadow-lg border border-gray-200  group relative">
         <img
-          className="w-full h-56 object-fill p-4"
+          className="w-full h-56 object-cover px-4"
           src={imageSrc}
           alt={imageAlt}
         />

@@ -15,7 +15,7 @@ class Quotation extends Model
         'country',
         'company',
         'message',
-        'product_id',
+        'quotation_product_id',
         'followed_up', // Tambahkan ini
     ];
 
@@ -26,7 +26,7 @@ class Quotation extends Model
 
     public function product()
     {
-        return $this->belongsTo(Product::class, 'product_id');
+        return $this->belongsTo(Product::class, 'quotation_product_id');
     }
 
     public function getCreatedAtAttribute($value)

@@ -37,7 +37,7 @@ const defaultSections = [
         ],
     },
     {
-        title: 'Our Branches',
+        title: 'Our Location',
         links: [
             { name: 'Jakarta Branch', href: 'https://maps.app.goo.gl/cf6ouSoAfw8qTgAC9' },
             { name: 'Tangerang Branch', href: 'https://maps.app.goo.gl/22tPesVz2hKMtCPSA' },

@@ -25,6 +25,22 @@ const testimonials = [
         testimonial:
             "The product is economical, the spare parts are easy to find, and it offers a win-win solution for both sides. It's been a smart choice for my business.",
     },
+    {
+        name: 'PT. Indonesia Konawe Industrial Park (IKIP)',
+        company: 'Microsift',
+        rating: 5,
+        image: 'https://i.pravatar.cc/150?u=emily',
+        testimonial:
+            'The communication was smooth, all activities went well, and the team followed our company’s regulations professionally. We are very satisfied with the collaboration.',
+    },
+    {
+        name: 'PT Xiangtai Kuang Ye',
+        company: 'Microsift',
+        rating: 5,
+        image: 'https://i.pravatar.cc/150?u=emily',
+        testimonial:
+            'We truly appreciate Teknindo Group’s support in renewable resources processing. The service has been reliable and professional, making our collaboration smooth and effective.',
+    },
 ];
 
 export function TestimonialLanding() {

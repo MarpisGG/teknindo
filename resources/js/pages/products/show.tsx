@@ -284,12 +284,12 @@ export default function Show({ product, type }: ProductDetailProps) {
                             ></textarea>
                         </div>
                         <div>
-                            <label className="mb-1 block text-sm font-medium text-gray-700" htmlFor="product_id">
+                            <label className="mb-1 block text-sm font-medium text-gray-700" htmlFor="quotation_product_id">
                                 Select Product
                             </label>
                             <select
-                                name="product_id"
-                                id="product_id"
+                                name="quotation_product_id"
+                                id="quotation_product_id"
                                 className="w-full border border-gray-300 px-4 py-2 transition focus:border-yellow-400 focus:ring-2 focus:ring-yellow-300 focus:outline-none"
                                 defaultValue={product.id}
                             >

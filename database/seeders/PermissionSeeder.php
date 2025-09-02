@@ -59,6 +59,11 @@ class PermissionSeeder extends Seeder
             'type-delete',
             'comment-list',
             'comment-delete',
+            'heavy-list',
+            'sparepart-list',
+            'quotation-list',
+            'product-quotation-list',
+            'product-quotation-create',
         ];
 
         foreach ($permissions as $permission) {
