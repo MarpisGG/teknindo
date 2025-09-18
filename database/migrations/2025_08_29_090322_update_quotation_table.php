@@ -12,8 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('quotation', function (Blueprint $table) {
-            // No need to drop foreign key since it doesn't exist
-            // The column already exists and is named quotation_product_id
+
             
             // Just add the foreign key constraint
             $table->foreign('quotation_product_id')
