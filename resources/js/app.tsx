@@ -6,7 +6,7 @@ import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import 'leaflet/dist/leaflet.css';
 import { createRoot } from 'react-dom/client';
 import 'react-quill-new/dist/quill.snow.css';
-import './i18n'; // Import i18n configuration
+import './i18n';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
