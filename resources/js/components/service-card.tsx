@@ -42,7 +42,7 @@ const ServiceCard: React.FC = () => {
     return (
         <div className="flex w-full flex-col items-center gap-12 px-4">
             {/* Baris 1 - 3 Item */}
-            <div className="grid w-full max-w-6xl auto-rows-fr gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid w-full max-w-6xl auto-rows-fr gap-8 md:grid-cols-1 lg:grid-cols-3">
                 {services.slice(0, 3).map((service, idx) => (
                     <div
                         key={idx}
@@ -56,7 +56,7 @@ const ServiceCard: React.FC = () => {
             </div>
 
             {/* Baris 2 - 2 Item */}
-            <div className="grid w-full max-w-4xl auto-rows-fr gap-8 md:grid-cols-2">
+            <div className="grid w-full max-w-3xl auto-rows-fr gap-8 lg:grid-cols-2">
                 {services.slice(3).map((service, idx) => (
                     <div
                         key={idx}

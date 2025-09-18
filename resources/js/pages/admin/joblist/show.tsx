@@ -1,6 +1,6 @@
 import { Link, usePage } from '@inertiajs/react';
 import axios from 'axios';
-import { ArrowLeft, Briefcase, DollarSign, Edit, LaptopMinimal, MapPin, Trash2 } from 'lucide-react';
+import { ArrowLeft, Briefcase, Edit, LaptopMinimal, MapPin, Trash2 } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 
@@ -25,7 +25,6 @@ interface Jobs {
     division?: string;
     location?: string;
     type?: string;
-    salary?: string;
     job_desc?: string;
     requirements?: string;
     benefit?: string;
@@ -160,10 +159,6 @@ const Show: React.FC = () => {
                                 <span className="rounded-full bg-purple-100 px-3 py-1 text-purple-800">
                                     <LaptopMinimal size={16} className="mr-1 inline" />
                                     {jobs.type}
-                                </span>
-                                <span className="rounded-full bg-yellow-100 px-3 py-1 text-yellow-800">
-                                    <DollarSign size={16} className="mr-1 inline" />
-                                    {jobs.salary}
                                 </span>
                             </div>
                         </div>

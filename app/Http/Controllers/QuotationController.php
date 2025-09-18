@@ -17,7 +17,7 @@ class QuotationController extends Controller
 
     public function index()
     {
-        $quotations = Quotation::with('product')->paginate(10);
+        $quotations = Quotation::with('product','service')->paginate(10);
         return Inertia::render('admin/quotations/index', [
             'quotations' => $quotations
         ]);
@@ -25,19 +25,38 @@ class QuotationController extends Controller
 
     public function store(Request $request)
     {
-        $data = $request->validate([
+        $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
             'phone' => 'required|string|max:20',
             'country' => 'nullable|string|max:100',
             'company' => 'nullable|string|max:255',
             'message' => 'nullable|string',
-            'quotation_product_id' => 'required|exists:quotation_product,id',
+            'quotation_product_id' => 'nullable|exists:quotation_product,id',
+            'quotation_service_id' => 'nullable|exists:quotation_service,id',
         ]);
 
+        // Custom validation to ensure at least one ID is provided
+        $validator->after(function ($validator) use ($request) {
+            if (empty($request->quotation_product_id) && empty($request->quotation_service_id)) {
+                $validator->errors()->add('selection', 'Please select either a product or service.');
+            }
+        });
+
+        if ($validator->fails()) {
+            return response()->json([
+                'message' => 'Validation failed',
+                'errors' => $validator->errors()
+            ], 422);
+        }
+
+        $data = $validator->validated();
         Quotation::create($data);
 
-        return redirect()->back()->with('success', 'Quotation created successfully.');
+        return response()->json([
+            'message' => 'Quotation created successfully.',
+            'quotation' => $data
+        ], 201);
     }
 
     public function toggleFollowUp($id)

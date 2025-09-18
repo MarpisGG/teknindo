@@ -71,7 +71,7 @@ export default function Type({ type, products }: TypePageProps) {
                         const isEven = idx % 2 === 0;
                         const imageSection = (
                             <div
-                                className={`w-full overflow-hidden md:w-[78%] ${isEven ? 'md:order-last md:rounded-r-lg' : 'md:order-first md:rounded-l-lg'}`}
+                                className={`w-full overflow-hidden md:w-3xl ${isEven ? 'md:order-last md:rounded-r-lg' : 'md:order-first md:rounded-l-lg'}`}
                             >
                                 {product.image ? (
                                     <img
@@ -80,7 +80,7 @@ export default function Type({ type, products }: TypePageProps) {
                                         className="aspect-video h-full w-full object-cover object-fill transition-transform duration-300 hover:scale-105"
                                     />
                                 ) : (
-                                    <div className="flex h-full min-h-[200px] w-full items-center justify-center bg-gray-100 text-gray-400">
+                                    <div className="flex h-full min-h-[150px] w-full items-center justify-center bg-gray-100 text-gray-400">
                                         No Image Available
                                     </div>
                                 )}
@@ -88,10 +88,9 @@ export default function Type({ type, products }: TypePageProps) {
                         );
 
                         const textSection = (
-                            <div className="flex w-full flex-col items-start justify-center px-4 py-4 md:w-[22%] md:py-0">
-                                <p className="mb-2 text-3xl font-bold">{product.name}</p>
+                            <div className="flex w-full flex-col items-start justify-center px-4 py-4 md:w-[40%] md:py-0">
+                                <p className="mb-2 text-xl font-bold">{product.name}</p>
                                 {(() => {
-                                    // Parse the HTML string to extract <li> items
                                     const tempDiv = document.createElement('div');
                                     tempDiv.innerHTML = product.specifications || '';
                                     const liElements = Array.from(tempDiv.querySelectorAll('li')).slice(0, 3);
@@ -106,9 +105,9 @@ export default function Type({ type, products }: TypePageProps) {
                                 })()}
                                 <Link
                                     href={`/products/${type.slug}/${product.slug}`}
-                                    className="mt-4 inline-flex items-center gap-2 rounded-md bg-[#FCC200] px-5 py-2 text-sm font-semibold text-white shadow transition-all duration-200 hover:bg-[#e6b000] focus:ring-2 focus:ring-[#FCC200]/50 focus:outline-none"
+                                    className="mt-4 inline-flex items-center gap-2 rounded-md bg-[#FCC200] px-4 py-2 text-sm font-semibold text-white shadow transition-all duration-200 hover:bg-[#e6b000] focus:ring-2 focus:ring-[#FCC200]/50 focus:outline-none"
                                 >
-                                    <span>Lihat Detail</span>
+                                    <span>View Details</span>
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         fill="none"
@@ -127,11 +126,11 @@ export default function Type({ type, products }: TypePageProps) {
                             <Link
                                 href={`/products/${type.slug}/${product.slug}`}
                                 key={product.id}
-                                className="group relative flex w-full max-w-6xl flex-col rounded-lg border bg-white shadow-md transition-transform duration-300 hover:scale-[1.02] hover:shadow-lg"
+                                className="group relative mx-auto flex w-full max-w-4xl flex-col rounded-lg border bg-white shadow-md transition-transform duration-300 hover:scale-[1.02] hover:shadow-lg"
                             >
                                 <motion.div
                                     key={product.id}
-                                    className="product flex flex-col rounded-xl border shadow md:h-96 md:flex-row"
+                                    className="product flex flex-col rounded-xl border shadow md:h-72 md:flex-row"
                                     initial={{ opacity: 0, y: 40 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.5, delay: idx * 0.1 }}

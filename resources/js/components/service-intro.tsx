@@ -4,45 +4,38 @@ import React from 'react';
 interface Service {
     icon: string;
     title: string;
-    description: string;
 }
 
 const services: Service[] = [
     {
-        title: 'Heavy Equipment & Truck Distribution',
-        description: 'Supplying reliable heavy machinery and trucks to power your operations with trusted performance.',
-        icon: '🚛',
-    },
-    {
-        title: 'Equipment Rental Services',
-        description: 'Offering heavy equipment, dump trucks, and operational vehicles on flexible rental terms to keep projects running smoothly.',
-        icon: '📦',
-    },
-    {
-        title: 'Industrial Supplies',
-        description: 'Delivering bulk industrial equipment, project hardware, and lubricants to meet the growing needs of diverse industries.',
+        title: 'Heavy Equipment, Dump Truck & Machinery Supplies, Procurement, and Project Consultation',
         icon: '⚙️',
     },
     {
-        title: 'Tire Manufacturing',
-        description: 'Producing durable, high-performance tires designed specifically for heavy equipment and dump trucks.',
-        icon: '🔘',
-    },
-    {
-        title: 'Agricultural & Compact Machinery',
-        description: 'Providing versatile machines for agricultural productivity and smaller-scale industrial applications.',
+        title: 'Rental of Heavy Equipment, Dump Trucks, and Mining Vehicles',
         icon: '🚜',
     },
     {
-        title: 'Mining Contractor Services',
-        description: 'Supporting mining operations with professional hauling and contractor services, built on safety and efficiency.',
+        title: 'Equipment Maintenance, After-Sales Service, Consignment Spare Parts and Technical Support in Mining & Construction Site Project',
+        icon: '🛠️',
+    },
+    {
+        title: 'Custom Manufacturing and Development of Machinery and Industrial Tires',
+        icon: '🏭',
+    },
+    {
+        title: 'Mining Contracting Services Including Haulage and Site Logistics',
         icon: '⛏️',
+    },
+    {
+        title: 'Global Trading, Supply Chain Management, and Quality Assurance',
+        icon: '🌍',
     },
 ];
 
 const ServiceIntroSection: React.FC = () => {
     return (
-        <section className="bg-[#d9d9d9] px-6 py-8">
+        <section className="bg-[#d9d9d9]/60 px-6 pb-8">
             <div className="mx-auto flex max-w-6xl flex-col gap-12 lg:flex-row lg:items-center">
                 {/* Left - Text & Services */}
                 {/* Grid Service Cards */}
@@ -58,7 +51,6 @@ const ServiceIntroSection: React.FC = () => {
                         >
                             <div className="mb-4 text-4xl">{service.icon}</div>
                             <h3 className="mb-2 text-lg font-semibold text-gray-900">{service.title}</h3>
-                            <p className="text-gray-600">{service.description}</p>
                         </motion.div>
                     ))}
                 </div>

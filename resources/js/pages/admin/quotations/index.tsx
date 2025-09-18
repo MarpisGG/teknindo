@@ -1,8 +1,8 @@
+import AppLayout from '@/layouts/app-layout';
 import { Link, usePage } from '@inertiajs/react';
 import axios from 'axios';
 import React from 'react';
 import Swal from 'sweetalert2';
-import NavbarAdmin from '../navbar-admin';
 
 interface Quotation {
     id: number;
@@ -16,7 +16,12 @@ interface Quotation {
         id: number;
         name: string;
         slug: string;
-    };
+    } | null;
+    service: {
+        id: number;
+        name: string;
+        slug: string;
+    } | null;
     followed_up: boolean;
 }
 
@@ -33,6 +38,8 @@ interface PageProps {
 const Index: React.FC = () => {
     const { quotations, auth } = usePage<PageProps>().props;
     const [searchTerm, setSearchTerm] = React.useState('');
+    const [selectedProduct, setSelectedProduct] = React.useState('');
+    const [selectedService, setSelectedService] = React.useState('');
 
     const handleDelete = (id: number) => {
         Swal.fire({
@@ -71,97 +78,149 @@ const Index: React.FC = () => {
 
     const debouncedSearchTerm = useDebounce(searchTerm, 300);
 
-    const filteredQuotations = quotations.data.filter((quotation) => (quotation.message || '').toLowerCase().includes(debouncedSearchTerm));
+    // Generate unique product & service options
+    const productOptions = Array.from(new Set(quotations.data.map((q) => q.product?.name).filter(Boolean)));
+    const serviceOptions = Array.from(new Set(quotations.data.map((q) => q.service?.name).filter(Boolean)));
+
+    const filteredQuotations = quotations.data.filter((quotation) => {
+        const matchesSearch = (quotation.message || '').toLowerCase().includes(debouncedSearchTerm);
+        const matchesProduct = selectedProduct ? quotation.product?.name === selectedProduct : true;
+        const matchesService = selectedService ? quotation.service?.name === selectedService : true;
+        return matchesSearch && matchesProduct && matchesService;
+    });
+
     const toggleFollowUp = async (id: number) => {
         try {
-            const res = await axios.put(`/quotations/${id}/follow-up`);
-            window.location.reload(); // Atau gunakan router.reload()
+            await axios.put(`/quotations/${id}/follow-up`);
+            window.location.reload();
         } catch (err) {
             Swal.fire('Error', 'Failed to update follow-up status', 'error');
         }
     };
 
     return (
-        <div className="mx-auto max-w-6xl p-4 sm:p-6">
-            {/* Navbar */}
-            <NavbarAdmin />
+        <AppLayout>
+            <div className="mx-auto max-w-6xl p-4 sm:p-6">
+                {/* Header and Filters */}
+                <div className="mb-6 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+                    <h2 className="text-2xl font-bold text-gray-800 md:text-3xl">Quotation</h2>
 
-            {/* Header and Search */}
-            <div className="mb-6 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-                <h2 className="text-2xl font-bold text-gray-800 md:text-3xl">Quotation</h2>
+                    <div className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row sm:items-center">
+                        {/* Search */}
+                        <input
+                            type="text"
+                            onChange={handleSearch}
+                            placeholder="Search quotation..."
+                            className="w-full rounded-lg border border-black px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none sm:w-auto"
+                        />
 
-                <div className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row sm:items-center">
-                    <input
-                        type="text"
-                        onChange={handleSearch}
-                        placeholder="Search quotation..."
-                        className="w-full rounded-lg border border-black px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none sm:w-auto"
-                    />
-                    <Link
-                        href="/admin/dashboard"
-                        className="rounded-lg border border-blue-600 px-4 py-2 text-center text-sm text-blue-600 hover:text-blue-800 sm:text-base"
-                    >
-                        ← Back to Dashboard
-                    </Link>
+                        {/* Product Filter */}
+                        <select
+                            value={selectedProduct}
+                            onChange={(e) => setSelectedProduct(e.target.value)}
+                            className="rounded-lg border border-gray-400 px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                        >
+                            <option value="">All Products</option>
+                            {productOptions.map((product) => (
+                                <option key={product} value={product}>
+                                    {product}
+                                </option>
+                            ))}
+                        </select>
+
+                        {/* Service Filter */}
+                        <select
+                            value={selectedService}
+                            onChange={(e) => setSelectedService(e.target.value)}
+                            className="rounded-lg border border-gray-400 px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                        >
+                            <option value="">All Services</option>
+                            {serviceOptions.map((service) => (
+                                <option key={service} value={service}>
+                                    {service}
+                                </option>
+                            ))}
+                        </select>
+
+                        <Link
+                            href="/admin/dashboard"
+                            className="rounded-lg border border-blue-600 px-4 py-2 text-center text-sm text-blue-600 hover:text-blue-800 sm:text-base"
+                        >
+                            ← Back to Dashboard
+                        </Link>
+                    </div>
                 </div>
-            </div>
 
-            {/* Table */}
-            <div className="overflow-x-auto rounded-lg border bg-white shadow">
-                <table className="min-w-full text-sm text-gray-700">
-                    <thead className="bg-gray-50 text-left">
-                        <tr>
-                            <th className="border-b px-4 py-2">Name</th>
-                            <th className="border-b px-4 py-2">Email</th>
-                            <th className="border-b px-4 py-2">Phone</th>
-                            <th className="border-b px-4 py-2">Company</th>
-                            <th className="border-b px-4 py-2">Country</th>
-                            <th className="border-b px-4 py-2">Message</th>
-                            <th className="border-b px-4 py-2">Product</th>
-                            <th className="border-b px-4 py-2 text-center">Followed Up</th>
-                            <th className="border-b px-4 py-2 text-center">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                {/* Table */}
+                <div className="overflow-x-auto rounded-lg border bg-white shadow">
+                    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                         {filteredQuotations.length > 0 ? (
-                            filteredQuotations.map((quotation, index) => (
-                                <tr key={quotation.id} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-                                    <td className="border-b px-4 py-2">{quotation.name}</td>
-                                    <td className="border-b px-4 py-2">{quotation.email}</td>
-                                    <td className="border-b px-4 py-2">{quotation.phone}</td>
-                                    <td className="border-b px-4 py-2">{quotation.company}</td>
-                                    <td className="border-b px-4 py-2">{quotation.country}</td>
-                                    <td className="border-b px-4 py-2">{quotation.message}</td>
-                                    <td className="border-b px-4 py-2">{quotation.product.name}</td>
-                                    <td className="border-b px-4 py-2 text-center">
+                            filteredQuotations.map((quotation) => (
+                                <div key={quotation.id} className="rounded-lg border bg-white p-4 shadow">
+                                    <h3 className="text-lg font-bold text-gray-800">{quotation.name}</h3>
+                                    <p className="text-sm text-gray-600">Email: {quotation.email}</p>
+                                    <p className="text-sm text-gray-600">Phone: {quotation.phone}</p>
+                                    <p className="text-sm text-gray-600">Company: {quotation.company}</p>
+                                    <p className="text-sm text-gray-600">Country: {quotation.country}</p>
+                                    <p className="text-sm text-gray-600">Message: {quotation.message}</p>
+                                    <p className="text-sm text-gray-600">Product: {quotation.product?.name || '-'}</p>
+                                    <p className="text-sm text-gray-600">Service: {quotation.service?.name || '-'}</p>
+                                    <div className="mt-4 flex items-center justify-between">
                                         <button
                                             onClick={() => toggleFollowUp(quotation.id)}
                                             className={`rounded px-3 py-1 text-white ${quotation.followed_up ? 'bg-green-600' : 'bg-gray-400'}`}
                                         >
                                             {quotation.followed_up ? 'Done' : 'Mark as Done'}
                                         </button>
-                                    </td>
-                                    <td className="border-b px-4 py-2 text-center">
                                         <button
                                             onClick={() => handleDelete(quotation.id)}
                                             className="rounded bg-red-500 px-3 py-1 text-white hover:bg-red-600"
                                         >
                                             Delete
                                         </button>
-                                    </td>
-                                </tr>
+                                    </div>
+                                </div>
                             ))
                         ) : (
-                            <tr>
-                                <td colSpan={7} className="px-4 py-6 text-center text-gray-500">
-                                    No messages found.
-                                </td>
-                            </tr>
+                            <div className="col-span-full text-center text-gray-500">No messages found.</div>
                         )}
-                    </tbody>
-                </table>
+                    </div>
+                </div>
+                <div className="mt-6 flex justify-center">
+                    <nav className="inline-flex items-center space-x-2">
+                        {quotations.current_page > 1 && (
+                            <button
+                                onClick={() => (window.location.href = `?page=${quotations.current_page - 1}`)}
+                                className="rounded border border-gray-300 bg-white px-4 py-2 text-gray-700 hover:bg-gray-100"
+                            >
+                                Previous
+                            </button>
+                        )}
+                        {Array.from({ length: quotations.last_page }, (_, i) => i + 1).map((page) => (
+                            <button
+                                key={page}
+                                onClick={() => (window.location.href = `?page=${page}`)}
+                                className={`rounded border px-4 py-2 ${
+                                    page === quotations.current_page
+                                        ? 'bg-blue-500 text-white'
+                                        : 'border-gray-300 bg-white text-gray-700 hover:bg-gray-100'
+                                }`}
+                            >
+                                {page}
+                            </button>
+                        ))}
+                        {quotations.current_page < quotations.last_page && (
+                            <button
+                                onClick={() => (window.location.href = `?page=${quotations.current_page + 1}`)}
+                                className="rounded border border-gray-300 bg-white px-4 py-2 text-gray-700 hover:bg-gray-100"
+                            >
+                                Next
+                            </button>
+                        )}
+                    </nav>
+                </div>
             </div>
-        </div>
+        </AppLayout>
     );
 };
 

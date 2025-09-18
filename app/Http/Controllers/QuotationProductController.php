@@ -51,9 +51,15 @@ class QuotationProductController extends Controller
         return redirect()->route('quotation-products.index');
     }
 
-    public function destroy(QuotationProduct $quotationProduct)
+
+    public function destroy($id)
     {
-        $quotationProduct->delete();
-        return redirect()->route('quotation-products.index');
+        $quotationProduct = QuotationProduct::find($id);
+        if ($quotationProduct) {
+            $quotationProduct->delete();
+            return response()->json(['message' => 'Quotation Product deleted successfully.']);
+        } else {
+            return response()->json(['message' => 'Quotation Product not found.'], 404);
+        }
     }
 }

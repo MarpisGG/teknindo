@@ -30,9 +30,7 @@ const content: ContentItem[] = [
         content: (
             <div className="h-full w-full  flex items-center justify-center text-white">
                 <img
-                    src="https://ui.aceternity.com/_next/image?url=%2Flinear.webp&w=640&q=75"
-                    width={300}
-                    height={300}
+                    src="/image/about/2.jpg"
                     className="h-full w-full object-cover"
                     alt="linear board demo"
                 />
@@ -44,8 +42,12 @@ const content: ContentItem[] = [
         description:
             "Strengthening its international presence, Wenzhou Yunding International (WYI) was established in China. As a global trading company, WYI provides diverse machinery, industrial tools, and specialized equipment, connecting global markets with trusted quality and value.",
         content: (
-            <div className="h-full w-full bg-[linear-gradient(to_bottom_right,var(--orange-500),var(--yellow-500))] flex items-center justify-center text-white">
-                Version control
+            <div className="h-full w-full  flex items-center justify-center text-white">
+                <img
+                    src="/image/about/5.jpg"
+                    className="h-full w-full object-cover"
+                    alt="linear board demo"
+                />
             </div>
         ),
     },
@@ -54,8 +56,12 @@ const content: ContentItem[] = [
         description:
             "After years of steady growth, Teknindo Super Haul (TSH) was launched to provide heavy equipment and dump truck rental services, along with operational vehicles, ensuring smooth operations in the mining sector.",
         content: (
-            <div className="h-full w-full bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] flex items-center justify-center text-white">
-                Running out of content
+            <div className="h-full w-full  flex items-center justify-center text-white">
+                <img
+                    src="/image/about/3.jpg"
+                    className="h-full w-full object-cover"
+                    alt="linear board demo"
+                />
             </div>
         ),
     },
@@ -64,8 +70,12 @@ const content: ContentItem[] = [
         description:
             "In 2025, Teknindo Group entered a phase of rapid expansion by establishing three new subsidiaries: LGCM Laigong Indonesia, focusing on compact heavy machinery and agricultural equipment; Teknindo Adhya Pane, providing mining contractor services with a strong emphasis on safety and efficiency; and Tenrich Tyre Indonesia, dedicated to producing durable, high-performance tires for heavy equipment and dump trucks.",
         content: (
-            <div className="h-full w-full bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] flex items-center justify-center text-white">
-                Running out of content
+            <div className="h-full w-full  flex items-center justify-center text-white">
+                <img
+                    src="/image/about/4.jpg"
+                    className="h-full w-full object-cover"
+                    alt="linear board demo"
+                />
             </div>
         ),
     },

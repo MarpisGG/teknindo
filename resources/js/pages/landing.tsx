@@ -23,6 +23,11 @@ interface Types {
     image?: string;
 }
 
+interface LandingVideo {
+    id: number;
+    video: string;
+}
+
 const fadeInUp = {
     hidden: { opacity: 0, y: 40 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
@@ -30,11 +35,20 @@ const fadeInUp = {
 
 export default function Welcome() {
     const [types, setTypes] = useState<Types[]>([]);
+    const [landingVideos, setLandingVideos] = useState<LandingVideo[]>([]);
+
     useEffect(() => {
         axios
             .get('/api/types')
             .then((response) => setTypes(response.data))
             .catch((error) => console.error('Error fetching types:', error));
+    }, []);
+
+    useEffect(() => {
+        axios
+            .get('/api/landing-videos')
+            .then((response) => setLandingVideos(response.data))
+            .catch((error) => console.error('Error fetching landing videos:', error));
     }, []);
 
     const { auth } = usePage<SharedData>().props;
@@ -57,7 +71,7 @@ export default function Welcome() {
                         loop
                         muted
                         className="absolute top-0 left-0 h-full w-full object-cover"
-                        src="/videos/videolanding.mp4"
+                        src={`/storage/${landingVideos[0]?.video}`}
                         style={{
                             transform: 'translateZ(-1px) scale(2)',
                             minHeight: '100vh',
@@ -69,7 +83,7 @@ export default function Welcome() {
                     className="absolute inset-0 z-10 bg-black/50"
                     initial={{ opacity: 1 }}
                     animate={{ opacity: 0 }}
-                    transition={{ delay: 2, duration: 0.5 }}
+                    transition={{ delay: 2, duration: 1.5 }}
                 />
                 <motion.div
                     className="relative z-20 flex min-h-screen flex-col items-center justify-center px-4 text-center"
@@ -77,16 +91,16 @@ export default function Welcome() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1, ease: 'easeOut' }}
                 >
-                    <motion.h1
+                    <motion.div
                         className="mx-auto max-w-xl text-2xl font-bold text-white sm:text-3xl md:text-4xl lg:text-5xl"
                         initial={{ opacity: 1 }}
                         animate={{ opacity: 0 }}
-                        transition={{ delay: 2.5, duration: 0.5 }}
+                        transition={{ delay: 2.5, duration: 1.5 }}
                     >
                         Your Best Partner Of
                         <br />
                         <h1 className="block text-lg font-semibold sm:text-xl md:text-2xl lg:text-3xl">Heavy Equipment and Spare Parts</h1>
-                    </motion.h1>
+                    </motion.div>
                 </motion.div>
             </div>
             <div className="relative z-30 flex w-full items-center justify-center bg-[#d9d9d9]">

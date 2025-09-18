@@ -2,11 +2,17 @@ import FloatingQuickActions from '@/components/floatingquickaction';
 import { Footer7 } from '@/components/footer';
 import Navbar from '@/components/navbar';
 import { AutoScroll } from '@/components/ui/auto-scroll';
+import { AutoScrollCustomer } from '@/components/ui/auto-scroll-customer';
 import StickyScrollRevealComponent from '@/components/ui/sticky-scroll';
 import { Head, Link } from '@inertiajs/react';
+import axios from 'axios';
 import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
 import Teknindo from '../../assets/image/Teknindo Awal.png';
-import ListPerusahaan from '../../assets/image/perusahaan.jpeg';
+
+interface Company {
+    name: string;
+}
 
 const fadeInUp = {
     hidden: { opacity: 0, y: 40 },
@@ -14,15 +20,25 @@ const fadeInUp = {
 };
 
 const About = () => {
+    const [companies, setCompanies] = useState<Company[]>([]);
+
+    useEffect(() => {
+        axios
+            .get('/api/companies')
+            .then((response) => {
+                setCompanies(response.data);
+            })
+            .catch((error) => {
+                console.error('Error fetching companies:', error);
+            });
+    }, []);
+
     return (
         <>
             <Head title="About" />
             <div className="mb-16">
                 <Navbar />
             </div>
-
-            {/* <ScrollExpansion /> */}
-
             <div className="bg-[#d9d9d9]/60">
                 <motion.div
                     className="mx-auto w-[80%] max-w-6xl py-4"
@@ -53,14 +69,10 @@ const About = () => {
 
                             <div>
                                 <p className="mb-2 font-semibold">The member companies under Teknindo Group include:</p>
-                                <ul className="list-inside list-disc space-y-1">
-                                    <li>Mitra Teknindo Sejati (MTS)</li>
-                                    <li>Mitra Suplaindo Sejati (MSS)</li>
-                                    <li>Teknindo Super Haul (TSH)</li>
-                                    <li>LGCM Laigong Indonesia (LI)</li>
-                                    <li>Teknindo Adhya Pane (TAP)</li>
-                                    <li>Tenrich Tyre Indonesia (TTI)</li>
-                                    <li>Wenzhou Yunding International (WYI)</li>
+                                <ul className="list-disc space-y-2 pl-6">
+                                    {companies.map((company, index) => (
+                                        <li key={index}>{company.name}</li>
+                                    ))}
                                 </ul>
                             </div>
 
@@ -199,7 +211,6 @@ const About = () => {
                 </motion.div>
             </div>
             <StickyScrollRevealComponent />
-            {/* <Timeline_02 /> */}
             <div className="">
                 <motion.div
                     className="mx-auto w-[80%] max-w-6xl py-8"
@@ -209,13 +220,13 @@ const About = () => {
                     variants={fadeInUp}
                 >
                     <h1 className="py-4 text-center text-3xl font-bold text-gray-900">Our Loyal Customer</h1>
-                    <p className="mx-auto mb-4 max-w-2xl text-center text-lg">
+                    <p className="mx-auto max-w-2xl text-center text-lg">
                         We are proud to serve loyal customers who have been part of our journey. Your trust is a testament to the quality of our
                         products and services.
                     </p>
                 </motion.div>
-                <img src={ListPerusahaan} alt="List of Companies" className="mx-auto max-h-screen w-full max-w-6xl" />
             </div>
+            <AutoScrollCustomer />
             <div className="bg-[#FCC200]">
                 <motion.div
                     className="mx-auto w-[80%] max-w-6xl"

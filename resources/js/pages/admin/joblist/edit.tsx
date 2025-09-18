@@ -11,7 +11,6 @@ interface Job {
     division: string;
     location: string;
     type: string;
-    salary: string;
     job_desc?: string;
     requirements: string;
     benefit: string;
@@ -38,7 +37,6 @@ const Edit: React.FC = () => {
         division: jobs?.division || '',
         location: jobs?.location || '',
         type: jobs?.type || '',
-        salary: jobs?.salary || '',
         job_desc: jobs?.job_desc || '',
         requirements: jobs?.requirements || '',
         benefit: jobs?.benefit || '',
@@ -146,20 +144,6 @@ const Edit: React.FC = () => {
                         </select>
                         {errors.type && <p className="mt-1 text-sm text-red-600">{errors.type}</p>}
                     </div>
-
-                    <div>
-                        <label className="mb-2 block text-sm font-medium text-gray-700">Salary *</label>
-                        <input
-                            name="salary"
-                            value={data.salary}
-                            onChange={handleChange}
-                            className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-transparent focus:ring-2 focus:ring-blue-500"
-                            placeholder="Enter salary"
-                            required
-                        />
-                        {errors.salary && <p className="mt-1 text-sm text-red-600">{errors.salary}</p>}
-                    </div>
-
                     <div>
                         <label className="mb-2 block text-sm font-medium text-gray-700">Job Description *</label>
                         <ReactQuill

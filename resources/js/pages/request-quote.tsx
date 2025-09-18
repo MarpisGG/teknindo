@@ -20,6 +20,11 @@ interface Quotation {
         name: string;
         slug: string;
     };
+    service: {
+        id: number;
+        name: string;
+        slug: string;
+    } | null;
 }
 
 interface Product {
@@ -27,23 +32,42 @@ interface Product {
     name: string;
 }
 
+interface Service {
+    id: number;
+    name: string;
+}
+
 function RequestQuote() {
+    const [type, setType] = useState<'product' | 'service'>('product');
     const [quotations, setQuotations] = useState<Quotation[]>([]);
     const [products, setProducts] = useState<Product[]>([]);
+    const [services, setServices] = useState<Service[]>([]);
     const [searchTerm, setSearchTerm] = useState('');
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         const formData = new FormData(e.target as HTMLFormElement);
+
         axios
             .post(`/api/quotations`, formData)
             .then((response) => {
                 setQuotations([...quotations, response.data]);
                 Swal.fire('Success', 'Quotation submitted successfully!', 'success');
                 (e.target as HTMLFormElement).reset();
+                setSearchTerm(''); // Reset search term after successful submission
             })
             .catch((error) => {
-                Swal.fire('Error', 'Failed to submit quotation.', 'error');
+                console.error('Full error object:', error);
+
+                // Show detailed validation errors
+                if (error.response && error.response.status === 422) {
+                    const validationErrors = error.response.data.errors || {};
+                    const errorMessages = Object.values(validationErrors).flat().join('\n');
+                    Swal.fire('Validation Error', errorMessages || 'Please check your input.', 'error');
+                } else {
+                    Swal.fire('Error', 'Failed to submit quotation.', 'error');
+                }
+
                 console.error(error);
             });
     };
@@ -55,9 +79,26 @@ function RequestQuote() {
         });
     };
 
+    const fetchServices = () => {
+        // Fixed typo: was "fetchSercices"
+        axios.get(`/api/service-quotations`).then((response) => {
+            const data = Array.isArray(response.data) ? response.data : response.data.data;
+            setServices(data || []);
+        });
+    };
+
     React.useEffect(() => {
-        fetchProducts();
-    }, []);
+        if (type === 'product') {
+            fetchProducts();
+        } else {
+            fetchServices(); // Fixed typo
+        }
+    }, [type]); // Added type dependency so it refetches when type changes
+
+    // Reset search term when type changes
+    React.useEffect(() => {
+        setSearchTerm('');
+    }, [type]);
 
     const container = {
         hidden: { opacity: 0, y: 20 },
@@ -76,6 +117,10 @@ function RequestQuote() {
         show: { opacity: 1, y: 0 },
     };
 
+    // Get current items based on type
+    const currentItems = type === 'product' ? products : services;
+    const currentItemsFiltered = currentItems.filter((item) => item.name.toLowerCase().includes(searchTerm.toLowerCase()));
+
     return (
         <>
             <Head title="Request Quotation" />
@@ -93,7 +138,7 @@ function RequestQuote() {
                             <span className="absolute -bottom-1 -left-1 z-0 text-gray-300">Request Quotation</span>
                         </h1>
                         <p className="drop- mx-auto mt-4 max-w-xl text-base text-gray-600">
-                            Please fill out the form below to request a quotation for our products.
+                            Please fill out the form below to request a quotation for our products or services.
                         </p>
                     </motion.div>
                     <form onSubmit={handleSubmit} className="space-y-6">
@@ -176,54 +221,74 @@ function RequestQuote() {
                         </motion.div>
 
                         <motion.div variants={item}>
-                            <label htmlFor="quotation_product_id" className="block text-sm font-bold">
-                                Select Product<span className="text-red-500">*</span>
+                            <label className="block text-sm font-bold">Type</label>
+                            <select
+                                value={type}
+                                onChange={(e) => setType(e.target.value as 'product' | 'service')}
+                                className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2 transition focus:border-yellow-400 focus:ring-2 focus:ring-yellow-300 focus:outline-none"
+                            >
+                                <option value="product">Product</option>
+                                <option value="service">Service</option>
+                            </select>
+                        </motion.div>
+
+                        <motion.div variants={item}>
+                            <label htmlFor="search" className="block text-sm font-bold">
+                                Select {type === 'product' ? 'Product' : 'Service'}
+                                <span className="text-red-500">*</span>
                             </label>
                             <div>
                                 <div className="relative mt-4">
                                     <input
                                         type="text"
-                                        placeholder="Search product..."
+                                        placeholder={`Search ${type}...`}
                                         className="w-full rounded-lg border border-gray-300 px-4 py-2 transition focus:border-yellow-400 focus:ring-2 focus:ring-yellow-300 focus:outline-none"
                                         autoComplete="off"
                                         value={searchTerm}
                                         onChange={(e) => setSearchTerm(e.target.value)}
                                         aria-autocomplete="list"
-                                        aria-expanded={!!searchTerm && !products.some((p) => p.name.toLowerCase() === searchTerm.toLowerCase())}
+                                        aria-expanded={
+                                            !!searchTerm && !currentItems.some((item) => item.name.toLowerCase() === searchTerm.toLowerCase())
+                                        }
                                     />
 
-                                    {/* This hidden (visually) text input carries the selected quotation_product_id and enforces required */}
+                                    {/* Separate hidden inputs for product and service */}
                                     <input
-                                        type="text"
+                                        type="hidden"
                                         name="quotation_product_id"
-                                        readOnly
-                                        required
-                                        value={(products.find((p) => p.name.toLowerCase() === searchTerm.toLowerCase())?.id ?? '').toString()}
-                                        className="sr-only"
-                                        aria-hidden="true"
-                                        tabIndex={-1}
+                                        value={
+                                            type === 'product'
+                                                ? (products.find((item) => item.name.toLowerCase() === searchTerm.toLowerCase())?.id ?? '')
+                                                : ''
+                                        }
                                     />
 
-                                    {searchTerm && !products.some((p) => p.name.toLowerCase() === searchTerm.toLowerCase()) && (
+                                    <input
+                                        type="hidden"
+                                        name="quotation_service_id"
+                                        value={
+                                            type === 'service'
+                                                ? (services.find((item) => item.name.toLowerCase() === searchTerm.toLowerCase())?.id ?? '')
+                                                : ''
+                                        }
+                                    />
+
+                                    {searchTerm && !currentItems.some((item) => item.name.toLowerCase() === searchTerm.toLowerCase()) && (
                                         <ul
                                             role="listbox"
                                             className="absolute z-20 mt-1 max-h-60 w-full overflow-auto rounded-md border border-gray-200 bg-white shadow-lg"
                                         >
-                                            {products
-                                                .filter((product) => product.name.toLowerCase().includes(searchTerm.toLowerCase()))
-                                                .map((product) => (
-                                                    <li
-                                                        key={product.id}
-                                                        role="option"
-                                                        className="cursor-pointer px-4 py-2 hover:bg-yellow-50"
-                                                        onMouseDown={() => setSearchTerm(product.name)}
-                                                    >
-                                                        {product.name}
-                                                    </li>
-                                                ))}
-                                            {products.filter((p) => p.name.toLowerCase().includes(searchTerm.toLowerCase())).length === 0 && (
-                                                <li className="px-4 py-2 text-gray-500">No products found</li>
-                                            )}
+                                            {currentItemsFiltered.map((item) => (
+                                                <li
+                                                    key={item.id}
+                                                    role="option"
+                                                    className="cursor-pointer px-4 py-2 hover:bg-yellow-50"
+                                                    onMouseDown={() => setSearchTerm(item.name)}
+                                                >
+                                                    {item.name}
+                                                </li>
+                                            ))}
+                                            {currentItemsFiltered.length === 0 && <li className="px-4 py-2 text-gray-500">No {type}s found</li>}
                                         </ul>
                                     )}
                                 </div>

@@ -19,7 +19,15 @@ use App\Http\Controllers\VisitorLogController;
 use App\Http\Controllers\TranslateController;
 use App\Http\Controllers\QuotationController;
 use App\Http\Controllers\QuotationProductController;
+use App\Http\Controllers\QuotationServiceController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\LandingVideoController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\LocationFooterController;
+use App\Http\Controllers\LocationController;
+use App\Http\Controllers\TestimoniController;
+use App\Http\Controllers\BusinessController;
 
 use Inertia\Inertia;
 
@@ -69,28 +77,32 @@ Route::get('/faq', function () {
 
 Route::prefix('business')->group(function () {
     Route::get('/heavy-equipment', function () {
-        return Inertia::render('heavy-equipment');
+        return Inertia::render('business/heavy-equipment');
     })->name('business.heavy-equipment');
 
-    Route::get('/construction-equipment', function () {
-        return Inertia::render('construction-equipment');
-    })->name('business.construction-equipment');
+    Route::get('/equipment-vehicle-rental', function () {
+        return Inertia::render('business/equipment-vehicle-rental');
+    })->name('business.equipment-vehicle-rental');
 
-    Route::get('/mining-transportation', function () {
-        return Inertia::render('mining-transportation');
-    })->name('business.mining-transportation');
+    Route::get('/machinery-agriculture-manufacturing', function () {
+        return Inertia::render('business/machinery-agriculture-manufacturing');
+    })->name('business.machinery-agriculture-manufacturing');
 
-    Route::get('/mining-contractor', function () {
-        return Inertia::render('mining-contractor');
-    })->name('business.mining-contractor');
+    Route::get('/mining-contracting-hauling', function () {
+        return Inertia::render('business/mining-contracting-hauling');
+    })->name('business.mining-contracting-hauling');
 
-    Route::get('/mining-services', function () {
-        return Inertia::render('mining-services');
-    })->name('business.mining-services');
+    Route::get('/industrial-tire-manufacturing', function () {
+        return Inertia::render('business/industrial-tire-manufacturing');
+    })->name('business.industrial-tire-manufacturing');
 
-    Route::get('/industry-supplies', function () {
-        return Inertia::render('industry-supplies');
-    })->name('business.industry-supplies');
+    Route::get('/industrial-supply-maintenance', function () {
+        return Inertia::render('business/industrial-supply-maintenance');
+    })->name('business.industrial-supply-maintenance');
+
+    Route::get('/international-trading-sourcing', function () {
+        return Inertia::render('business/international-trading-sourcing');
+    })->name('business.international-trading-sourcing');
 });
 
 Route::get('/career/jobs', function () {
@@ -170,11 +182,63 @@ Route::middleware(['auth', 'preventBack'])->prefix('admin')->group(function () {
     Route::get('/quotation-products', [QuotationProductController::class, 'index'])->name('quotation-products.index');
     Route::get('/quotation-products/create', [QuotationProductController::class, 'create'])->name('quotation-products.create');
     Route::post('/quotation-products', [QuotationProductController::class, 'store'])->name('quotation-products.store');
+    Route::delete('/quotation-products/{id}', [QuotationProductController::class, 'destroy'])->name('quotation-products.destroy');
+
+    //Quotation service
+    Route::get('/quotation-services', [QuotationServiceController::class, 'index'])->name('quotation-services.index');
+    Route::get('/quotation-services/create', [QuotationServiceController::class, 'create'])->name('quotation-services.create');
+    Route::post('/quotation-services', [QuotationServiceController::class, 'store'])->name('quotation-services.store');
+    Route::delete('/quotation-services/{id}', [QuotationServiceController::class, 'destroy'])->name('quotation-services.destroy');
+
+    //company
+    Route::get('/companies', [CompanyController::class, 'index'])->name('company.index');
+    Route::get('/companies/create', [CompanyController::class, 'create'])->name('company.create');
+    Route::post('/companies', [CompanyController::class, 'store'])->name('company.store');
+    Route::delete('/companies/{id}', [CompanyController::class, 'destroy'])->name('company.destroy');
+
+    // Landing Video
+    Route::get('/landing-videos', [LandingVideoController::class, 'index'])->name('landing-video.index');
+    Route::get('/landing-videos/create', [LandingVideoController::class, 'create'])->name('landing-video.create');
+    Route::post('/landing-videos', [LandingVideoController::class, 'store'])->name('landing-video.store');
+    Route::delete('/landing-videos/{id}', [LandingVideoController::class, 'destroy'])->name('landing-video.destroy');
+
+    // Customers
+    Route::get('/customers', [CustomerController::class, 'index'])->name('customers.index');
+    Route::get('/customers/create', [CustomerController::class, 'create'])->name('customer.create');
+    Route::post('/customers', [CustomerController::class, 'store'])->name('customer.store');
+    Route::delete('/customers/{id}', [CustomerController::class, 'destroy'])->name('customer.destroy');
+
+    // Location Footer
+    Route::get('/location-footers', [LocationFooterController::class, 'index'])->name('location-footer.index');
+    Route::get('/location-footers/create', [LocationFooterController::class, 'create'])->name('location-footer.create');
+    Route::post('/location-footers', [LocationFooterController::class, 'store'])->name('location-footer.store');
+    Route::delete('/location-footers/{id}', [LocationFooterController::class, 'destroy'])->name('location-footer.destroy');
+
+    // Locations
+    Route::get('/locations', [LocationController::class, 'index'])->name('location.index');
+    Route::get('/locations/create', [LocationController::class, 'create'])->name('location.create');
+    Route::post('/locations', [LocationController::class, 'store'])->name('location.store');
+    Route::delete('/locations/{id}', [LocationController::class, 'destroy'])->name('location.destroy');
+
+    // Testimonis
+    Route::get('/testimonis', [TestimoniController::class, 'index'])->name('testimoni.index');
+    Route::get('/testimonis/create', [TestimoniController::class, 'create'])->name('testimoni.create');
+    Route::post('/testimonis', [TestimoniController::class, 'store'])->name('testimoni.store');
+    Route::delete('/testimonis/{id}', [TestimoniController::class, 'destroy'])->name('testimoni.destroy');
 
 
     // Subscriptions
     Route::get('/subscriptions', [SubscriptionController::class, 'index'])->name('subscriptions.index');
     Route::get('/subscriptions/create', [SubscriptionController::class, 'create'])->name('subscriptions.create');
+
+    //business
+    Route::get('/businesses', [App\Http\Controllers\BusinessController::class, 'index'])->name('business.index');
+    Route::get('/businesses/create', [App\Http\Controllers\BusinessController::class, 'create'])->name('business.create');
+    Route::post('/businesses', [App\Http\Controllers\BusinessController::class, 'store'])->name('business.store');
+    Route::get('/businesses/{id}/edit', [App\Http\Controllers\BusinessController::class, 'edit'])->name('business.edit');
+    Route::put('/businesses/{business}', [App\Http\Controllers\BusinessController::class, 'update'])->name('business.update');
+    
+    Route::delete('/businesses/{id}', [App\Http\Controllers\BusinessController::class, 'destroy'])->name('business.destroy'); 
     
 });
 
@@ -243,7 +307,20 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/jobs/{id}/edit', [JobListController::class, 'editApi'])->name('api.jobs.edit');
         
         Route::get('/visitors/daily', [VisitorLogController::class, 'dailyVisitors'])->name('api.visitors.daily');
+
     });
+});
+
+
+Route::prefix('api')->group(function () {
+    Route::get('/customers', [CustomerController::class, 'apiindex'])->name('api.customers');
+    Route::get('/companies', [CompanyController::class, 'apiindex'])->name('api.companies');
+    Route::get('/landing-videos', [LandingVideoController::class, 'apiindex'])->name('api.landing-videos');
+    Route::get('/location-footers', [LocationFooterController::class, 'apiindex'])->name('api.location-footers');
+    Route::get('/locations', [LocationController::class, 'apiindex'])->name('api.locations');
+    Route::get('/testimonis', [TestimoniController::class, 'apiindex'])->name('api.testimonis');
+    Route::get('/business', [App\Http\Controllers\BusinessController::class, 'apiindex'])->name('api.businesses');
+    
 });
 
 Route::get('/blogs/{slug}/comments', [CommentController::class, 'getCommentsBySlug']);
@@ -277,9 +354,12 @@ Route::post('/api/blogs/{id}/unlike', [BlogController::class, 'unlike']);
 Route::get('/api/blogs/{id}/related-random', [BlogController::class, 'relatedRandom']);
 
 Route::get('/api/product-quotations', [QuotationProductController::class, 'indexQuotation']);
+Route::get('/api/service-quotations', [QuotationServiceController::class, 'indexQuotation']);
 
 Route::get('/search', [SearchController::class, 'search'])->name('search');
 
+// Route with custom key binding
+Route::get('/business/{business:slug}', [BusinessController::class, 'show'])->name('business.show');
 
 
 Route::get('/translate', [TranslateController::class, 'translate']);

@@ -22,7 +22,7 @@ export default function HorizontalScrollCarouselDemo() {
 
     return (
         <div className="bg-[#181818]">
-            <h1 className="pt-10 text-center text-5xl font-bold text-white">Our Best Service</h1>
+            <h1 className="pt-10 text-center text-5xl font-bold text-white">Our Best Products</h1>
             <HorizontalScrollCarousel images={products} />
         </div>
     );

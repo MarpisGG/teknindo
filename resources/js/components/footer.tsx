@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { MoveRight } from 'lucide-react';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { CiMail } from 'react-icons/ci';
 import { FaFacebook, FaInstagram, FaLinkedin, FaPhone, FaTiktok, FaWhatsapp } from 'react-icons/fa';
 import Teknindo from '../../assets/image/Logo Teknindo Group - ORI (1).png';
@@ -11,16 +11,13 @@ interface Footer7Props {
         src: string;
         alt: string;
     };
-    sections?: Array<{
-        title: string;
-        links: Array<{ name: string; href: string; icon?: React.ReactElement }>;
-    }>;
     description?: string;
-    socialLinks?: Array<{
-        icon: React.ReactElement;
-        href: string;
-        label: string;
-    }>;
+}
+
+interface Location {
+    id: number;
+    name: string;
+    link: string;
 }
 
 const defaultSections = [
@@ -37,20 +34,10 @@ const defaultSections = [
         ],
     },
     {
-        title: 'Our Location',
-        links: [
-            { name: 'Jakarta Branch', href: 'https://maps.app.goo.gl/cf6ouSoAfw8qTgAC9' },
-            { name: 'Tangerang Branch', href: 'https://maps.app.goo.gl/22tPesVz2hKMtCPSA' },
-            { name: 'Surabaya Branch', href: 'https://maps.app.goo.gl/rBQXgFDrTd3Qcuqg9' },
-            { name: 'Samarinda Branch', href: 'https://maps.app.goo.gl/WzC1UBWAfN8f2XsJ6' },
-            { name: 'Makassar Branch', href: 'https://maps.app.goo.gl/Fed3z69hbaVyuoHz6' },
-        ],
-    },
-    {
         title: 'Our Contact',
         links: [
             {
-                name: ' 021 38769054',
+                name: '021 38769054',
                 href: '#',
                 icon: <FaPhone className="mr-2 inline" />,
             },
@@ -60,7 +47,7 @@ const defaultSections = [
                 icon: <FaWhatsapp className="mr-2 inline" />,
             },
             {
-                name: 'teknindo@gmail.com',
+                name: 'headoffice@teknindogroup.com',
                 href: '#',
                 icon: <CiMail className="mr-2 inline" />,
             },
@@ -69,10 +56,26 @@ const defaultSections = [
 ];
 
 const defaultSocialLinks = [
-    { icon: <FaInstagram className="size-5" />, href: 'https://www.instagram.com/teknindo.group/', label: 'Instagram' },
-    { icon: <FaFacebook className="size-5" />, href: 'https://www.facebook.com/pt.mitrateknindosejati', label: 'Facebook' },
-    { icon: <FaTiktok className="size-5" />, href: 'https://www.tiktok.com/@mitra_teknindo_sejati', label: 'Twitter' },
-    { icon: <FaLinkedin className="size-5" />, href: 'https://www.linkedin.com/company/pt-mitra-teknindo-sejati/', label: 'LinkedIn' },
+    {
+        icon: <FaInstagram className="size-5" />,
+        href: 'https://www.instagram.com/teknindo.group/',
+        label: 'Instagram',
+    },
+    {
+        icon: <FaFacebook className="size-5" />,
+        href: 'https://www.facebook.com/pt.mitrateknindosejati',
+        label: 'Facebook',
+    },
+    {
+        icon: <FaTiktok className="size-5" />,
+        href: 'https://www.tiktok.com/@mitra_teknindo_sejati',
+        label: 'Twitter',
+    },
+    {
+        icon: <FaLinkedin className="size-5" />,
+        href: 'https://www.linkedin.com/company/pt-mitra-teknindo-sejati/',
+        label: 'LinkedIn',
+    },
 ];
 
 export const Footer7 = ({
@@ -81,16 +84,21 @@ export const Footer7 = ({
         src: Teknindo,
         alt: 'logo',
     },
-    sections = defaultSections,
-    description = 'Teknindo Group is a truste\d distributor of heavy equipment, trucks, and material handling solutions in Indonesia Established 2018, serving major corporations and projects nationwide with reliable solutions and strong after-sales service.',
-    socialLinks = defaultSocialLinks,
+    description = 'Founded in 2018 through its parent company PT. Mitra Teknindo Sejati (MTS), Teknindo Group is a growing group of seven companies providing heavy equipment, spare parts, and services for the mining, construction, and industrial sectors in Indonesia.',
 }: Footer7Props) => {
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
+    const [locations, setLocations] = useState<Location[]>([]);
+
+    useEffect(() => {
+        axios
+            .get('/api/location-footers')
+            .then((res) => setLocations(res.data))
+            .catch((err) => console.error('Error fetching locations:', err));
+    }, []);
 
     const handleSubscribe = async (e: React.FormEvent) => {
         e.preventDefault();
-
         try {
             await axios.post('/subscriptions', { email });
             setMessage('Thank you for subscribing!');
@@ -111,7 +119,7 @@ export const Footer7 = ({
                         </a>
                         <p className="max-w-sm text-start text-sm leading-relaxed text-white">{description}</p>
                         <ul className="flex space-x-4">
-                            {socialLinks.map((social, idx) => (
+                            {defaultSocialLinks.map((social, idx) => (
                                 <li key={idx} className="group rounded-full transition hover:bg-white">
                                     <a href={social.href} aria-label={social.label} className="flex p-2">
                                         <span className="text-white group-hover:text-black">{social.icon}</span>
@@ -119,21 +127,19 @@ export const Footer7 = ({
                                 </li>
                             ))}
                         </ul>
-                        {/* <div className="relative hidden md:block">
-                            <div id="google_translate_element"></div>
-                        </div> */}
                     </div>
 
                     {/* Links Sections & Newsletter */}
                     <div className="grid w-full gap-8 lg:grid-cols-4">
-                        {sections.map((section, sectionIdx) => (
+                        {/* Navigation + Contact */}
+                        {defaultSections.map((section, sectionIdx) => (
                             <div key={sectionIdx}>
                                 <h3 className="mb-4 font-bold text-white">{section.title}</h3>
                                 <ul className="space-y-3 text-sm">
                                     {section.links.map((link, linkIdx) => (
                                         <li key={linkIdx}>
-                                            <a href={link.href} className="flex items-center text-white hover:text-gray-400">
-                                                {link.icon && <span>{link.icon}</span>}
+                                            <a href={link.href} className="flex items-center truncate text-white hover:text-gray-400">
+                                                {'icon' in link && link.icon && <span>{link.icon}</span>}
                                                 {link.name}
                                             </a>
                                         </li>
@@ -141,6 +147,20 @@ export const Footer7 = ({
                                 </ul>
                             </div>
                         ))}
+
+                        {/* Our Location from API */}
+                        <div>
+                            <h3 className="mb-4 font-bold text-white">Our Location</h3>
+                            <ul className="space-y-3 text-sm">
+                                {locations.map((loc) => (
+                                    <li key={loc.id}>
+                                        <a href={loc.link} className="text-white hover:text-gray-400" target="_blank" rel="noopener noreferrer">
+                                            {loc.name}
+                                        </a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
 
                         {/* Newsletter column */}
                         <div>

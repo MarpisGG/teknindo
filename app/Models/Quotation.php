@@ -16,6 +16,7 @@ class Quotation extends Model
         'company',
         'message',
         'quotation_product_id',
+        'quotation_service_id',
         'followed_up', // Tambahkan ini
     ];
 
@@ -24,9 +25,12 @@ class Quotation extends Model
         'followed_up' => 'boolean', // Tambahkan ini
     ];
 
-    public function product()
-    {
-        return $this->belongsTo(Product::class, 'quotation_product_id');
+    public function product() {
+        return $this->belongsTo(QuotationProduct::class, 'quotation_product_id');
+    }
+
+    public function service() {
+        return $this->belongsTo(QuotationService::class, 'quotation_service_id');
     }
 
     public function getCreatedAtAttribute($value)

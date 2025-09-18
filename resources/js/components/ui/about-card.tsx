@@ -19,14 +19,15 @@
       <div className="w-72 rounded-xl overflow-hidden shadow-lg border border-gray-200  group relative">
         <img
           className="w-full h-56 object-cover px-4"
-          src={imageSrc}
+          src={`/storage/${imageSrc}`}
           alt={imageAlt}
         />
         <div className="px-6 py-4">
           <p className="font-bold text-lg mb-2 text-gray-900 ">{title}</p>
-          <p className="text-sm  text-justify break-words">
-            {description}
-          </p>
+          <div
+            className="text-sm text-justify break-words"
+            dangerouslySetInnerHTML={{ __html: description }}
+          ></div>
         </div>
 
         {/* Tooltip */}

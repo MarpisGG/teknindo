@@ -59,7 +59,7 @@ const Service = () => {
             <Head title="Our Services" />
             <Navbar />
             <motion.div
-                className="mt-16 bg-[#FCC200] p-8 pb-8 text-center shadow-sm"
+                className="bg-[#d9d9d9]/60 pt-24 pb-8 text-center"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
@@ -89,7 +89,7 @@ const Service = () => {
                         Services
                     </span>
                 </h1>
-                <p className="-600 mb-6 text-lg">We are committed to delivering the best heavy equipment solutions for your projects.</p>
+                <p className="mb-6 px-4 text-lg md:px-0">We are committed to delivering the best heavy equipment solutions for your projects.</p>
             </motion.div>
 
             <ServiceIntroSection />
@@ -133,7 +133,7 @@ const Service = () => {
                     <h1 className="-900 mb-4 pt-8 text-center text-3xl font-bold">Let’s Work Together</h1>
                     <p className="-600 mx-auto max-w-xl pb-8 text-justify text-lg md:text-center">
                         Interested in partnering with us?
-                        <Link href="/contact" className="-800 mx-1 font-bold hover:text-[#FCC200] hover:underline">
+                        <Link href="/request-quote" className="-800 mx-1 font-bold hover:text-[#FCC200] hover:underline">
                             Contact Us
                         </Link>
                         to start a conversation about collaboration or procurement.

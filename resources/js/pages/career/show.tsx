@@ -3,7 +3,7 @@ import { Footer7 } from '@/components/footer';
 import Navbar from '@/components/navbar';
 import { usePage } from '@inertiajs/react';
 import axios from 'axios';
-import { Briefcase, DollarSign, LaptopMinimal, MapPin } from 'lucide-react';
+import { Briefcase, LaptopMinimal, MapPin } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 interface Job {
@@ -12,7 +12,6 @@ interface Job {
     division: string;
     location: string;
     type: string;
-    salary: string;
     job_desc: string;
     requirements: string;
     benefit: string;
@@ -248,10 +247,6 @@ export default function JobDetailPage() {
                         <div className="text-md flex items-center text-gray-700">
                             <LaptopMinimal className="mr-2 h-6 w-6" />
                             <span>{job.type}</span>
-                        </div>
-                        <div className="text-md flex items-center text-gray-700">
-                            <DollarSign className="mr-2 h-6 w-6" />
-                            <span>{job.salary}</span>
                         </div>
                     </div>
 

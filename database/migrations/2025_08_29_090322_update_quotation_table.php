@@ -12,13 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('quotation', function (Blueprint $table) {
-            // drop dulu relasi lama ke product
-            $table->dropForeign(['product_id']);
-
-            // ubah nama kolom biar lebih jelas (optional)
-            $table->renameColumn('product_id', 'quotation_product_id');
-
-            // tambahin foreign key baru
+            // No need to drop foreign key since it doesn't exist
+            // The column already exists and is named quotation_product_id
+            
+            // Just add the foreign key constraint
             $table->foreign('quotation_product_id')
                   ->references('id')
                   ->on('quotation_product')
@@ -32,12 +29,11 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('quotation', function (Blueprint $table) {
+            // Drop the foreign key we created
             $table->dropForeign(['quotation_product_id']);
-            $table->renameColumn('quotation_product_id', 'product_id');
-            $table->foreign('product_id')
-                  ->references('id')
-                  ->on('product')
-                  ->onDelete('cascade');
+            
+            // No need to rename column since it was already quotation_product_id
+            // and no original foreign key to recreate
         });
     }
 };

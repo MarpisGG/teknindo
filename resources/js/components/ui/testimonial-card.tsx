@@ -6,13 +6,13 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 export interface TestimonialProps extends React.HTMLAttributes<HTMLDivElement> {
   name: string
   company?: string
-  testimonial: string
+  testimoni?: string
   rating?: number
   image?: string
 }
 
 const Testimonial = React.forwardRef<HTMLDivElement, TestimonialProps>(
-  ({ name, company, testimonial, rating = 5, image, className, ...props }, ref) => {
+  ({ name, company, testimoni, rating = 5, image, className, ...props }, ref) => {
     return (
       <div
         ref={ref}
@@ -44,7 +44,7 @@ const Testimonial = React.forwardRef<HTMLDivElement, TestimonialProps>(
           )}
 
           <p className="text-pretty text-base text-muted-foreground">
-        {testimonial}
+        {testimoni}
           </p>
 
           <div className="flex items-center gap-4 justify-start">

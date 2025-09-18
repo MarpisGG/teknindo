@@ -54,7 +54,7 @@ const ScrollVelocity = React.forwardRef<HTMLDivElement, ScrollVelocityProps>(
 
 function move(delta: number) {
   // Bikin movement jauh lebih lambat, bisa kamu tweak `0.2` untuk super slow
-  const adjustedVelocity = velocity * 0.2
+  const adjustedVelocity = velocity * 0.5
   const factor = velocityFactor.get()
 
   directionFactor.current = 1
@@ -92,11 +92,11 @@ function move(delta: number) {
               ))}
             </>
           ) : (
-            <>
-             {children}
-             {children}
-             {children}
-            </>
+          <>
+            {Array.from({ length: 20 }).map((_, idx) => (
+              <React.Fragment key={idx}>{children}</React.Fragment>
+            ))}
+          </>
           )}
         </motion.div>
       </div>

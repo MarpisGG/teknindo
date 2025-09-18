@@ -52,7 +52,7 @@ const Contact = [
     {
         icon: <Mail className="mr-2 inline" />,
         href: '#',
-        label: 'teknindo@gmail.com',
+        label: 'headoffice@teknindogroup.com',
         name: '',
     },
     {
@@ -104,8 +104,8 @@ export default function ContactPage() {
                 message: '',
                 category: 'other', // Reset to default category
             });
-        } catch (error) {
-            console.error(error);
+        } catch (error: any) {
+            console.error(error.response?.data || error.message);
             setSubmitStatus({
                 success: false,
                 message: 'Sorry, there was an error sending your message. Please try again.',
@@ -273,9 +273,9 @@ export default function ContactPage() {
                                 className="w-full rounded-md border border-gray-300 px-3 py-2 focus:ring-[#FCC200]"
                                 required
                             >
-                                <option value="heavyweight">Heavyweight</option>
-                                <option value="sparepart">Sparepart</option>
-                                <option value="other">Others</option>
+                                <option value="heavyequipment">Heavy Equipment</option>
+                                <option value="sparepart">Spare Part</option>
+                                <option value="other">Other</option>
                             </select>
                         </div>
 

@@ -1,12 +1,19 @@
 import { motion } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
-import slider1 from '../../assets/image/product/1.webp';
-import slider2 from '../../assets/image/product/2.webp';
-import slider3 from '../../assets/image/product/3.webp';
-import slider4 from '../../assets/image/product/4.webp';
-import slider5 from '../../assets/image/product/5.webp';
 
-const images = [slider1, slider2, slider3, slider4, slider5];
+const images = [
+    '/image/product/6.png',
+    '/image/product/7.png',
+    '/image/product/8.png',
+    '/image/product/9.png',
+    '/image/product/10.png',
+    '/image/product/11.png',
+    '/image/product/12.png',
+    '/image/product/13.png',
+    '/image/product/14.png',
+    '/image/product/15.png',
+    '/image/product/16.png',
+];
 const SLIDE_INTERVAL = 3000;
 
 const variants = {
@@ -63,7 +70,7 @@ const SliderImageProduct: React.FC = () => {
                 <img
                     src={images[current]}
                     alt={`Slide ${current + 1}`}
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-fill"
                     draggable={false}
                     style={{ maxHeight: '100%', width: '100%' }}
                 />

@@ -1,0 +1,102 @@
+import FloatingQuickActions from '@/components/floatingquickaction';
+import { Footer7 } from '@/components/footer';
+import Navbar from '@/components/navbar';
+import { Head } from '@inertiajs/react';
+import { motion } from 'framer-motion';
+
+const fadeInUp = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
+
+function HeavyEquipment() {
+    return (
+        <div className="flex min-h-screen flex-col">
+            <Head title="Heavy Equipment" />
+            <Navbar />
+            <div className="flex min-h-screen flex-col items-center justify-center px-4 py-8">
+                <h1 className="mb-8 text-center text-3xl font-bold text-gray-900">Heavy Equipment & Truck Distribution</h1>
+            </div>
+            <main className="flex flex-1 flex-col items-center px-4 py-4">
+                <div className="w-full max-w-6xl">
+                    <div className="mx-auto rounded-2xl p-10 text-justify text-lg leading-relaxed">
+                        <p className="mb-6 text-gray-700">
+                            <span className="font-semibold text-[#FCC200]">Teknindo Group</span> is a trusted distributor and authorized dealer of
+                            world-class heavy equipment brands in Indonesia. We specialize in providing reliable and durable machinery for
+                            construction, mining, and industrial projects nationwide.
+                        </p>
+                        <p className="mb-6 text-gray-700">
+                            Our comprehensive range of heavy equipment includes{' '}
+                            <span className="font-medium">
+                                excavators, wheel loaders, bulldozers, cranes, piling rigs, drilling rigs, forklifts, and heavy-duty trucks
+                            </span>{' '}
+                            designed to meet the toughest industry demands.
+                        </p>
+                        <p className="mb-6 text-gray-700">
+                            Teknindo Group under PT Mitra Teknindo Sejati is the official dealer for the following internationally recognized brands:
+                        </p>
+                        <ul className="mb-6 list-disc space-y-2 pl-6 text-gray-700">
+                            <li>
+                                <span className="font-semibold">LONKING</span> — Heavy equipment for construction and mining, including excavators,
+                                wheel loaders, and bulldozers.
+                            </li>
+                            <li>
+                                <span className="font-semibold">TYSIM</span> — Specialized bore pile construction equipment and drilling rigs.
+                            </li>
+                            <li>
+                                <span className="font-semibold">ZHENZHONG</span> — Piling machinery and foundation construction equipment.
+                            </li>
+                            <li>
+                                <span className="font-semibold">SINOTRUK</span> — Heavy-duty trucks for mining and transportation industries.
+                            </li>
+                            <li>
+                                <span className="font-semibold">CHL</span> — Material handling equipment, including forklifts and warehouse solutions.
+                            </li>
+                            <li>
+                                <span className="font-semibold">ZHONGTONG</span> — Shuttle buses for industrial site transportation and workforce
+                                mobility.
+                            </li>
+                        </ul>
+                        <p className="mb-6 text-gray-700">
+                            Our machines are built to deliver outstanding performance, reliability, and efficiency for every type of project. With
+                            branches located in key cities across Indonesia, we ensure prompt after-sales service, spare parts availability, and
+                            professional maintenance to keep your operations running smoothly.
+                        </p>
+                        <p className="mb-6 text-gray-700">
+                            Every unit we deliver goes through strict quality checks to ensure the highest standards of safety and durability. Whether
+                            it’s for construction sites, mining projects, or industrial facilities, our equipment is built to handle heavy workloads
+                            and challenging environments.
+                        </p>
+                        <p className="mb-6 text-gray-700">
+                            To support our customers, we provide reliable after-sales service, genuine spare parts, and on-site technical assistance.
+                            With a professional team and service points across Indonesia, we make sure your machines stay in excellent condition and
+                            downtime is kept to a minimum.
+                        </p>
+                        <p className="text-gray-700">
+                            By choosing <span className="font-semibold text-[#FCC200]">Teknindo Group</span>, you’re not only getting access to
+                            world-class heavy equipment, but also a trusted partner committed to keeping your projects running efficiently and
+                            successfully.
+                        </p>
+                    </div>
+                </div>
+            </main>
+            <motion.div className="" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
+                <motion.div className="mx-auto bg-[#fcc200]" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
+                    <h1 className="mb-4 pt-8 text-center text-3xl font-bold text-gray-900">Discover Our Products</h1>
+                    <p className="mx-auto pb-8 text-justify text-lg text-gray-600 md:text-center">
+                        Browse our complete catalog to find the right solutions for your needs.
+                        <br />
+                        <a href="/products/heavy-equipment" className="mx-1 font-bold text-gray-800 hover:underline">
+                            View our heavy equipment products
+                        </a>
+                    </p>
+                </motion.div>
+            </motion.div>
+
+            <FloatingQuickActions />
+            <Footer7 />
+        </div>
+    );
+}
+
+export default HeavyEquipment;
