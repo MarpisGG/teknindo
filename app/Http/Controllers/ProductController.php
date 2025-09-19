@@ -208,7 +208,7 @@ class ProductController extends Controller
     public function show($slug)
     {
         $product = Product::with(['category', 'type'])->where('slug', $slug)->firstOrFail();
-        return Inertia::render('admin/Products/Show', ['product' => $product]);
+        return Inertia::render('admin/products/show', ['product' => $product]);
     }
 
     public function destroy($id)
@@ -259,7 +259,7 @@ class ProductController extends Controller
             ]);
         }
 
-        return Inertia::render('Products/Show', [
+        return Inertia::render('products/show', [
             'type' => $type,
             'product' => $product,
         ]);

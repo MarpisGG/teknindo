@@ -89,10 +89,16 @@ const Create: React.FC = () => {
             setProcessing(false);
         }
     };
+    const handleCancel = () => {
+        window.location.href = '/admin/companies';
+    };
 
     return (
         <div className="mx-auto max-w-3xl px-4 py-8">
             <h1 className="mb-6 text-2xl font-bold">Create Company</h1>
+            <button onClick={handleCancel} className="mb-6 text-sm text-blue-600 hover:underline">
+                &larr; Back to Company List
+            </button>
             <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                     <label className="block font-medium">Name</label>
@@ -147,12 +153,15 @@ const Create: React.FC = () => {
                 </div>
 
                 <div className="flex justify-start space-x-3 pt-4">
+                    <button type="button" onClick={handleCancel} className="rounded-md bg-gray-300 px-4 py-2 text-gray-800 hover:bg-gray-400">
+                        Cancel
+                    </button>
                     <button
                         type="submit"
                         disabled={processing}
                         className={`px-4 py-2 ${processing ? 'bg-blue-300' : 'bg-blue-600 hover:bg-blue-700'} rounded-md text-white`}
                     >
-                        {processing ? 'Creating...' : 'Create Customer'}
+                        {processing ? 'Creating...' : 'Create Company'}
                     </button>
                 </div>
             </form>

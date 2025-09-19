@@ -64,9 +64,16 @@ const Create: React.FC = () => {
         }
     };
 
+    const handleCancel = () => {
+        window.location.href = '/admin/businesses';
+    };
+
     return (
         <div className="mx-auto max-w-3xl px-4 py-8">
             <h1 className="mb-6 text-2xl font-bold">Create Business</h1>
+            <button onClick={handleCancel} className="mb-6 text-sm text-blue-600 hover:underline">
+                &larr; Back to Business List
+            </button>
             <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                     <label className="block font-medium">Title</label>
@@ -100,6 +107,9 @@ const Create: React.FC = () => {
                 </div>
 
                 <div className="flex justify-start space-x-3 pt-4">
+                    <button type="button" onClick={handleCancel} className="rounded-md bg-gray-300 px-4 py-2 text-gray-800 hover:bg-gray-400">
+                        Cancel
+                    </button>
                     <button
                         type="submit"
                         disabled={processing}

@@ -79,7 +79,7 @@ const Create: React.FC = () => {
                 <div className="mb-6 flex items-center justify-between">
                     <h1 className="text-2xl font-bold text-gray-800">Create Testimoni</h1>
                     <button onClick={handleCancel} className="text-sm text-blue-600 hover:underline">
-                        &larr; Back to Quotation Service List
+                        &larr; Back to Testimoni
                     </button>
                 </div>
 

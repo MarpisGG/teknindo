@@ -1,4 +1,4 @@
-import { Link, router, usePage } from '@inertiajs/react';
+import { router, usePage } from '@inertiajs/react';
 import { ChevronRight } from 'lucide-react';
 import React from 'react';
 import { FaFacebook, FaLinkedin, FaTwitter, FaWhatsapp } from 'react-icons/fa';
@@ -60,64 +60,6 @@ const Show: React.FC = () => {
 
     return (
         <div className="mx-auto max-w-5xl px-4 py-8">
-            <nav className="mb-6 rounded-lg bg-white p-4 shadow-md">
-                <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-                    {/* Kiri: Logo */}
-                    <div className="flex w-full items-center justify-between md:w-auto">
-                        <Link href="/dashboard" className="text-xl font-bold text-blue-600">
-                            Dashboard
-                        </Link>
-
-                        {/* Tombol menu mobile */}
-                        <button
-                            className="text-gray-500 hover:text-gray-700 md:hidden"
-                            onClick={() => {
-                                const menu = document.getElementById('mobile-menu');
-                                if (menu) menu.classList.toggle('hidden');
-                            }}
-                        >
-                            <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                            </svg>
-                        </button>
-                    </div>
-
-                    {/* Tengah: Desktop Menu */}
-                    <div className="hidden flex-grow items-center justify-center md:flex">
-                        <div className="flex items-center gap-3">
-                            {['users', 'roles', 'blogs', 'jobs', 'products', 'categories', 'types', 'messages', 'subscriptions'].map((item) => (
-                                <Link
-                                    key={item}
-                                    href={`/${item}`}
-                                    className={`rounded-md px-3 py-2 text-sm font-medium transition-colors ${
-                                        item === 'messages' ? 'bg-blue-50 text-blue-700' : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
-                                    }`}
-                                >
-                                    {item.charAt(0).toUpperCase() + item.slice(1)}
-                                </Link>
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* Kanan: User Info */}
-                    <div className="hidden items-center gap-2 rounded-full bg-gray-50 px-4 py-2 md:flex">
-                        <span className="font-medium text-gray-700">{auth.user.name}</span>
-                    </div>
-                </div>
-
-                {/* Mobile Menu */}
-                <div id="mobile-menu" className="mt-4 hidden space-y-2 md:hidden">
-                    {['users', 'roles', 'blogs', 'jobs', 'products', 'categories', 'types', 'messages', 'subscriptions'].map((item) => (
-                        <Link
-                            key={item}
-                            href={`/${item}`}
-                            className="block rounded px-3 py-2 text-gray-700 capitalize hover:bg-blue-50 hover:text-blue-700"
-                        >
-                            {item}
-                        </Link>
-                    ))}
-                </div>
-            </nav>
             <div className="mb-6 flex items-center justify-between">
                 <h1 className="text-2xl font-bold text-gray-800">Product Details</h1>
                 <button onClick={() => router.get('/products')} className="text-sm text-blue-600 hover:underline">

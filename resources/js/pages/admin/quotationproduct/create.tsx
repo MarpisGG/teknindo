@@ -39,7 +39,7 @@ const Create: React.FC = () => {
     };
 
     const handleCancel = () => {
-        window.location.href = '/admin/quotation-product';
+        window.location.href = '/admin/quotation-products';
     };
 
     const handleSubmit = (e: React.FormEvent) => {
